@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 
 ext.versionMajor = 0
 ext.versionMinor = 9
-ext.versionPatch = 0
+ext.versionPatch = 1
 
 android {
     compileSdkVersion 28
@@ -20,7 +20,7 @@ android {
         libraryVariants.all { variant ->
             variant.outputs.all { output ->
                 if (outputFileName.endsWith('.aar')) {
-                    outputFileName = "${archivesBaseName}-${versionName}-${variant.name}.aar"
+                    outputFileName = "${archivesBaseName}-${versionName}.aar"
                 }
             }
         }

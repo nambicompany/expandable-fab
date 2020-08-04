@@ -8,7 +8,7 @@ Note: Dates are formatted as YEAR-MONTH-DAY.
 
 #
 
-## [v0.9.0] - 2020-08-04
+## [v0.9.1] - 2020-08-04
 ### Added
 - Initial commit of ExpandableFab library.
 - Widget custom Views: `ExpandableFabLayout`, `Overlay`, `ExpandableFab`, `FabOption` and `Label`.
