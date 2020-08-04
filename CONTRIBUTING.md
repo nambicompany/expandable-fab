@@ -32,5 +32,9 @@ Contributions to ExpandableFab are highly encouraged! Before beginning work, ple
 * Push to your feature branch, then create a pull request to `master`!
 
 ## Releasing to Sonatype Nexus / Maven Central (only for those with creds)
-* Run the publish Gradle task, ensuring that gpg-agent is running locally and the necessary properties are set in global/project gradle.properties (see `\library\publish-artifacts-to-maven-repo.gradle`)
-* Login to the Nexus Repository Manager and promote, then release, the repository for publication to Maven Central.
+* Run the publish Gradle task, ensuring that gpg-agent is running locally and the necessary properties are set in global/project gradle.properties (see [publish-artifacts-to-maven-repo.gradle](/library/publish-artifacts-to-maven-repo.gradle))
+* Once Gradle task finishes successfully: 
+    * Login to the Nexus Repository Manager (https://oss.sonatype.org/)
+    * Navigate to `Staging Repositories`
+    * `Close` then `Release` the repository for publication to Sonatype Nexus' Release Repo
+        * Will take around 2 hours for Sonatype Nexus' Release Repo to sync with Maven Central
