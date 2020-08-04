@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/default_configuration_xml_fragment">
+
+    <fragment
+        android:id="@+id/default_configuration_xml_fragment"
+        android:name="com.nambimobile.examples.efab.DefaultConfigurationXmlFragment"
+        android:label="@string/default_configuration_xml_fragment" />
+    <fragment
+        android:id="@+id/default_configuration_code_fragment"
+        android:name="com.nambimobile.examples.efab.DefaultConfigurationCodeFragment"
+        android:label="@string/default_configuration_code_fragment" />
+
+    <fragment
+        android:id="@+id/expandablefab_fragment"
+        android:name="com.nambimobile.examples.efab.ExpandableFabFragment"
+        android:label="@string/expandablefab_fragment" />
+    <fragment
+        android:id="@+id/faboptions_fragment"
+        android:name="com.nambimobile.examples.efab.FabOptionsFragment"
+        android:label="@string/faboptions_fragment" />
+    <fragment
+        android:id="@+id/labels_fragment"
+        android:name="com.nambimobile.examples.efab.LabelsFragment"
+        android:label="@string/labels_fragment" />
+    <fragment
+        android:id="@+id/overlay_fragment"
+        android:name="com.nambimobile.examples.efab.OverlayFragment"
+        android:label="@string/overlay_fragment" />
+
+    <fragment
+        android:id="@+id/no_faboptions_fragment"
+        android:name="com.nambimobile.examples.efab.NoFabOptionsFragment"
+        android:label="@string/no_faboptions_fragment" />
+    <fragment
+        android:id="@+id/no_labels_fragment"
+        android:name="com.nambimobile.examples.efab.NoLabelsFragment"
+        android:label="@string/no_labels_fragment" />
+    <fragment
+        android:id="@+id/open_downwards_fragment"
+        android:name="com.nambimobile.examples.efab.OpenDownwardsFragment"
+        android:label="@string/open_downwards_fragment" />
+    <fragment
+        android:id="@+id/disabled_fragment"
+        android:name="com.nambimobile.examples.efab.DisabledFragment"
+        android:label="@string/disabled_fragment" />
+    <fragment
+        android:id="@+id/multiple_expandablefabs_fragment"
+        android:name="com.nambimobile.examples.efab.MultipleExpandableFabsFragment"
+        android:label="@string/multiple_expandablefabs_fragment" />
+    <fragment
+        android:id="@+id/custom_sizes_fragment"
+        android:name="com.nambimobile.examples.efab.CustomSizesFragment"
+        android:label="@string/custom_sizes_fragment" />
+    <fragment
+        android:id="@+id/coordinator_layout_compatibility_fragment"
+        android:name="com.nambimobile.examples.efab.CoordinatorLayoutCompatibilityFragment"
+        android:label="@string/coordinator_layout_compatibility_fragment" />
+    <fragment
+        android:id="@+id/wacky_fragment"
+        android:name="com.nambimobile.examples.efab.WackyFragment"
+        android:label="@string/wacky_fragment" />
+</navigation>

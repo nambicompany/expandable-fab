@@ -1,0 +1,84 @@
+<resources>
+    <!-- ExpandableFabLayout Errors -->
+    <string name="efab_layout_illegal_child">
+        Overlay, ExpandableFab and FabOption are the only children allowed in an
+        ExpandableFabLayout. You added a(n) %s.
+    </string>
+    <string name="efab_layout_multiple_efabs">
+        You can only set one ExpandableFab per orientation in an ExpandableFabLayout (you set 2 or
+        more for the %s orientation).
+    </string>
+    <string name="efab_layout_must_be_child_of_expandablefab_layout">
+        Overlays, ExpandableFabs and FabOptions must be children of an [ExpandableFabLayout] in
+        order to function properly. Please see the documentation for how to correctly use the
+        ExpandableFab widget.
+    </string>
+
+    <!-- Overlay Errors -->
+    <string name="efab_overlay_illegal_optional_properties">
+        One or more optional attributes for an Overlay were set, but didn\'t meet the criteria
+        below: \n\n
+        Optional Attribute || Criteria \n
+        orientation || must be a value of enum class Orientation \n
+        overlayColor || must be an integer color or color state list \n
+        overlayAlpha || must be a positive floating point number \n
+        openingAnimationDurationMs || must be a positive long number \n
+        closingAnimationDurationMs || must be a positive long number \n
+    </string>
+
+    <!-- ExpandableFab Errors -->
+    <string name="efab_efab_illegal_optional_properties">
+        One or more optional attributes for an ExpandableFab were set, but didn\'t meet the
+        criteria below: \n\n
+        Optional Attribute || Criteria \n
+        orientation || must be a value of enum class Orientation \n
+        efabColor || must be an integer color or color state list \n
+        efabIcon || must be a color or drawable resource \n
+        efabSize || must be [FabSize.MINI], [FabSize.NORMAL], [FabSize.AUTO] or [FabSize.CUSTOM].
+        FabSize.CUSTOM should be used when setting the size of the ExpandableFab\'s layout_width
+        and layout_height to a custom value manually. \n
+        efabEnabled || must be a boolean \n
+        iconRotationDeg || must be a floating point number \n
+        fabOptionSize || must be [FabSize.MINI], [FabSize.NORMAL], [FabSize.AUTO] or
+        [FabSize.CUSTOM]. FabSize.CUSTOM should be used when setting the size of the FabOptions\'
+        layout_width and layout_height to a custom value manually. \n
+        fabOptionPosition || must be a value of enum class FabOptionPosition \n
+        firstFabOptionMarginPx || must be a floating point number \n
+        successiveFabOptionMarginPx || must be a floating point number \n
+        openingAnimationDurationMs || must be a positive long number \n
+        closingAnimationDurationMs || must be a positive long number \n
+        closingAnticipateTension || must be a positive float number \n
+    </string>
+
+    <!-- FabOption Errors -->
+    <string name="efab_faboption_illegal_optional_properties">
+        One or more optional attributes for a FabOption were set, but didn\'t meet the
+        criteria below: \n\n
+        Optional Attribute || Criteria \n
+        orientation || must be a value of enum class Orientation \n
+        fabOptionColor || must be an integer color or color state list \n
+        fabOptionIcon || must be a color or drawable resource \n
+        fabOptionEnabled || must be a boolean \n
+        openingAnimationDurationMs || must be a positive long number \n
+        closingAnimationDurationMs || must be a positive long number \n
+        openingOvershootTension || must be a positive long number \n
+    </string>
+
+    <!-- Label Errors -->
+    <string name="efab_label_illegal_optional_properties">
+        One or more optional attributes for a Label were set, but didn\'t meet the
+        criteria below: \n\n
+        labelText || must be a CharSequence \n
+        labelTextColor || must be an integer color or color state list \n
+        labelTextSize || must be a positive floating point number \n
+        labelBackgroundColor || must be an integer color or color state list \n
+        labelElevation || must be a positive floating point number \n
+        labelEnabled || must be a boolean \n
+        position || must be a value of enum class [LabelPosition] \n
+        marginPx || must be a positive floating point number \n
+        translationXPx || must be a floating point number \n
+        visibleToHiddenAnimationDurationMs || must be a positive long number \n
+        hiddenToVisibleAnimationDurationMs || must be a positive long number \n
+        overshootTension || must be a positive floating point number \n
+    </string>
+</resources>

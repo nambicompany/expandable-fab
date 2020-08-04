@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Overlay - library</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">library</a>&nbsp;/&nbsp;<a href="../index.html">com.nambimobile.widgets.efab</a>&nbsp;/&nbsp;<a href="./index.html">Overlay</a><br/>
+<br/>
+<h1>Overlay</h1>
+<code><span class="keyword">class </span><span class="identifier">Overlay</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/widget/FrameLayout.html"><span class="identifier">FrameLayout</span></a></code>
+<p>An overlay that will show when an <a href="../-expandable-fab/index.html">ExpandableFab</a> is clicked in order to partially or fully
+obscure the screen's content, allowing the <a href="../-expandable-fab/index.html">ExpandableFab</a> and <a href="../-fab-option/index.html">FabOption</a>s to become more
+apparent.</p>
+<p>Developer Notes:</p>
+<ol><li>If you would like the Overlay to cover the entire screen, layout_width and layout_height must
+both be set to match_parent (assuming the parent ExpandableFabLayout has no size restrictions).</li>
+<li>Overlays must be defined within an <a href="../-expandable-fab-layout/index.html">ExpandableFabLayout</a> to function properly.</li>
+<li>To ensure that Overlays cover screen content but NOT the ExpandableFab widget itself,
+ensure the Overlay is the first child of ExpandableFabLayout via XML, or the first view passed
+to ExpandableFabLayout's addView/addViews methods via code.</li>
+</ol>
+<p>Implementation Notes:</p>
+<ol><li>Since the Kotlin 'internal' modifier translates to 'public' in Java, the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-synthetic/index.html">JvmSynthetic</a>
+annotation is used on those functions and properties to hide them from the published API for
+Java clients. A proper solution to this issue would be a package-private visibility modifier,
+but Kotlin has yet to implement it (https://youtrack.jetbrains.com/issue/KT-29227). Until
+then, the JvmSynthetic annotations should remain in order to present the proper published API
+to both Java &amp; Kotlin clients.</li>
+</ol>
+<p><strong>Since</strong><br/>
+1.0.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<p>Used to create an Overlay programmatically (do not use the other constructor Overlay(context,
+attributeSet) - it is for use by the Android framework when inflating an Overlay via XML).
+This constructor keeps all optional properties of an Overlay at their default values,
+though you can always change these values after instantiation by using the appropriate
+setter methods (with the exception of <a href="-init-.html#com.nambimobile.widgets.efab.Overlay$<init>(android.content.Context, com.nambimobile.widgets.efab.Orientation)/orientation">orientation</a>, which cannot be changed after
+instantiation).</p>
+<code><span class="identifier">Overlay</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.Overlay$<init>(android.content.Context, com.nambimobile.widgets.efab.Orientation)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">, </span><span class="identifier" id="com.nambimobile.widgets.efab.Overlay$<init>(android.content.Context, com.nambimobile.widgets.efab.Orientation)/orientation">orientation</span><span class="symbol">:</span>&nbsp;<a href="../-orientation/index.html"><span class="identifier">Orientation</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;Orientation.PORTRAIT<span class="symbol">)</span></code>
+<p>Called by the system when creating an Overlay via XML (don't call this directly).
+To create an Overlay programmatically, use the Overlay(context, orientation) constructor.</p>
+<code><span class="identifier">Overlay</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.Overlay$<init>(android.content.Context, android.util.AttributeSet)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">, </span><span class="identifier" id="com.nambimobile.widgets.efab.Overlay$<init>(android.content.Context, android.util.AttributeSet)/attributeSet">attributeSet</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/util/AttributeSet.html"><span class="identifier">AttributeSet</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="closing-animation-duration-ms.html">closingAnimationDurationMs</a></h4>
+</td>
+<td>
+<p>The duration (in milliseconds as a positive long) of the animations that will be played
+when this Overlay is being hidden from a visible state (when the ExpandableFab is closing).
+Default value is 300L.</p>
+<code><span class="keyword">var </span><span class="identifier">closingAnimationDurationMs</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="opening-animation-duration-ms.html">openingAnimationDurationMs</a></h4>
+</td>
+<td>
+<p>The duration (in milliseconds as a positive long) of the animations that will be played
+when this Overlay is being shown from a hidden state (when the ExpandableFab is opening).
+Default value is 300L.</p>
+<code><span class="keyword">var </span><span class="identifier">openingAnimationDurationMs</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="orientation.html">orientation</a></h4>
+</td>
+<td>
+<p>The <a href="../-orientation/index.html">Orientation</a> this Overlay is viewable in. Default value is <a href="../-orientation/-p-o-r-t-r-a-i-t.html">Orientation.PORTRAIT</a>.</p>
+<code><span class="keyword">var </span><span class="identifier">orientation</span><span class="symbol">: </span><a href="../-orientation/index.html"><span class="identifier">Orientation</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="overlay-alpha.html">overlayAlpha</a></h4>
+</td>
+<td>
+<p>The opacity of the overlay as a positive float, where 0 is completely transparent and 1 is
+completely opaque. Default value is 0.78431f.</p>
+<code><span class="keyword">var </span><span class="identifier">overlayAlpha</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="overlay-color.html">overlayColor</a></h4>
+</td>
+<td>
+<p>The color of the overlay. Default value is white.</p>
+<code><span class="keyword">var </span><span class="identifier">overlayColor</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="set-on-click-listener.html">setOnClickListener</a></h4>
+</td>
+<td>
+<p>Registers a callback to be invoked when this Overlay is clicked. The default behavior the
+Overlay will be executed before this custom callback.</p>
+<code><span class="keyword">fun </span><span class="identifier">setOnClickListener</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.Overlay$setOnClickListener(android.view.View.OnClickListener)/onClickListener">onClickListener</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/View/OnClickListener.html"><span class="identifier">OnClickListener</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

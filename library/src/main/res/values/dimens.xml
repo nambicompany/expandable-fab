@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="efab_ui_margin_xxs">4dp</dimen>x
+    <dimen name="efab_ui_margin_xs">8dp</dimen>
+    <dimen name="efab_ui_margin_small">12dp</dimen>
+    <dimen name="efab_ui_margin">16dp</dimen>
+    <dimen name="efab_ui_margin_medium">20dp</dimen>
+    <dimen name="efab_ui_margin_large">24dp</dimen>
+
+    <dimen name="efab_label_text_size">14sp</dimen>
+
+    <dimen name="efab_label_elevation">6dp</dimen>
+</resources>

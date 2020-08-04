@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#000000</color>
+    <color name="efab_label_background">#333333</color>
+    <color name="efab_disabled">#AAAAAA</color>
+    <color name="efab_disabled_text">#888888</color>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- DrawerLayout MUST be the root layout when using a Navigation Drawer -->
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/navigation_drawer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- The actual layout of the main activity -->
+    <include
+        layout="@layout/main_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Container for contents of drawer - using NavigationView to make configuration easier -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/navigation_drawer_menu"
+        app:headerLayout="@layout/navigation_drawer_header"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>

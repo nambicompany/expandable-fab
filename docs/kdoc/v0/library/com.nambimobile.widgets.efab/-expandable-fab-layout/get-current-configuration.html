@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ExpandableFabLayout.getCurrentConfiguration - library</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">library</a>&nbsp;/&nbsp;<a href="../index.html">com.nambimobile.widgets.efab</a>&nbsp;/&nbsp;<a href="index.html">ExpandableFabLayout</a>&nbsp;/&nbsp;<a href="./get-current-configuration.html">getCurrentConfiguration</a><br/>
+<br/>
+<h1>getCurrentConfiguration</h1>
+<a name="com.nambimobile.widgets.efab.ExpandableFabLayout$getCurrentConfiguration()"></a>
+<code><span class="keyword">fun </span><span class="identifier">getCurrentConfiguration</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-orientation-configuration/index.html"><span class="identifier">OrientationConfiguration</span></a></code>
+<p>Returns the OrientationConfiguration showing for the current screen orientation.
+An OrientationConfiguration is just a holder for all the views of an ExpandableFab widget
+in a specific <a href="../-orientation/index.html">Orientation</a>.</p>
+<p>Should only be called after you have added the views to an ExpandableFabLayout
+programmatically via the addView methods, or declared them within an ExpandableFabLayout
+via XML. Otherwise, the views contained may be null for references or empty for lists.</p>
+<p>Although the <a href="portrait-configuration.html">portraitConfiguration</a> and <a href="landscape-configuration.html">landscapeConfiguration</a> properties are both exposed
+publicly for clients to obtain directly, this method allows you to retrieve the correct
+set of views without first knowing what screen orientation the device is currently in.</p>
+<p>Note: This method will automatically take into account orientations with no configuration
+set. That is, if you only set a portrait configuration, then this method will pass back
+that configuration even if the device is currently in landscape. You don't have to worry
+about being given an OrientationConfiguration for an orientation that you did not set.</p>
+</BODY>
+</HTML>

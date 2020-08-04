@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+ext.versionMajor = 0
+ext.versionMinor = 9
+ext.versionPatch = 0
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode versionMajor * 100000 + versionMinor * 100 + versionPatch * 1
+        versionName "$versionMajor.$versionMinor.$versionPatch"
+        setProperty("archivesBaseName", "expandable-fab")
+
+        // Changes the name of generated AAR artifacts to be more descriptive
+        libraryVariants.all { variant ->
+            variant.outputs.all { output ->
+                if (outputFileName.endsWith('.aar')) {
+                    outputFileName = "${archivesBaseName}-${versionName}-${variant.name}.aar"
+                }
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+}
+
+apply from: 'generate-docs-and-update-website.gradle'
+apply from: 'publish-artifacts-to-maven-repo.gradle'

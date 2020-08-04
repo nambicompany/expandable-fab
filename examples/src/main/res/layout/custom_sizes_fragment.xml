@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/info_block"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ui_margin"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_large"
+            android:text="@string/custom_sizes_fragment_info"/>
+    </ScrollView>
+
+    <com.nambimobile.widgets.efab.ExpandableFabLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.nambimobile.widgets.efab.Overlay
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <com.nambimobile.widgets.efab.ExpandableFab
+            android:layout_width="175dp"
+            android:layout_height="175dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="@dimen/ui_margin_medium"
+            android:layout_marginEnd="@dimen/ui_margin_medium"
+            android:layout_marginRight="@dimen/ui_margin_medium"
+            app:efab_size="custom"
+            app:efab_fabOptionSize="custom"
+            app:efab_firstFabOptionMarginPx="145"
+            app:efab_successiveFabOptionMarginPx="145"
+            app:fabCustomSize="175dp"
+            app:maxImageSize="84dp"
+            app:efab_icon="@drawable/ic_plus_white_84dp" />
+        <com.nambimobile.widgets.efab.FabOption
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:fabCustomSize="100dp"
+            app:maxImageSize="42dp"
+            app:fab_icon="@drawable/ic_bike_white_42dp"
+            app:label_text="Option 1"
+            app:label_textSize="@dimen/text_size_large"/>
+        <com.nambimobile.widgets.efab.FabOption
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:fabCustomSize="100dp"
+            app:maxImageSize="42dp"
+            app:fab_icon="@drawable/ic_car_white_42dp"
+            app:label_text="Option 2"
+            app:label_textSize="@dimen/text_size_large"/>
+        <com.nambimobile.widgets.efab.FabOption
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:fabCustomSize="100dp"
+            app:maxImageSize="42dp"
+            app:fab_icon="@drawable/ic_walk_white_42dp"
+            app:label_text="Option 3"
+            app:label_textSize="@dimen/text_size_large"/>
+        <com.nambimobile.widgets.efab.FabOption
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:fabCustomSize="100dp"
+            app:maxImageSize="42dp"
+            app:fab_icon="@drawable/ic_flight_white_42dp"
+            app:label_text="Option 4"
+            app:label_textSize="@dimen/text_size_large"/>
+    </com.nambimobile.widgets.efab.ExpandableFabLayout>
+
+</RelativeLayout>

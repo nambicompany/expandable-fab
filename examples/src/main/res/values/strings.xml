@@ -1,0 +1,133 @@
+<resources>
+    <string name="app_name">ExpandableFab Examples</string>
+
+    <!-- Fragment Labels -->
+    <string name="default_configuration_xml_fragment">Default Configuration via XML</string>
+    <string name="default_configuration_code_fragment">Default Configuration via Code</string>
+
+    <string name="expandablefab_fragment">ExpandableFab</string>
+    <string name="faboptions_fragment">FabOptions</string>
+    <string name="labels_fragment">Labels</string>
+    <string name="overlay_fragment">Overlay</string>
+    <string name="no_faboptions_fragment">No FabOptions</string>
+    <string name="no_labels_fragment">No Labels</string>
+
+    <string name="open_downwards_fragment">Open Downwards</string>
+    <string name="disabled_fragment">Disabled</string>
+    <string name="multiple_expandablefabs_fragment">Multiple ExpandableFabs</string>
+    <string name="custom_sizes_fragment">Custom Sizes</string>
+    <string name="coordinator_layout_compatibility_fragment">Coordinator Layout Compatibility</string>
+    <string name="wacky_fragment">Wacky</string>
+
+    <!-- Fragment Info Blocks -->
+    <string name="default_configuration_xml_fragment_info">
+        Although ExpandableFab widgets can be highly customized to fit your needs, they\'re also
+        initialized with user-friendly default values out of the box for quick setup as well. This
+        fragment displays an ExpandableFab widget in its default configuration with just icons and
+        labels for the FabOptions added.\n\nTilt the device into landscape orientation to see how
+        the ExpandableFab can be orientation-aware as well.\n\nOpen the Navigation Drawer to the
+        left to see a few other common customizations that can be achieved (not an exhaustive list;
+        review the docs to see every customizable property!).
+    </string>
+    <string name="default_configuration_code_fragment_info">
+        Shows the exact same configuration as \'Default Configuration via XML\', but configured via
+        code.\n\nHave a look at the \'onViewCreated\' method within this fragment for some other
+        helpful tips when interacting with the widget programmatically.
+    </string>
+
+    <string name="expandablefab_fragment_info">
+        The ExpandableFab is the focal point for the widget\'s functionality, from an end-user\'s
+        perspective. Easily customize it through the API (programmatically or XML) to match your
+        app\'s theme and be eye-catching to your clients.\n\nBelow is an example of an
+        ExpandableFab with a Label.
+    </string>
+    <string name="faboptions_fragment_info">
+        FabOptions are the buttons that animate out from the ExpandableFab and present the user
+        with different actions they can take on the current screen. There are many ways to customize
+        a FabOption, and a subset of those customizations are shown below.\n\nNote: FabOptions are
+        optional. To see an example of an ExpandableFab without FabOptions, navigate to
+        \'No FabOptions\'.
+    </string>
+    <string name="labels_fragment_info">
+        All labeled views (currently just ExpandableFab and FabOption) have a Label that is hidden
+        by default. Simply set the Label\'s \'labelText\' property to non-null in order to make it
+        visible.\n\nA few of the available properties for customizing Labels are shown below, like
+        its text size and background color.
+    </string>
+    <string name="overlay_fragment_info">
+        An Overlay is an optional view that will partially or fully obscure the screen\'s content
+        when an ExpandableFab is clicked (depending on the opacity you set), allowing the
+        ExpandableFab and FabOptions to become more apparent to the user.\n\nClick the
+        ExpandableFab below to see a fully opaque Overlay in action.
+    </string>
+
+    <string name="no_faboptions_fragment_info">
+        FabOptions are optional. You can use an ExpandableFab like a super-powered Floating Action
+        Button by simply not setting any FabOptions for that orientation. You can still include an
+        Overlay or use animations and other properties of the ExpandableFab if desired.
+    </string>
+    <string name="no_labels_fragment_info">
+        Labels for every labeled view are optional. You\'ve seen that so far with the ExpandableFab
+        itself, but this example also shows it for FabOptions.\n\nYou can also hide a currently
+        visible label (even if it was set via XML) at any time programmatically by setting the
+        \'labelText\' property to null. If later set non-null, the label will still retain all
+        previous customizations.
+    </string>
+    <string name="open_downwards_fragment_info">
+        You can specify a \'FabOptionPosition\' that will be applied to all FabOptions in a
+        particular orientation, determining how they will position themselves when drawn relative
+        to the previous FabOption.\n\nIn this example, we have set the FabOptions in both portrait
+        and landscape orientation to \'FabOptionPosition.BELOW\'.\n\nNotice how the labels animate
+        in a different direction than in the \'Default Configuration\' examples. This is due to the
+        value set on \'translationXPx\'. Read the documentation to see how this value gets used.
+    </string>
+    <string name="disabled_fragment_info">
+        You can easily disable and enable an ExpandableFab or FabOptions. When disabled through the
+        API, the views become visually distinct and unclickable. Note that if you don\'t like the
+        color scheme used for disabled views, you can edit them manually (they derive from
+        subclasses of \'View\' and thus have all the properties you\'d expect).\n\nClick this
+        TextView to toggle the ExpandableFab below back and forth between enabled and disabled.
+        When enabled, you can also click the ExpandableFab to see some disabled FabOptions.
+    </string>
+    <string name="multiple_expandablefabs_fragment_info">
+        It\'s perfectly legal to include multiple \'ExpandableFabLayout\'s per screen, and each one
+        is self contained and orientation aware.\n\nClick each ExpandableFab to see it operate
+        independently of the others. Then rotate the device to see landscape changes.
+    </string>
+    <string name="custom_sizes_fragment_info">
+        If you would like your ExpandableFab and/or FabOptions to be custom sizes, set the
+        layout_width and layout_height as desired, then set the correct property (\'efabSize\' or
+        \'fabOptionSize\') to FabSize.CUSTOM (which tells the library not to overwrite your custom
+        sizing).\n\nIf your custom sized ExpandableFab or FabOption also displays an icon, then the
+        Android Framework also requires you to set \'app:fabCustomSize\' (XML) or \'setCustomSize\'
+        (code) equal to your layout_width/height, and \'app:maxImageSize\' (XML) equal to your
+        icon\'s size. Currently, the Android API does not seem to have a maxImageSize method
+        available programmatically.\n\nNote: To ensure proper spacing, consider making all
+        FabOptions within a particular orientation have identical sizes.
+    </string>
+    <string name="coordinator_layout_compatibility_fragment_info">
+        \'ExpandableFabLayout\' is the parent of every view in the ExpandableFab widget. It derives
+        from CoordinatorLayout, meaning it can play nicely with many of the new Material Design
+        behaviors and animations.\n\nClick the buttons below to see the widget interact with a
+        \'Snackbar\' for instance.
+    </string>
+    <string name="wacky_fragment_info">
+        This fragment makes use of every property you can customize on an Overlay, ExpandableFab,
+        FabOption and Label (though many are just set to their default values).\n\nNote that since
+        we only defined a portrait configuration, the same widget will appear when the device is
+        rotated to landscape. However, many devices won\'t have the screen real estate to show all
+        options correctly in landscape.\n\nThis fragment is thus a perfect example of showing when
+        you\'d likely want your landscape widget to be different from your portrait widget.
+    </string>
+
+    <!-- Misc -->
+    <string name="no_faboptions_fragment_dialog_title">Hey, you!</string>
+    <string name="no_faboptions_fragment_dialog_message">
+        Thanks for checking out the library!\n\nHead to the repo
+        (www.github.com/nambicompany/expandable-fab) to find the full documentation, library
+        website, guidance on contributing to the library or putting in a feature request/support
+        ticket, and other helpful info.
+    </string>
+    <string name="clcf_snackbar_above_efab">Display Snackbar above ExpandableFab</string>
+    <string name="clcf_snackbar_below_efab">Display Snackbar below ExpandableFab</string>
+</resources>

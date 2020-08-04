@@ -1,0 +1,64 @@
+apply plugin: 'org.jetbrains.dokka'
+
+// versionMajor is defined in build.gradle
+def docVersion = "v$versionMajor"
+def websiteRootDirectory = "$rootDir/docs"
+
+/**
+ * Generates JavaDoc and outputs to $websiteRootDirectory so the library website is auto
+ * updated on merge to master. Must be ran with Java 8 or Dokka fails.
+ * */
+task generateJavaDocForWebsite(type: dokka.getClass()) {
+    outputFormat = "javadoc"
+    outputDirectory = "$websiteRootDirectory/javadoc/$docVersion"
+    doLast {
+        new File("$websiteRootDirectory/api_doc_versions/${docVersion}.javadoc").createNewFile()
+    }
+}
+
+/**
+ * Generates KotlinDoc and outputs to $websiteRootDirectory so the library website is auto
+ * updated on merge to master.
+ * */
+task generateKDocForWebsite(type: dokka.getClass()) {
+    outputFormat = "html"
+    outputDirectory = "$websiteRootDirectory/kdoc/$docVersion"
+    doLast {
+        new File("$websiteRootDirectory/api_doc_versions/${docVersion}.kdoc").createNewFile()
+    }
+}
+
+/**
+ * Generates library documentation in all supported formats. Once these changes are merged to
+ * master, the library website will be automatically updated.
+ *
+ * Dokka (the documentation engine for Kotlin) was still in beta as of this release, and thus
+ * contains some bugs you may come across while running this Gradle task. The bugs and their
+ * solutions are described below.
+ *
+ * (Bug #1): Dokka must be ran with Java 8 when generating JavaDoc variant or else it fails.
+ * (Solution #1): Tell Gradle to use Java 8 when running this task (see 'How to Run' below).
+ *
+ * (Bug #2): After running any Dokka task, subsequent Gradle tasks for this project (assemble,
+ * generateDocsAndUpdateWebsite, etc) may yield a FileSystemException on Windows machines.
+ * (Solution #2): Run this task without use of a Gradle daemon (or kill the daemon after this
+ * task is ran; see 'How to Run' below).
+ *
+ * ---------------------
+ *
+ * How To Run...
+ *
+ * ... on the Command Line:
+ * ./gradlew -Dorg.gradle.java.home=[path_to_java8] --no-daemon clean generateDocsAndUpdateWebsite
+ *
+ * Replace [path_to_java8] with your local Java 8 installation. Android Studio usually ships
+ * with Java 8, so you can specify the Android Studio jre directory (on Windows, this may be
+ * something like "C:\Program Files\Android\Android Studio\jre").
+ *
+ * ... within Android Studio:
+ * We recommend not running via AS studio in order to avoid some of the bugs listed above.
+ * */
+task generateDocsAndUpdateWebsite(){
+    dependsOn generateJavaDocForWebsite
+    dependsOn generateKDocForWebsite
+}

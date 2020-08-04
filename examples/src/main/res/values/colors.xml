@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1976D2</color>
+    <color name="colorPrimaryDark">#1565C0</color>
+    <color name="colorAccent">#43A047</color>
+
+    <color name="randomColor1">#0000FF</color>
+    <color name="randomColor2">#9374DE</color>
+    <color name="randomColor3">#FF8800</color>
+    <color name="randomColor4">#7F007F</color>
+    <color name="randomColor5">#5283F5</color>
+    <color name="randomColor6">#7F7F00</color>
+    <color name="randomColor7">#007F00</color>
+    <color name="randomColor8">#58BFAB</color>
+</resources>

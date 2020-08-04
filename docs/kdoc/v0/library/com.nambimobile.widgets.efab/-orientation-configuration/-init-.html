@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>OrientationConfiguration.<init> - library</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">library</a>&nbsp;/&nbsp;<a href="../index.html">com.nambimobile.widgets.efab</a>&nbsp;/&nbsp;<a href="index.html">OrientationConfiguration</a>&nbsp;/&nbsp;<a href="./-init-.html">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="com.nambimobile.widgets.efab.OrientationConfiguration$&lt;init&gt;()"></a>
+<code><span class="identifier">OrientationConfiguration</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Holder for all the views of an ExpandableFab widget in a specific <a href="../-orientation/index.html">Orientation</a>.
+Not meant to be instantiated by clients, as an instance can be retrieved via
+<a href="../-expandable-fab-layout/portrait-configuration.html">ExpandableFabLayout.portraitConfiguration</a> or <a href="../-expandable-fab-layout/landscape-configuration.html">ExpandableFabLayout.landscapeConfiguration</a>.
+Values for the views will only be populated after they are added through calls to
+ExpandableFabLayout's addView methods (or after they're defined via XML).</p>
+<p>Implementation Notes:</p>
+<ol><li>Since the Kotlin 'internal' modifier translates to 'public' in Java, the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-synthetic/index.html">JvmSynthetic</a>
+annotation is used on those functions and properties to hide them from the published API for
+Java clients. A proper solution to this issue would be a package-private visibility modifier,
+but Kotlin has yet to implement it (https://youtrack.jetbrains.com/issue/KT-29227). Until
+then, the JvmSynthetic annotations should remain in order to present the proper published API
+to both Java &amp; Kotlin clients.</li>
+</ol>
+<p><strong>Since</strong><br/>
+1.0.0</p>
+</BODY>
+</HTML>

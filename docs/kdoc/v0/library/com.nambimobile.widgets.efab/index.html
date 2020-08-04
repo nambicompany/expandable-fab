@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>com.nambimobile.widgets.efab - library</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">library</a>&nbsp;/&nbsp;<a href="./index.html">com.nambimobile.widgets.efab</a><br/>
+<br/>
+<h2>Package com.nambimobile.widgets.efab</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-expandable-fab/index.html">ExpandableFab</a></h4>
+</td>
+<td>
+<p>The design and behavior of a Floating Action Button which can animate and expand to show
+optional <a href="-fab-option/index.html">FabOption</a>s when clicked. It's the focal point for the ExpandableFab widget's
+functionality, from an end-user's perspective.</p>
+<code><span class="keyword">class </span><span class="identifier">ExpandableFab</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FloatingActionButton</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-expandable-fab-layout/index.html">ExpandableFabLayout</a></h4>
+</td>
+<td>
+<p>The container and controller for all children views of the ExpandableFab widget (Overlay,
+ExpandableFab, FabOption, Label). The ExpandableFabLayout handles the bulk of the functionality
+for the ExpandableFab widget as a whole (from coordinating opening and closing animations to
+screen orientation changes, etc). See below for an example on how to easily set up the
+ExpandableFab widget using the ExpandableFabLayout as the containing ViewGroup.</p>
+<code><span class="keyword">class </span><span class="identifier">ExpandableFabLayout</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CoordinatorLayout</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-fab-option/index.html">FabOption</a></h4>
+</td>
+<td>
+<p>The design and behavior of a single option within an <a href="-expandable-fab/index.html">ExpandableFab</a>.</p>
+<code><span class="keyword">class </span><span class="identifier">FabOption</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FloatingActionButton</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-fab-option-position/index.html">FabOptionPosition</a></h4>
+</td>
+<td>
+<p>The legal positions of FabOptions, in relation to the previous FabOption in an orientation.
+By default, FabOptions are positioned <a href="-fab-option-position/-a-b-o-v-e.html">ABOVE</a> the previous FabOption in an orientation.</p>
+<code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">FabOptionPosition</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-fab-size/index.html">FabSize</a></h4>
+</td>
+<td>
+<p>The legal sizes of ExpandableFabs and FabOptions.</p>
+<code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">FabSize</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-label/index.html">Label</a></h4>
+</td>
+<td>
+<p>A label of text attached to a view of the ExpandableFab widget.</p>
+<code><span class="keyword">class </span><span class="identifier">Label</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AppCompatTextView</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-label-position/index.html">LabelPosition</a></h4>
+</td>
+<td>
+<p>The legal positions of Labels, in relation to the view they're attached to.
+By default, labels are positioned to the <a href="-label-position/-l-e-f-t.html">LEFT</a> of the view they're attached to.</p>
+<code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">LabelPosition</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-orientation/index.html">Orientation</a></h4>
+</td>
+<td>
+<p>The screen orientations that the views of this widget can be in. If you only set a single
+ExpandableFab widget, it will automatically be used for both portrait and landscape orientations.</p>
+<code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">Orientation</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-orientation-configuration/index.html">OrientationConfiguration</a></h4>
+</td>
+<td>
+<p>Holder for all the views of an ExpandableFab widget in a specific <a href="-orientation/index.html">Orientation</a>.
+Not meant to be instantiated by clients, as an instance can be retrieved via
+<a href="-expandable-fab-layout/portrait-configuration.html">ExpandableFabLayout.portraitConfiguration</a> or <a href="-expandable-fab-layout/landscape-configuration.html">ExpandableFabLayout.landscapeConfiguration</a>.
+Values for the views will only be populated after they are added through calls to
+ExpandableFabLayout's addView methods (or after they're defined via XML).</p>
+<code><span class="keyword">class </span><span class="identifier">OrientationConfiguration</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-overlay/index.html">Overlay</a></h4>
+</td>
+<td>
+<p>An overlay that will show when an <a href="-expandable-fab/index.html">ExpandableFab</a> is clicked in order to partially or fully
+obscure the screen's content, allowing the <a href="-expandable-fab/index.html">ExpandableFab</a> and <a href="-fab-option/index.html">FabOption</a>s to become more
+apparent.</p>
+<code><span class="keyword">class </span><span class="identifier">Overlay</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/widget/FrameLayout.html"><span class="identifier">FrameLayout</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

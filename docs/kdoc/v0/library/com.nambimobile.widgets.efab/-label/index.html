@@ -1,0 +1,170 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Label - library</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">library</a>&nbsp;/&nbsp;<a href="../index.html">com.nambimobile.widgets.efab</a>&nbsp;/&nbsp;<a href="./index.html">Label</a><br/>
+<br/>
+<h1>Label</h1>
+<code><span class="keyword">class </span><span class="identifier">Label</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AppCompatTextView</span></code>
+<p>A label of text attached to a view of the ExpandableFab widget.</p>
+<p>Developer Notes:</p>
+<ol><li>Different views within the ExpandableFab widget can be labeled (like ExpandableFab and
+FabOption). Each labeled view will set their own default values for the properties of their
+specific label. Look at the documentation for the label property declared in each of theses
+classes to see what the default values of their labels are.</li>
+</ol>
+<p>Implementation Notes:</p>
+<ol><li>Since the Kotlin 'internal' modifier translates to 'public' in Java, the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-synthetic/index.html">JvmSynthetic</a>
+annotation is used on those functions and properties to hide them from the published API for
+Java clients. A proper solution to this issue would be a package-private visibility modifier,
+but Kotlin has yet to implement it (https://youtrack.jetbrains.com/issue/KT-29227). Until
+then, the JvmSynthetic annotations should remain in order to present the proper published API
+to both Java &amp; Kotlin clients.</li>
+</ol>
+<p><strong>Since</strong><br/>
+1.0.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<p>Used to create a Label programmatically. Clients should not need to call this directly as
+all labeled Views of the ExpandableFab widget already create their own labels which can
+be retrieved and modified (but not reassigned) as needed.</p>
+<code><span class="identifier">Label</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.Label$<init>(android.content.Context)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="hidden-to-visible-animation-duration-ms.html">hiddenToVisibleAnimationDurationMs</a></h4>
+</td>
+<td>
+<p>The duration (in milliseconds as a positive long) of the animations that the Label will
+play when going from a hidden to visible state.</p>
+<code><span class="keyword">var </span><span class="identifier">hiddenToVisibleAnimationDurationMs</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="label-background-color.html">labelBackgroundColor</a></h4>
+</td>
+<td>
+<p>The color of the Label's background. Usage of this property is preferred over the
+inherited setBackgroundColor method.</p>
+<code><span class="keyword">var </span><span class="identifier">labelBackgroundColor</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="label-elevation.html">labelElevation</a></h4>
+</td>
+<td>
+<p>The elevation of the Label, in pixels as a positive float. Retrieve this value in the
+correct form from your dimens.xml file using:
+resources.getDimensionPixelSize(R.dimen.name_of_elevation_size). Usage of this property is
+preferred over the inherited set/getElevation methods.</p>
+<code><span class="keyword">var </span><span class="identifier">labelElevation</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="label-text.html">labelText</a></h4>
+</td>
+<td>
+<p>The text of the Label. Can be set to null to hide the label. Usage of this property is
+preferred over the inherited set/getText methods.</p>
+<code><span class="keyword">var </span><span class="identifier">labelText</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="label-text-color.html">labelTextColor</a></h4>
+</td>
+<td>
+<p>The color of the Label's text. Usage of this property is preferred over the inherited
+setTextColor method variations.</p>
+<code><span class="keyword">var </span><span class="identifier">labelTextColor</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="label-text-size.html">labelTextSize</a></h4>
+</td>
+<td>
+<p>The size of the Label's text, as a float. Retrieve this value in the correct form from your
+dimens.xml file using: resources.getDimension(R.dimen.name_of_text_size). Text sizes should
+use sp as the unit. Usage of this property is preferred over the inherited set/getTextSize
+methods.</p>
+<code><span class="keyword">var </span><span class="identifier">labelTextSize</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="margin-px.html">marginPx</a></h4>
+</td>
+<td>
+<p>The margin (in pixels as a positive float) between the Label and the view it is attached to.
+Negative values are not allowed since clients should likely be changing the Label's
+<a href="position.html">position</a> if they wanted to move the Label to the opposite side of the view it's attached
+to.</p>
+<code><span class="keyword">var </span><span class="identifier">marginPx</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="overshoot-tension.html">overshootTension</a></h4>
+</td>
+<td>
+<p>The tension (as a positive float) in an OvershootInterpolator applied on the Label when it
+is being shown from a hidden state. Larger values will exaggerate the effect more.</p>
+<code><span class="keyword">var </span><span class="identifier">overshootTension</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="position.html">position</a></h4>
+</td>
+<td>
+<p>The Label's <a href="../-label-position/index.html">LabelPosition</a>, in relation to the view it's attached to.</p>
+<code><span class="keyword">var </span><span class="identifier">position</span><span class="symbol">: </span><a href="../-label-position/index.html"><span class="identifier">LabelPosition</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="translation-x-px.html">translationXPx</a></h4>
+</td>
+<td>
+<p>The distance (in pixels as a float) the Label will travel horizontally during animations.
+A negative value will make the Label travel to the left, while a positive value will make
+it travel to the right. See its use in <a href="#">visibleToHiddenAnimations</a> and
+<a href="#">hiddenToVisibleAnimations</a>.</p>
+<code><span class="keyword">var </span><span class="identifier">translationXPx</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="visible-to-hidden-animation-duration-ms.html">visibleToHiddenAnimationDurationMs</a></h4>
+</td>
+<td>
+<p>The duration (in milliseconds as a positive long) of the animations that the Label will
+play when going from a visible to hidden state.</p>
+<code><span class="keyword">var </span><span class="identifier">visibleToHiddenAnimationDurationMs</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="on-touch-event.html">onTouchEvent</a></h4>
+</td>
+<td>
+<p>Scales the Label down when pressed, and back up when released. Gives the user some visual
+feedback to show that the Label was pressed.</p>
+<code><span class="keyword">fun </span><span class="identifier">onTouchEvent</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.Label$onTouchEvent(android.view.MotionEvent)/event">event</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/MotionEvent.html"><span class="identifier">MotionEvent</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

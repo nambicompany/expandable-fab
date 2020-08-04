@@ -1,0 +1,12 @@
+title: ExpandableFab
+description: A highly customizable Android widget that displays the available actions of a UI via an expandable set of floating action buttons - with optional labels and fluid animations.
+theme: jekyll-theme-cayman
+
+# custom site-wide variables
+baseurl: /expandable-fab
+repository_url: https://github.com/nambicompany/expandable-fab
+nambi_company_url: http://www.nambi.io
+gallery_absolute_path: https://github.com/nambicompany/expandable-fab/tree/master/docs/gallery
+gallery_relative_path: /gallery
+javadoc_path: /javadoc
+kdoc_path: /kdoc

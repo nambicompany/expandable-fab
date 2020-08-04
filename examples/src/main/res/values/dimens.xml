@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="navigation_header">192dp</dimen>
+
+    <dimen name="ui_margin_small">12dp</dimen>
+    <dimen name="ui_margin_medium">14dp</dimen>
+    <dimen name="ui_margin">16dp</dimen>
+    <dimen name="ui_margin_large">20dp</dimen>
+    <dimen name="ui_margin_xl">24dp</dimen>
+
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_medium">14sp</dimen>
+    <dimen name="text_size">16sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_xl">20sp</dimen>
+</resources>

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        The text of the Label. Usage of this property is preferred over the inherited set/getText
+        methods.
+     -->
+    <attr name="label_text" format="string"/>
+
+    <!--
+        The color of the Label's text. Usage of this property is preferred over the inherited
+        setTextColor method variations.
+    -->
+    <attr name="label_textColor" format="color"/>
+
+    <!--
+        The size of the Label's text, as a float. Retrieve this value in the correct form from your
+        dimens.xml file using: resources.getDimension(R.dimen.name_of_text_size). Text sizes should
+        use sp as the unit. Usage of this property is preferred over the inherited set/getTextSize
+        methods.
+    -->
+    <attr name="label_textSize" format="dimension"/>
+
+    <!--
+        The color of the Label's background. Usage of this property is preferred over the inherited
+        setBackgroundColor method.
+    -->
+    <attr name="label_backgroundColor" format="color"/>
+
+    <!--
+        The elevation of the Label, in pixels as a positive float. Retrieve this value in the
+        correct form from your dimens.xml file using:
+        resources.getDimensionPixelSize(R.dimen.name_of_elevation_size). Usage of this property is
+        preferred over the inherited set/getElevation methods.
+    -->
+    <attr name="label_elevation" format="dimension"/>
+
+    <!-- The Label's [LabelPosition], in relation to the view it's attached to. -->
+    <attr name="label_position" format="enum">
+        <enum name="left" value="0" />
+        <enum name="right" value="1" />
+    </attr>
+
+    <!--
+        The margin (in pixels as a positive float) between the Label and the view it is attached
+        to. Negative values are not allowed since clients should likely be changing the Label's
+        [position] if they wanted to move the Label to the opposite side of the view it's attached
+        to.
+    -->
+    <attr name="label_marginPx" format="float"/>
+
+    <!--
+        The distance (in pixels as a float) the Label will travel horizontally during animations.
+        A negative value will make the Label travel to the left, while a positive value will make
+        it travel to the right. See its use in [visibleToHiddenAnimations] and
+        [hiddenToVisibleAnimations].
+    -->
+    <attr name="label_translationXPx" format="float"/>
+
+    <!--
+        The duration (in milliseconds as a positive long) of the animations that the Label will
+        play when going from a visible to hidden state.
+    -->
+    <attr name="label_visibleToHiddenAnimationDurationMs" format="string"/>
+
+    <!--
+        The duration (in milliseconds as a positive long) of the animations that the Label will
+        play when going from a hidden to visible state.
+    -->
+    <attr name="label_hiddenToVisibleAnimationDurationMs" format="string"/>
+
+    <!--
+        The tension (as a positive float) in an OvershootInterpolator applied on the Label when it
+        is being shown from a hidden state. Larger values will exaggerate the effect more.
+
+        The OvershootInterpolator allows us to have an animation where the Label will fling past
+        its [marginPx] when initially appearing, before smoothly coming back toward its [marginPx]
+        value.
+    -->
+    <attr name="label_overshootTension" format="float"/>
+
+    <declare-styleable name="Overlay">
+        <!-- The orientation this Overlay is viewable in. Default value is [Orientation.PORTRAIT]. -->
+        <attr name="overlay_orientation" format="enum">
+            <enum name="portrait" value="0" />
+            <enum name="landscape" value="1" />
+        </attr>
+
+        <!--
+            The color of the overlay. Default value is white.
+
+            Usage of this property is preferred over the inherited setBackgroundColor method.
+         -->
+        <attr name="overlay_color" format="color"/>
+
+        <!--
+           The opacity of the overlay as a positive float, where 0 is completely transparent and 1
+           is completely opaque. Default value is 0.78431f.
+
+           Usage of this property is preferred over the inherited set/getAlpha methods.
+        -->
+        <attr name="overlay_alpha" format="float"/>
+
+        <!--
+            The duration (in milliseconds as a positive long) of the animations that will be played
+            when this Overlay is being shown from a hidden state (when the ExpandableFab is
+            opening). Default value is 300L.
+        -->
+        <attr name="overlay_openingAnimationDurationMs" format="string"/>
+
+        <!--
+            The duration (in milliseconds as a positive long) of the animations that will be played
+            when this Overlay is being hidden from a visible state (when the ExpandableFab is
+            closing). Default value is 300L.
+        -->
+        <attr name="overlay_closingAnimationDurationMs" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="ExpandableFab">
+        <!-- The orientation this ExpandableFab is viewable in. Default value is [Orientation.PORTRAIT]. -->
+        <attr name="efab_orientation" format="enum">
+            <enum name="portrait" value="0" />
+            <enum name="landscape" value="1" />
+        </attr>
+
+        <!--
+            The color of the ExpandableFab. Default value is your app's colorAccent.
+
+            Usage of this property is preferred over the inherited setBackgroundColor and
+            backgroundTintList methods.
+        -->
+        <attr name="efab_color" format="color"/>
+
+        <!--
+            The drawable to show as the ExpandableFab's icon. Default value is a white plus sign
+            vector drawable.
+
+            Usage of this property is preferred over the inherited set/getImageXXX methods.
+        -->
+        <attr name="efab_icon" format="reference"/>
+
+        <!--
+            A float, in degrees, representing how much the ExpandableFab's icon will rotate when
+            animating. When opening, the ExpandableFab will rotate from 0 to this value. When
+            closing, the icon will rotate from this value to its initial position of 0. Default
+            value is -135f.
+        -->
+        <attr name="efab_iconAnimationRotationDeg" format="float"/>
+
+        <!--
+            The size of this ExpandableFab (NOT its FabOptions. For that, see property
+            [fabOptionSize]). Must be [FabSize.MINI], [FabSize.NORMAL], [FabSize.AUTO] or
+            [FabSize.CUSTOM]. FabSize.CUSTOM should be used when you're setting the size of the
+            ExpandableFab's layout_width and layout_height to a custom value manually (when using
+            CUSTOM, make sure to also set app:fabCustomSize equal to your custom
+            layout_width/layout_height size and app:maxImageSize equal to your icon size in order
+            to ensure your icon is centered properly). Default value is [FabSize.NORMAL].
+
+            Usage of this property is preferred over the inherited set/getSize methods.
+        -->
+        <attr name="efab_size" format="enum">
+            <enum name="mini" value="0" />
+            <enum name="normal" value="1" />
+            <enum name="auto" value="2" />
+            <enum name="custom" value="3" />
+        </attr>
+
+        <!--
+            The enabled state of this ExpandableFab and its label. Disabled ExpandableFabs and
+            labels will be visually distinct and unclickable. Default value is true (enabled).
+
+            Usage of this property is preferred over the inherited is/setEnabled methods.
+
+            NOTE: If you disable an ExpandableFab and its label, remember to re-enable it before
+            trying to update one of its properties. For example, disabling an ExpandableFab then
+            manually changing its background color will not automatically re-enable the
+            ExpandableFab. It, and its label, will remain disabled.
+        -->
+        <attr name="efab_enabled" format="boolean"/>
+
+        <!--
+            The size of each FabOption in this orientation (NOT the size of the ExpandableFab.
+            For that, see property [efabSize]). Must be [FabSize.MINI], [FabSize.NORMAL],
+            [FabSize.AUTO] or [FabSize.CUSTOM]. FabSize.CUSTOM should be used when you're setting
+            the size of the FabOptions' layout_width and layout_height to a custom value manually
+            (when using CUSTOM, make sure to also set app:fabCustomSize equal to your custom
+            layout_width/layout_height size and app:maxImageSize equal to your icon size in order
+            to ensure your icon is centered properly). Default value is [FabSize.MINI].
+
+            Usage of this property is preferred over the inherited set/getSize methods on
+            individual FabOptions.
+        -->
+        <attr name="efab_fabOptionSize" format="enum">
+            <enum name="mini" value="0" />
+            <enum name="normal" value="1" />
+            <enum name="auto" value="2" />
+            <enum name="custom" value="3" />
+        </attr>
+
+        <!--
+            How each FabOption in this orientation will be positioned relative to the previous
+            FabOption. Default value is [FabOptionPosition.ABOVE].
+        -->
+        <attr name="efab_fabOptionPosition" format="enum">
+            <enum name="above" value="0" />
+            <enum name="below" value="1" />
+        </attr>
+
+        <!--
+            The margin (in pixels as a positive float) between the first FabOption in this
+            orientation and the ExpandableFab itself. Depending on the size you set for the
+            ExpandableFab, you may want this margin to be different than
+            [successiveFabOptionMarginPx]. Default value is 80f.
+        -->
+        <attr name="efab_firstFabOptionMarginPx" format="float"/>
+
+        <!--
+            The margin (in pixels as a positive float) between successive FabOptions in this
+            ExpandableFab orientation. See [firstFabOptionMarginPx] if trying to set the margin
+            between the first FabOption in this orientation and the ExpandableFab itself. Default
+            value is 75f.
+        -->
+        <attr name="efab_successiveFabOptionMarginPx" format="float"/>
+
+        <!--
+            The duration (in milliseconds as a positive long) of the ExpandableFab's opening
+            animations. Default value is 250L.
+        -->
+        <attr name="efab_openingAnimationDurationMs" format="string"/>
+
+        <!--
+            The duration (in milliseconds as a positive long) of the ExpandableFab's closing
+            animations. Default value is 500L.
+        -->
+        <attr name="efab_closingAnimationDurationMs" format="string"/>
+
+        <!--
+            The tension (as a positive float) applied on the ExpandableFab's icon to mimic an
+            AnticipateInterpolator when it's playing its closing animations. An
+            AnticipateInterpolator allows us to have a closing animation where the ExpandableFab's
+            icon will begin rotating slightly backwards, before smoothly rotating forward to its
+            default 0 degree rotation. Every multiple of 10f will be a full 360 degree rotation
+            backwards. Default value is 2f.
+        -->
+        <attr name="efab_closingAnticipateTension" format="float"/>
+
+        <attr name="label_text"/>
+        <attr name="label_textColor"/>
+        <attr name="label_textSize"/>
+        <attr name="label_backgroundColor"/>
+        <attr name="label_elevation"/>
+        <attr name="label_position"/>
+        <attr name="label_marginPx"/>
+        <attr name="label_visibleToHiddenAnimationDurationMs"/>
+        <attr name="label_hiddenToVisibleAnimationDurationMs"/>
+        <attr name="label_overshootTension"/>
+        <attr name="label_translationXPx"/>
+    </declare-styleable>
+
+    <declare-styleable name="FabOption">
+        <!-- The orientation this FabOption is viewable in. Default value is [Orientation.PORTRAIT]. -->
+        <attr name="fab_orientation" format="enum">
+            <enum name="portrait" value="0" />
+            <enum name="landscape" value="1" />
+        </attr>
+
+        <!--
+            The color of the FabOption. Default value is your app's colorAccent.
+
+            Usage of this property is preferred over the inherited setBackgroundColor and
+            backgroundTintList methods.
+        -->
+        <attr name="fab_color" format="color"/>
+
+        <!--
+            The drawable to show as the FabOption's icon. Default value is null (no icon shown).
+
+            Usage of this property is preferred over the inherited set/getImageXXX methods.
+        -->
+        <attr name="fab_icon" format="reference"/>
+
+        <!--
+            The enabled state of this FabOption and its label. Disabled FabOptions and labels will
+            be visually distinct and unclickable. Default value is true (enabled).
+
+            Usage of this property is preferred over the inherited is/setEnabled methods.
+
+            NOTE: If you disable a FabOption and its label, remember to re-enable it before trying
+            to update one of its properties. For example, disabling a FabOption then manually
+            changing its background color will not automatically re-enable the FabOption. It, and
+            its label, will remain disabled.
+        -->
+        <attr name="fab_enabled" format="boolean"/>
+
+        <!--
+            The duration (in milliseconds as a positive long) of the animations that will be played
+            when this FabOption is being shown from a hidden state (when the ExpandableFab is
+            opening). Default value is 125L.
+        -->
+        <attr name="fab_openingAnimationDurationMs" format="string"/>
+
+        <!--
+            The duration (in milliseconds as a positive long) of the animations that will be played
+            when this FabOption is being hidden from a visible state (when the ExpandableFab is
+            closing). Default value is 75L.
+        -->
+        <attr name="fab_closingAnimationDurationMs" format="string"/>
+
+        <!--
+            The tension (as a positive float) in an OvershootInterpolator applied on the FabOption
+            when it's playing its animations for being shown from a hidden state (when the
+            ExpandableFab is opening). The OvershootInterpolator allows us to have an animation
+            where the FabOption will grow past its regular size when initially appearing, before
+            smoothly shrinking down to regular size. Larger values will exaggerate the effort more.
+            Default value is 3.5f.
+        -->
+        <attr name="fab_openingOvershootTension" format="float"/>
+
+        <attr name="label_text"/>
+        <attr name="label_textColor"/>
+        <attr name="label_textSize"/>
+        <attr name="label_backgroundColor"/>
+        <attr name="label_elevation"/>
+        <attr name="label_position"/>
+        <attr name="label_marginPx"/>
+        <attr name="label_visibleToHiddenAnimationDurationMs"/>
+        <attr name="label_hiddenToVisibleAnimationDurationMs"/>
+        <attr name="label_overshootTension"/>
+        <attr name="label_translationXPx"/>
+    </declare-styleable>
+</resources>

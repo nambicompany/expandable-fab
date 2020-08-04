@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Despite the Lint warning, the below ScrollView is not useless. Programmatically we add
+    an ExpandableFabLayout to the parent RelativeLayout, so the nested ViewGroup is needed. -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/info_block"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ui_margin"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_large"
+            android:text="@string/default_configuration_code_fragment_info"/>
+    </ScrollView>
+
+</RelativeLayout>
