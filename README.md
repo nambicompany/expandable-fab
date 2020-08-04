@@ -1,5 +1,5 @@
 # ExpandableFab
-[![Maven Central](https://img.shields.io/badge/maven%20central-TODO-red)](TODO)
+[![Maven Central](https://img.shields.io/maven-central/v/com.nambimobile.widgets/expandable-fab)](https://search.maven.org/artifact/com.nambimobile.widgets/expandable-fab)
 [![minSdkVersion](https://img.shields.io/badge/minSdk-15-blue)](/library/build.gradle)
 [![Library License](https://img.shields.io/github/license/nambicompany/expandable-fab)](LICENSE.txt)
 
@@ -24,7 +24,7 @@ A working Android app filled with some common use cases and customizations of th
 
 
 ## Usage
-Include the ExpandableFab widget in your project via Gradle (replace X.X.X with the latest version shown here: [INSERT-MAVEN-TAG]):
+Include the ExpandableFab widget in your project via Gradle (replace X.X.X with the latest version shown here [![Maven Central](https://img.shields.io/maven-central/v/com.nambimobile.widgets/expandable-fab)](https://search.maven.org/artifact/com.nambimobile.widgets/expandable-fab)):
 
 ```groovy
 implementation 'com.nambimobile.widgets:expandable-fab:X.X.X'
@@ -37,6 +37,7 @@ or Maven:
   <groupId>com.nambimobile.widgets</groupId>
   <artifactId>expandable-fab</artifactId>
   <version>X.X.X</version>
+  <type>"aar"</type>
 </dependency>
 ```
 
