@@ -9,6 +9,10 @@ Note: Dates are formatted as YEAR-MONTH-DAY.
 #
 
 ## [v0.9.1] - 2020-08-04
+### Fixed
+- Removed quotes from the POM metadata file and removed the `-release` classifier from generated AARs. These issues were breaking the ability for Maven repositories like JCenter and Maven Central to serve the `v0.9.0` artifact. This fix allows users to now import the library as a dependency using Maven, Gradle, etc starting from `v0.9.1`.
+
+## [v0.9.0] - 2020-08-04
 ### Added
 - Initial commit of ExpandableFab library.
 - Widget custom Views: `ExpandableFabLayout`, `Overlay`, `ExpandableFab`, `FabOption` and `Label`.
