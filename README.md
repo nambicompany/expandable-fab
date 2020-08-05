@@ -37,7 +37,7 @@ or Maven:
   <groupId>com.nambimobile.widgets</groupId>
   <artifactId>expandable-fab</artifactId>
   <version>X.X.X</version>
-  <type>"aar"</type>
+  <type>aar</type>
 </dependency>
 ```
 
