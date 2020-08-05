@@ -8,6 +8,10 @@ Note: Dates are formatted as YEAR-MONTH-DAY.
 
 #
 
+## [v0.9.2] - 2020-08-05
+### Changed
+- Clients can now add *any* view as a direct child of ExpandableFabLayout. This allows compatibility with a range of new Material Design views like Snackbar and BottomAppBar.
+
 ## [v0.9.1] - 2020-08-04
 ### Fixed
 - Removed quotes from the POM metadata file and removed the `-release` classifier from generated AARs. These issues were breaking the ability for Maven repositories like JCenter and Maven Central to serve the `v0.9.0` artifact. This fix allows users to now import the library as a dependency using Maven, Gradle, etc starting from `v0.9.1`.
