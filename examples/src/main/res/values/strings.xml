@@ -16,8 +16,9 @@
     <string name="disabled_fragment">Disabled</string>
     <string name="multiple_expandablefabs_fragment">Multiple ExpandableFabs</string>
     <string name="custom_sizes_fragment">Custom Sizes</string>
-    <string name="coordinator_layout_compatibility_fragment">Coordinator Layout Compatibility</string>
     <string name="wacky_fragment">Wacky</string>
+    <string name="snackbar_compatibility_fragment">Snackbar Compatibility</string>
+    <string name="bottom_app_bar_compatibility_fragment">BottomAppBar Compatibility</string>
 
     <!-- Fragment Info Blocks -->
     <string name="default_configuration_xml_fragment_info">
@@ -105,12 +106,6 @@
         available programmatically.\n\nNote: To ensure proper spacing, consider making all
         FabOptions within a particular orientation have identical sizes.
     </string>
-    <string name="coordinator_layout_compatibility_fragment_info">
-        \'ExpandableFabLayout\' is the parent of every view in the ExpandableFab widget. It derives
-        from CoordinatorLayout, meaning it can play nicely with many of the new Material Design
-        behaviors and animations.\n\nClick the buttons below to see the widget interact with a
-        \'Snackbar\' for instance.
-    </string>
     <string name="wacky_fragment_info">
         This fragment makes use of every property you can customize on an Overlay, ExpandableFab,
         FabOption and Label (though many are just set to their default values).\n\nNote that since
@@ -118,6 +113,21 @@
         rotated to landscape. However, many devices won\'t have the screen real estate to show all
         options correctly in landscape.\n\nThis fragment is thus a perfect example of showing when
         you\'d likely want your landscape widget to be different from your portrait widget.
+    </string>
+    <string name="snackbar_compatibility_fragment_info">
+        \'ExpandableFabLayout\' is the parent of every view in the ExpandableFab widget. It derives
+        from CoordinatorLayout, meaning it can play nicely with many of the new Material Design
+        behaviors, views and animations.\n\nClick the buttons below to see the widget interact with
+        a \'Snackbar\' for instance.
+    </string>
+    <string name="bottom_app_bar_compatibility_fragment_info">
+        \'ExpandableFabLayout\' is the parent of every view in the ExpandableFab widget. It derives
+        from CoordinatorLayout, meaning it can play nicely with many of the new Material Design
+        behaviors, views and animations.\n\nBelow we see the ExpandableFab working with the
+        BottomAppBar, right out of the box. Turn to landscape to see our second ExpandableFab fit
+        perfectly as well.\n\nFor developers using a BottomAppBar with different ExpandableFabs in
+        portrait and landscape (like this example): see the code in this fragment for a simple
+        runtime anchor trick.
     </string>
 
     <!-- Misc -->

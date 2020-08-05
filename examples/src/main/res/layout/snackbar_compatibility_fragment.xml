@@ -18,7 +18,7 @@
             android:background="@color/colorPrimary"
             android:textColor="@android:color/white"
             android:textSize="@dimen/text_size_large"
-            android:text="@string/coordinator_layout_compatibility_fragment_info"/>
+            android:text="@string/snackbar_compatibility_fragment_info"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/snackbar_above_btn"

@@ -9,12 +9,12 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.Snackbar
 import com.nambimobile.widgets.efab.ExpandableFab
 
-class CoordinatorLayoutCompatibilityFragment : Fragment() {
+class SnackbarCompatibilityFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.coordinator_layout_compatibility_fragment, container, false)
+        return inflater.inflate(R.layout.snackbar_compatibility_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

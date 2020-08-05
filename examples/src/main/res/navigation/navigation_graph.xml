@@ -56,11 +56,15 @@
         android:name="com.nambimobile.examples.efab.CustomSizesFragment"
         android:label="@string/custom_sizes_fragment" />
     <fragment
-        android:id="@+id/coordinator_layout_compatibility_fragment"
-        android:name="com.nambimobile.examples.efab.CoordinatorLayoutCompatibilityFragment"
-        android:label="@string/coordinator_layout_compatibility_fragment" />
-    <fragment
         android:id="@+id/wacky_fragment"
         android:name="com.nambimobile.examples.efab.WackyFragment"
         android:label="@string/wacky_fragment" />
+    <fragment
+        android:id="@+id/snackbar_compatibility_fragment"
+        android:name="com.nambimobile.examples.efab.SnackbarCompatibilityFragment"
+        android:label="@string/snackbar_compatibility_fragment" />
+    <fragment
+        android:id="@+id/bottom_app_bar_compatibility_fragment"
+        android:name="com.nambimobile.examples.efab.BottomAppBarCompatibility"
+        android:label="@string/bottom_app_bar_compatibility_fragment" />
 </navigation>

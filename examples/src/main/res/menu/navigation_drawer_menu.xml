@@ -50,10 +50,13 @@
             android:id="@+id/custom_sizes_fragment"
             android:title="@string/custom_sizes_fragment"/>
         <item
-            android:id="@+id/coordinator_layout_compatibility_fragment"
-            android:title="@string/coordinator_layout_compatibility_fragment"/>
-        <item
             android:id="@+id/wacky_fragment"
             android:title="@string/wacky_fragment"/>
+        <item
+            android:id="@+id/snackbar_compatibility_fragment"
+            android:title="@string/snackbar_compatibility_fragment"/>
+        <item
+            android:id="@+id/bottom_app_bar_compatibility_fragment"
+            android:title="@string/bottom_app_bar_compatibility_fragment"/>
     </group>
 </menu>
