@@ -25,17 +25,6 @@
         android:id="@+id/expandable_fab_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <!--
-            ExpandableFabLayout is a CoordinatorLayout, so you can ignore the lint warning from
-            the BottomAppBar below. It IS wrapped in a CoordinatorLayout.
-        -->
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottom_app_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:backgroundTint="@color/colorPrimary"
-            app:fabAlignmentMode="end" />
         <com.nambimobile.widgets.efab.Overlay
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -103,6 +92,18 @@
             app:fab_icon="@drawable/ic_reminder_white_24dp"
             app:fab_color="@color/randomColor3"
             app:label_text="Unique Option 2 for Landscape!" />
+
+        <!--
+            ExpandableFabLayout is a CoordinatorLayout, so you can ignore the lint warning from
+            the BottomAppBar below. It IS wrapped in a CoordinatorLayout.
+        -->
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:backgroundTint="@color/colorPrimary"
+            app:fabAlignmentMode="center" />
     </com.nambimobile.widgets.efab.ExpandableFabLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

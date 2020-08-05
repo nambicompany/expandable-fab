@@ -121,13 +121,11 @@
         a \'Snackbar\' for instance.
     </string>
     <string name="bottom_app_bar_compatibility_fragment_info">
-        \'ExpandableFabLayout\' is the parent of every view in the ExpandableFab widget. It derives
-        from CoordinatorLayout, meaning it can play nicely with many of the new Material Design
-        behaviors, views and animations.\n\nBelow we see the ExpandableFab working with the
-        BottomAppBar, right out of the box. Turn to landscape to see our second ExpandableFab fit
-        perfectly as well.\n\nFor developers using a BottomAppBar with different ExpandableFabs in
-        portrait and landscape (like this example): see the code in this fragment for a simple
-        runtime anchor trick.
+        Below we see the ExpandableFab working with the BottomAppBar, right out of the box.\n\nFor
+        developers using a BottomAppBar with different ExpandableFabs in portrait and landscape
+        (like this example): see the code in this fragment for a simple runtime anchor trick. Turn
+        your device to landscape to see how it works.\n\nTo have the Overlay cover the BottomAppBar,
+        define the Overlay AFTER the BottomAppBar in your \'ExpandableFabLayout\'.
     </string>
 
     <!-- Misc -->
