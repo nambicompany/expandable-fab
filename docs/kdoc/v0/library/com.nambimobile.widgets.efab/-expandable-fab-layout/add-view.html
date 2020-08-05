@@ -10,7 +10,10 @@
 <h1>addView</h1>
 <a name="com.nambimobile.widgets.efab.ExpandableFabLayout$addView(android.view.View, kotlin.Int, android.view.ViewGroup.LayoutParams)"></a>
 <code><span class="keyword">fun </span><span class="identifier">addView</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.ExpandableFabLayout$addView(android.view.View, kotlin.Int, android.view.ViewGroup.LayoutParams)/child">child</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="com.nambimobile.widgets.efab.ExpandableFabLayout$addView(android.view.View, kotlin.Int, android.view.ViewGroup.LayoutParams)/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="com.nambimobile.widgets.efab.ExpandableFabLayout$addView(android.view.View, kotlin.Int, android.view.ViewGroup.LayoutParams)/params">params</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/ViewGroup/LayoutParams.html"><span class="identifier">LayoutParams</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Adds a child view with the specified layout parameters to the ExpandableFabLayout. Ensure
-your child view is of type Overlay, ExpandableFab or FabOption only.</p>
+<p>Adds a child view with the specified layout parameters to the ExpandableFabLayout.</p>
+<p>In general, only Overlay, ExpandableFab, FabOption, and specific Material Design views
+(like Snackbar and BottomAppBar) should be added as children of the ExpandableFabLayout.</p>
+<p>While this library won't stop you from adding in other types as direct children to the
+ExpandableFabLayout, please know adding other View types may cause visual issues.</p>
 </BODY>
 </HTML>
