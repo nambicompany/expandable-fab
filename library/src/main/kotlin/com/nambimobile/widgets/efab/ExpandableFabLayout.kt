@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
-import com.google.android.material.snackbar.Snackbar
 
 /**
  * The container and controller for all children views of the ExpandableFab widget (Overlay,
@@ -118,19 +117,20 @@ class ExpandableFabLayout : CoordinatorLayout {
 
     // ******************* Public methods available through the published API ******************* \\
     /**
-     * Adds a child view with the specified layout parameters to the ExpandableFabLayout. Ensure
-     * your child view is of type Overlay, ExpandableFab or FabOption only.
+     * Adds a child view with the specified layout parameters to the ExpandableFabLayout.
+     *
+     * In general, only Overlay, ExpandableFab, FabOption, and specific Material Design views
+     * (like Snackbar and BottomAppBar) should be added as children of the ExpandableFabLayout.
+     *
+     * While this library won't stop you from adding in other types as direct children to the
+     * ExpandableFabLayout, please know adding other View types may cause visual issues.
      * */
     override fun addView(child: View?, index: Int, params: ViewGroup.LayoutParams?) {
         when(child){
             is Overlay -> addOverlay(child, index, params)
             is ExpandableFab -> addExpandableFab(child, index, params)
             is FabOption -> addFabOption(child, index, params)
-            is Label -> super.addView(child, index, params)
-            is Snackbar.SnackbarLayout -> super.addView(child, index, params) // special case
-            else -> illegalArg(resources.getString(
-                R.string.efab_layout_illegal_child,
-                child?.javaClass?.simpleName))
+            else -> super.addView(child, index, params)
         }
     }
 

@@ -1,9 +1,5 @@
 <resources>
     <!-- ExpandableFabLayout Errors -->
-    <string name="efab_layout_illegal_child">
-        Overlay, ExpandableFab and FabOption are the only children allowed in an
-        ExpandableFabLayout. You added a(n) %s.
-    </string>
     <string name="efab_layout_multiple_efabs">
         You can only set one ExpandableFab per orientation in an ExpandableFabLayout (you set 2 or
         more for the %s orientation).
