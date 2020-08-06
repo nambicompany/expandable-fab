@@ -15,12 +15,12 @@ Designed to be screen orientation aware, so it can display different elements fr
 A working Android app filled with some common use cases and customizations of the ExpandableFab widget can be found and built under [examples](/examples). Below are a few gifs of the widget in use (this isn't an exhaustive list - the ExpandableFab can do so much more!).
 
 ![gif of regular ExpandableFab in use](docs/gallery/expandable_fab.gif)
-![gif of using FabOptions](docs/gallery/fab_options.gif)
-![gif of using Labels](docs/gallery/labels.gif)
-
-![gif of using an Overlay](docs/gallery/overlay.gif)
-![gif of using multiple ExpandableFabs](docs/gallery/multiple_expandable_fabs.gif)
+![gif showing custom properties](docs/gallery/highly_customizable.gif)
 ![gif of using custom sizes](docs/gallery/custom_sizes.gif)
+
+![gif of using multiple ExpandableFabs](docs/gallery/multiple_expandable_fabs.gif)
+![gif showing compatibility with BottomAppBar](docs/gallery/bottom_app_bar_compatibility.gif)
+![gif showing compatibility with Snackbar](docs/gallery/snackbar_compatibility.gif)
 
 
 ## Usage
