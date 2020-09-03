@@ -8,6 +8,10 @@ Note: Dates are formatted as YEAR-MONTH-DAY.
 
 #
 
+## [v1.0.0] - 2020-09-03
+### Moved to Stable Release
+- First stable release. API for existing functionality is now locked. No changes from v0.9.2, except the completion of beta testing.
+
 ## [v0.9.2] - 2020-08-05
 ### Changed
 - Clients can now add *any* view as a direct child of ExpandableFabLayout. This allows compatibility with a range of new Material Design views like Snackbar and BottomAppBar.

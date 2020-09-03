@@ -2,9 +2,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-ext.versionMajor = 0
-ext.versionMinor = 9
-ext.versionPatch = 2
+ext.versionMajor = 1
+ext.versionMinor = 0
+ext.versionPatch = 0
 
 android {
     compileSdkVersion 28
