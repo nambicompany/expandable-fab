@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>FabSize - library</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">library</a>&nbsp;/&nbsp;<a href="../index.html">com.nambimobile.widgets.efab</a>&nbsp;/&nbsp;<a href="./index.html">FabSize</a><br/>
+<br/>
+<h1>FabSize</h1>
+<code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">FabSize</span></code>
+<p>The legal sizes of ExpandableFabs and FabOptions.</p>
+<p><a href="-m-i-n-i.html">FabSize.MINI</a>, <a href="-n-o-r-m-a-l.html">FabSize.NORMAL</a> and <a href="-a-u-t-o.html">FabSize.AUTO</a> map to <a href="#">FloatingActionButton.SIZE_MINI</a>,
+<a href="#">FloatingActionButton.SIZE_NORMAL</a> and <a href="#">FloatingActionButton.SIZE_AUTO</a>, respectively.
+<a href="-c-u-s-t-o-m.html">FabSize.CUSTOM</a> should be used when setting the size of the ExpandableFab or FabOption's
+layout_width and layout_height to a custom value manually, and thus maps to a random value
+that will never be used.</p>
+<p>Developer Notes:</p>
+<ol><li>When using <a href="-c-u-s-t-o-m.html">CUSTOM</a>, the Android Framework also requires you to set app:fabCustomSize
+equal to your custom layout_width/layout_height size and app:maxImageSize equal to your icon
+size in order to ensure your icon is centered and sized properly.</li>
+</ol>
+<p>Example:</p>
+<p>&lt;com.nambimobile.widgets.efab.ExpandableFab
+android:id="@+id/expandable_fab"
+android:layout_width="175dp"
+android:layout_height="175dp"
+app:efab_size="custom"
+app:efab_fabOptionSize="custom"
+app:efab_icon="@drawable/ic_random11_white_84dp"
+app:fabCustomSize="175dp"   
+app:maxImageSize="84dp"     
+/&gt;</p>
+<p><strong>Since</strong><br/>
+1.0.0</p>
+<h3>Enum Values</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-m-i-n-i.html">MINI</a></h4>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<h4><a href="-n-o-r-m-a-l.html">NORMAL</a></h4>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<h4><a href="-a-u-t-o.html">AUTO</a></h4>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<h4><a href="-c-u-s-t-o-m.html">CUSTOM</a></h4>
+</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="value.html">value</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">value</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

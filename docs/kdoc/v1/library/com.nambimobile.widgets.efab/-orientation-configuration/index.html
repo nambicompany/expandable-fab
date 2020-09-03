@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>OrientationConfiguration - library</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">library</a>&nbsp;/&nbsp;<a href="../index.html">com.nambimobile.widgets.efab</a>&nbsp;/&nbsp;<a href="./index.html">OrientationConfiguration</a><br/>
+<br/>
+<h1>OrientationConfiguration</h1>
+<code><span class="keyword">class </span><span class="identifier">OrientationConfiguration</span></code>
+<p>Holder for all the views of an ExpandableFab widget in a specific <a href="../-orientation/index.html">Orientation</a>.
+Not meant to be instantiated by clients, as an instance can be retrieved via
+<a href="../-expandable-fab-layout/portrait-configuration.html">ExpandableFabLayout.portraitConfiguration</a> or <a href="../-expandable-fab-layout/landscape-configuration.html">ExpandableFabLayout.landscapeConfiguration</a>.
+Values for the views will only be populated after they are added through calls to
+ExpandableFabLayout's addView methods (or after they're defined via XML).</p>
+<p>Implementation Notes:</p>
+<ol><li>Since the Kotlin 'internal' modifier translates to 'public' in Java, the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-synthetic/index.html">JvmSynthetic</a>
+annotation is used on those functions and properties to hide them from the published API for
+Java clients. A proper solution to this issue would be a package-private visibility modifier,
+but Kotlin has yet to implement it (https://youtrack.jetbrains.com/issue/KT-29227). Until
+then, the JvmSynthetic annotations should remain in order to present the proper published API
+to both Java &amp; Kotlin clients.</li>
+</ol>
+<p><strong>Since</strong><br/>
+1.0.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<p>Holder for all the views of an ExpandableFab widget in a specific <a href="../-orientation/index.html">Orientation</a>.
+Not meant to be instantiated by clients, as an instance can be retrieved via
+<a href="../-expandable-fab-layout/portrait-configuration.html">ExpandableFabLayout.portraitConfiguration</a> or <a href="../-expandable-fab-layout/landscape-configuration.html">ExpandableFabLayout.landscapeConfiguration</a>.
+Values for the views will only be populated after they are added through calls to
+ExpandableFabLayout's addView methods (or after they're defined via XML).</p>
+<code><span class="identifier">OrientationConfiguration</span><span class="symbol">(</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="efab.html">efab</a></h4>
+</td>
+<td>
+<p>The <a href="../-expandable-fab/index.html">ExpandableFab</a> in this orientation. May be null.</p>
+<code><span class="keyword">var </span><span class="identifier">efab</span><span class="symbol">: </span><a href="../-expandable-fab/index.html"><span class="identifier">ExpandableFab</span></a><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="fab-options.html">fabOptions</a></h4>
+</td>
+<td>
+<p>The <a href="../-fab-option/index.html">FabOption</a>s (with optional labels) in this orientation. May be empty.</p>
+<code><span class="keyword">var </span><span class="identifier">fabOptions</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="../-fab-option/index.html"><span class="identifier">FabOption</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="overlay.html">overlay</a></h4>
+</td>
+<td>
+<p>The <a href="../-overlay/index.html">Overlay</a> in this orientation. May be null.</p>
+<code><span class="keyword">var </span><span class="identifier">overlay</span><span class="symbol">: </span><a href="../-overlay/index.html"><span class="identifier">Overlay</span></a><span class="symbol">?</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,154 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>FabOption - library</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">library</a>&nbsp;/&nbsp;<a href="../index.html">com.nambimobile.widgets.efab</a>&nbsp;/&nbsp;<a href="./index.html">FabOption</a><br/>
+<br/>
+<h1>FabOption</h1>
+<code><span class="keyword">class </span><span class="identifier">FabOption</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FloatingActionButton</span></code>
+<p>The design and behavior of a single option within an <a href="../-expandable-fab/index.html">ExpandableFab</a>.</p>
+<p>Developer Notes:</p>
+<ol><li>Layout_width and layout_height should be set to wrap_content, unless you're setting
+custom dimensions.</li>
+<li>FabOptions must be defined within an <a href="../-expandable-fab-layout/index.html">ExpandableFabLayout</a> to function properly.</li>
+<li><a href="#">label.labelText</a> must be non-null for the optional label to show and other label properties
+to take effect.</li>
+</ol>
+<p>Implementation Notes:</p>
+<ol><li>Since the Kotlin 'internal' modifier translates to 'public' in Java, the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-synthetic/index.html">JvmSynthetic</a>
+annotation is used on those functions and properties to hide them from the published API for
+Java clients. A proper solution to this issue would be a package-private visibility modifier,
+but Kotlin has yet to implement it (https://youtrack.jetbrains.com/issue/KT-29227). Until
+then, the JvmSynthetic annotations should remain in order to present the proper published API
+to both Java &amp; Kotlin clients.</li>
+</ol>
+<p><strong>Since</strong><br/>
+1.0.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<p>Used to create a FabOption programmatically (do not use the other constructor
+FabOption(context, attributeSet) - it is for use by the Android framework when inflating a
+FabOption via XML). This constructor keeps all optional properties of a FabOption at their
+default values, though you can always change these values after instantiation by using the
+appropriate setter methods (with the exception of <a href="-init-.html#com.nambimobile.widgets.efab.FabOption$<init>(android.content.Context, com.nambimobile.widgets.efab.Orientation)/orientation">orientation</a>, which cannot be changed
+after instantiation).</p>
+<code><span class="identifier">FabOption</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.FabOption$<init>(android.content.Context, com.nambimobile.widgets.efab.Orientation)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">, </span><span class="identifier" id="com.nambimobile.widgets.efab.FabOption$<init>(android.content.Context, com.nambimobile.widgets.efab.Orientation)/orientation">orientation</span><span class="symbol">:</span>&nbsp;<a href="../-orientation/index.html"><span class="identifier">Orientation</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;Orientation.PORTRAIT<span class="symbol">)</span></code>
+<p>Called by the system when creating a FabOption via XML (don't call this directly).
+To create a FabOption programmatically, use the FabOption(context, orientation) constructor.</p>
+<code><span class="identifier">FabOption</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.FabOption$<init>(android.content.Context, android.util.AttributeSet)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">, </span><span class="identifier" id="com.nambimobile.widgets.efab.FabOption$<init>(android.content.Context, android.util.AttributeSet)/attributeSet">attributeSet</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/util/AttributeSet.html"><span class="identifier">AttributeSet</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="closing-animation-duration-ms.html">closingAnimationDurationMs</a></h4>
+</td>
+<td>
+<p>The duration (in milliseconds as a positive long) of the animations that will be played
+when this FabOption is being hidden from a visible state (when the ExpandableFab is closing).
+Default value is 75L.</p>
+<code><span class="keyword">var </span><span class="identifier">closingAnimationDurationMs</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="fab-option-color.html">fabOptionColor</a></h4>
+</td>
+<td>
+<p>The color of the FabOption. Default value is your app's colorAccent.</p>
+<code><span class="keyword">var </span><span class="identifier">fabOptionColor</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="fab-option-enabled.html">fabOptionEnabled</a></h4>
+</td>
+<td>
+<p>The enabled state of this FabOption and its label. Disabled FabOptions and labels will be
+visually distinct and unclickable. Default value is true (enabled).</p>
+<code><span class="keyword">var </span><span class="identifier">fabOptionEnabled</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="fab-option-icon.html">fabOptionIcon</a></h4>
+</td>
+<td>
+<p>The drawable to show as the FabOption's icon. Default value is null (no icon shown).</p>
+<code><span class="keyword">var </span><span class="identifier">fabOptionIcon</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/drawable/Drawable.html"><span class="identifier">Drawable</span></a><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="label.html">label</a></h4>
+</td>
+<td>
+<p>The optional label attached to this FabOption. The label will only be shown when its
+labelText is not null. Default values for the label are as follows:</p>
+<code><span class="keyword">val </span><span class="identifier">label</span><span class="symbol">: </span><a href="../-label/index.html"><span class="identifier">Label</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="opening-animation-duration-ms.html">openingAnimationDurationMs</a></h4>
+</td>
+<td>
+<p>The duration (in milliseconds as a positive long) of the animations that will be played
+when this FabOption is being shown from a hidden state (when the ExpandableFab is opening).
+Default value is 125L.</p>
+<code><span class="keyword">var </span><span class="identifier">openingAnimationDurationMs</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="opening-overshoot-tension.html">openingOvershootTension</a></h4>
+</td>
+<td>
+<p>The tension (as a positive float) in an OvershootInterpolator applied on the FabOption when
+it's playing its animations for being shown from a hidden state (when the ExpandableFab is
+opening). The OvershootInterpolator allows us to have an animation where the FabOption
+will grow past its regular size when initially appearing, before smoothly shrinking down
+to regular size. Larger values will exaggerate the effort more. Default value is 3.5f.</p>
+<code><span class="keyword">var </span><span class="identifier">openingOvershootTension</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="orientation.html">orientation</a></h4>
+</td>
+<td>
+<p>The <a href="../-orientation/index.html">Orientation</a> this FabOption is viewable in. Default value is <a href="../-orientation/-p-o-r-t-r-a-i-t.html">Orientation.PORTRAIT</a>.</p>
+<code><span class="keyword">var </span><span class="identifier">orientation</span><span class="symbol">: </span><a href="../-orientation/index.html"><span class="identifier">Orientation</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="set-on-click-listener.html">setOnClickListener</a></h4>
+</td>
+<td>
+<p>Registers a callback to be invoked when this FabOption or its label is clicked. The
+default behavior the FabOption will be executed before this custom callback.</p>
+<code><span class="keyword">fun </span><span class="identifier">setOnClickListener</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.FabOption$setOnClickListener(android.view.View.OnClickListener)/onClickListener">onClickListener</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/View/OnClickListener.html"><span class="identifier">OnClickListener</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="set-size.html">setSize</a></h4>
+</td>
+<td>
+<p>Sets the size of the FabOption. Overridden to ensure we never set the size to be
+<a href="../-fab-size/-c-u-s-t-o-m.html">FabSize.CUSTOM</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">setSize</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.FabOption$setSize(kotlin.Int)/size">size</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
