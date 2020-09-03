@@ -28,7 +28,7 @@ Contributions to ExpandableFab are highly encouraged! Before beginning work, ple
 * Update the [ChangeLog](/CHANGELOG.md), following guidelines set at [Keep a Changelog](https://keepachangelog.com/en/1.0.0/#how)
 * Update the library's version in its [build.gradle](/library/build.gradle) according to the [Semantic Versioning](https://semver.org/) specification
 * Create an annotated git tag with a tag name of 'v[versionName]' (where [versionName] is equal to the library's new version after your update in the previous step)
-    * Example: `git tag -a v1.0.3 -m "Fixed FabOption labeling bug introduced in v1.0.2"`
+    * Example: `git tag -a v1.0.3 -m "Fixed FabOption labeling bug introduced in v1.0.2" ; git push origin v1.0.3`
 * Push to your feature branch, then create a pull request to `master`!
 
 ## Releasing to Sonatype Nexus / Maven Central (only for those with creds)
