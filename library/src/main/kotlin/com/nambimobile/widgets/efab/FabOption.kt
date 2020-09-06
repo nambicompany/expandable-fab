@@ -42,12 +42,14 @@ class FabOption : FloatingActionButton {
         private set
 
     /**
-     * The color of the FabOption. Default value is your app's colorAccent.
+     * The color of the FabOption. Default value is the colorAccent value defined in your app
+     * theme (styles.xml). If colorAccent is not defined in your app theme, colorSecondary may be
+     * used.
      *
      * Usage of this property is preferred over the inherited setBackgroundColor and
      * backgroundTintList methods.
      * */
-    var fabOptionColor = ContextCompat.getColor(context, R.color.colorAccent)
+    var fabOptionColor = getThemeColorAccent(context)
         set(value){
             this.backgroundTintList = ColorStateList.valueOf(value)
             field = value

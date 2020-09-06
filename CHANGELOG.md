@@ -8,6 +8,10 @@ Note: Dates are formatted as YEAR-MONTH-DAY.
 
 #
 
+## [v1.0.1] - 2020-09-06
+### Fixed
+- ExpandableFab and FabOptions now use the colorAccent defined in the app's theme within styles.xml (or colorSecondary if colorAccent is not defined). Previously, the library did not walk the theme for colorAccent and just used the value defined in colors.xml.
+
 ## [v1.0.0] - 2020-09-03
 ### Moved to Stable Release
 - First stable release. API for existing functionality is now locked. No changes from v0.9.2, except the completion of beta testing.
