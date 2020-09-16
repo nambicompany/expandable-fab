@@ -24,7 +24,9 @@ A working Android app filled with some common use cases and customizations of th
 
 
 ## Usage
-Include the ExpandableFab widget in your project via Gradle (replace X.X.X with the latest version shown here [![Maven Central](https://img.shields.io/maven-central/v/com.nambimobile.widgets/expandable-fab)](https://search.maven.org/artifact/com.nambimobile.widgets/expandable-fab)):
+Consider reading our Medium articles on [what the ExpandableFab is](https://uxdesign.cc/a-modern-take-on-the-expandable-floating-action-button-for-android-aka-speed-dial-4146e63c658c) and [how to use it](https://uxdesign.cc/how-to-use-the-expandable-floating-action-button-9c6fdedc4169) if you prefer a more in-depth walkthrough.
+
+Otherwise, simply include the ExpandableFab widget in your project via Gradle (replace X.X.X with the latest version shown here [![Maven Central](https://img.shields.io/maven-central/v/com.nambimobile.widgets/expandable-fab)](https://search.maven.org/artifact/com.nambimobile.widgets/expandable-fab)):
 
 ```groovy
 implementation 'com.nambimobile.widgets:expandable-fab:X.X.X'
