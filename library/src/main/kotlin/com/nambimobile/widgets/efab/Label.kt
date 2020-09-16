@@ -51,8 +51,12 @@ class Label : AppCompatTextView {
         }
 
     /**
-     * The color of the Label's text. Usage of this property is preferred over the inherited
-     * setTextColor method variations.
+     * The color of the Label's text, as an integer in the form 0xAARRGGBB.
+     *
+     * If using an XML resource color value, retrieve it in the correct form by calling:
+     * ContextCompat.getColor(context, R.color.name_of_color_resource).
+     *
+     * Usage of this property is preferred over the inherited setTextColor method variations.
      * */
     var labelTextColor = ContextCompat.getColor(context, android.R.color.white)
         set(value) {
@@ -74,8 +78,12 @@ class Label : AppCompatTextView {
         }
 
     /**
-     * The color of the Label's background. Usage of this property is preferred over the
-     * inherited setBackgroundColor method.
+     * The color of the Label's background, as an integer in the form 0xAARRGGBB.
+     *
+     * If using an XML resource color value, retrieve it in the correct form by calling:
+     * ContextCompat.getColor(context, R.color.name_of_color_resource).
+     *
+     * Usage of this property is preferred over the inherited setBackgroundColor method.
      * */
     var labelBackgroundColor = ContextCompat.getColor(context, R.color.efab_label_background)
         set(value) {

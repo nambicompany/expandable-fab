@@ -10,9 +10,11 @@
 <h1>efabColor</h1>
 <a name="com.nambimobile.widgets.efab.ExpandableFab$efabColor"></a>
 <code><span class="keyword">var </span><span class="identifier">efabColor</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
-<p>The color of the ExpandableFab. Default value is the colorAccent value defined in your app
-theme (styles.xml). If colorAccent is not defined in your app theme, colorSecondary may be
-used.</p>
+<p>The color of the ExpandableFab, as an integer in the form 0xAARRGGBB.</p>
+<p>If using an XML resource color value, retrieve it in the correct form by calling:
+ContextCompat.getColor(context, R.color.name_of_color_resource).</p>
+<p>Default value is the colorAccent value defined in your app theme (styles.xml). If
+colorAccent is not defined in your app theme, colorSecondary may be used.</p>
 <p>Usage of this property is preferred over the inherited setBackgroundColor and
 backgroundTintList methods.</p>
 </BODY>
