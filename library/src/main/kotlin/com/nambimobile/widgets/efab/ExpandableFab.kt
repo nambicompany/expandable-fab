@@ -180,7 +180,7 @@ class ExpandableFab : FloatingActionButton {
 
     /**
      * The duration (in milliseconds as a positive long) of the ExpandableFab's opening animations.
-     * Default value is 250L.
+     * Set to 0L if you don't want opening animations played. Default value is 250L.
      * */
     var openingAnimationDurationMs = 250L
         set(value) {
@@ -193,7 +193,7 @@ class ExpandableFab : FloatingActionButton {
 
     /**
      * The duration (in milliseconds as a positive long) of the ExpandableFab's closing animations.
-     * Default value is 500L.
+     * Set to 0L if you don't want closing animations played. Default value is 500L.
      * */
     var closingAnimationDurationMs = 500L
         set(value) {
@@ -632,7 +632,11 @@ class ExpandableFab : FloatingActionButton {
          * is drawn. What allows us to do the actual rotations.
          * */
         val totalRotationDegrees = abs(endRotationDegrees - startRotationDegrees)
-        val degreesPerMs = abs(totalRotationDegrees / durationMs)
+        val degreesPerMs = if(durationMs == 0L){
+            totalRotationDegrees
+        } else {
+            abs(totalRotationDegrees / durationMs)
+        }
         val updateIntervalMs = 10L
         val degreesPerUpdate = degreesPerMs * updateIntervalMs
         val epsilon = 0.01

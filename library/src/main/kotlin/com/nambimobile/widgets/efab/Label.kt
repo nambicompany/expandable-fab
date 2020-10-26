@@ -164,7 +164,7 @@ class Label : AppCompatTextView {
 
     /**
      * The duration (in milliseconds as a positive long) of the animations that the Label will
-     * play when going from a visible to hidden state.
+     * play when going from a visible to hidden state. Set to 0L if you don't want animations played.
      * */
     var visibleToHiddenAnimationDurationMs = 250L
         set(value) {
@@ -177,7 +177,7 @@ class Label : AppCompatTextView {
 
     /**
      * The duration (in milliseconds as a positive long) of the animations that the Label will
-     * play when going from a hidden to visible state.
+     * play when going from a hidden to visible state. Set to 0L if you don't want animations played.
      * */
     var hiddenToVisibleAnimationDurationMs = 75L
         set(value) {

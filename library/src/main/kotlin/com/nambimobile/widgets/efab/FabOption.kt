@@ -99,7 +99,7 @@ class FabOption : FloatingActionButton {
     /**
      * The duration (in milliseconds as a positive long) of the animations that will be played
      * when this FabOption is being shown from a hidden state (when the ExpandableFab is opening).
-     * Default value is 125L.
+     * Set to 0L if you don't want opening animations played. Default value is 125L.
      * */
     var openingAnimationDurationMs = 125L
         set(value) {
@@ -113,7 +113,7 @@ class FabOption : FloatingActionButton {
     /**
      * The duration (in milliseconds as a positive long) of the animations that will be played
      * when this FabOption is being hidden from a visible state (when the ExpandableFab is closing).
-     * Default value is 75L.
+     * Set to 0L if you don't want closing animations played. Default value is 75L.
      * */
     var closingAnimationDurationMs = 75L
         set(value) {

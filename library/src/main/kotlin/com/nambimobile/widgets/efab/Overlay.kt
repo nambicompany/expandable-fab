@@ -65,7 +65,7 @@ class Overlay : FrameLayout {
     /**
      * The duration (in milliseconds as a positive long) of the animations that will be played
      * when this Overlay is being shown from a hidden state (when the ExpandableFab is opening).
-     * Default value is 300L.
+     * Set to 0L if you don't want opening animations played. Default value is 300L.
      * */
     var openingAnimationDurationMs = 300L
         set(value) {
@@ -79,7 +79,7 @@ class Overlay : FrameLayout {
     /**
      * The duration (in milliseconds as a positive long) of the animations that will be played
      * when this Overlay is being hidden from a visible state (when the ExpandableFab is closing).
-     * Default value is 300L.
+     * Set to 0L if you don't want closing animations played. Default value is 300L.
      * */
     var closingAnimationDurationMs = 300L
         set(value) {
