@@ -8,6 +8,10 @@ Note: Dates are formatted as YEAR-MONTH-DAY.
 
 #
 
+## [v1.0.2] - 2020-10-26
+### Fixed
+- ExpandableFab views can now accept 0 milliseconds for opening and closing animation durations - just like FabOptions and Labels. For all views, 0 for animation duration means "do not play an animation". This has been clarified in the documentation.
+
 ## [v1.0.1] - 2020-09-06
 ### Fixed
 - ExpandableFab and FabOptions now use the colorAccent defined in the app's theme within styles.xml (or colorSecondary if colorAccent is not defined). Previously, the library did not walk the theme for colorAccent and just used the value defined in colors.xml.
