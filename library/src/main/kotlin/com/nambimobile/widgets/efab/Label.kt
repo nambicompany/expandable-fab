@@ -6,6 +6,7 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.PorterDuff
+import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.MotionEvent
@@ -87,7 +88,13 @@ class Label : AppCompatTextView {
      * */
     var labelBackgroundColor = ContextCompat.getColor(context, R.color.efab_label_background)
         set(value) {
-            background.setColorFilter(value, PorterDuff.Mode.SRC_ATOP)
+            background.let {
+                when(it){
+                    is GradientDrawable -> it.setColor(value)
+                    else -> it.setColorFilter(value, PorterDuff.Mode.SRC_ATOP)
+                }
+            }
+
             field = value
         }
 
@@ -246,8 +253,19 @@ class Label : AppCompatTextView {
 
     init {
         id = ViewCompat.generateViewId()
-        setBackgroundResource(R.drawable.efab_label_background)
         visibility = View.GONE
+
+        val backgroundDrawable = GradientDrawable().apply {
+            setColor(ContextCompat.getColor(context, R.color.efab_label_background))
+            cornerRadius = resources.getDimension(R.dimen.efab_ui_margin_xxs)
+            setPadding(
+                resources.getDimension(R.dimen.efab_ui_margin_xs).toInt(),
+                resources.getDimension(R.dimen.efab_ui_margin_xxs).toInt(),
+                resources.getDimension(R.dimen.efab_ui_margin_xs).toInt(),
+                resources.getDimension(R.dimen.efab_ui_margin_xxs).toInt()
+            )
+        }
+        ViewCompat.setBackground(this, backgroundDrawable)
     }
 
 

@@ -8,6 +8,10 @@ Note: Dates are formatted as YEAR-MONTH-DAY.
 
 #
 
+## [v1.0.3] - 2021-06-28
+### Fixed
+- The alpha channel (degree of transparency) is now respected when setting Label background colors (`label.labelBackgroundColor`). Colors should be set as an integer in the form 0xAARRGGBB (check [documentation for `label.labelBackgroundColor`](https://nambicompany.github.io/expandable-fab/kdoc/) for more details).
+
 ## [v1.0.2] - 2020-10-26
 ### Fixed
 - ExpandableFab views can now accept 0 milliseconds for opening and closing animation durations - just like FabOptions and Labels. For all views, 0 for animation duration means "do not play an animation". This has been clarified in the documentation.
