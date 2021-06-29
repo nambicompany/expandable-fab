@@ -318,17 +318,8 @@ class ExpandableFabLayout : CoordinatorLayout {
             }
         }
 
-        (fabOption.layoutParams as LayoutParams).let { fabParams ->
-            when(configuration.fabOptions.isEmpty()){
-                true -> configuration.efab?.let { fabParams.anchorId = it.id }
-                else -> fabParams.anchorId = configuration.fabOptions.last().id // previous fabOption
-            }
-
-            configuration.efab?.let { fabParams.anchorGravity = it.fabOptionPosition.value }
-            fabOption.layoutParams = fabParams
-        }
-
         configuration.fabOptions.add(fabOption)
+        configuration.setFabOptionAnchor(fabOption, configuration.fabOptions.lastIndex)
     }
 
     private fun defaultOverlayOnClickBehavior() {

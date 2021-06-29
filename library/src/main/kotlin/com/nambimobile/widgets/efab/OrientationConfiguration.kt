@@ -39,20 +39,7 @@ class OrientationConfiguration {
     @set:JvmSynthetic
     var fabOptions: MutableList<FabOption> = object : ArrayList<FabOption>() {
         override fun removeAt(index: Int): FabOption {
-            val removedFabOption = super.removeAt(index)
-
-            if(this.size > index){
-                (this[index].layoutParams as CoordinatorLayout.LayoutParams).let { fabParams ->
-                    when(index){
-                        0 -> efab?.let { fabParams.anchorId = it.id }
-                        else -> fabParams.anchorId = this[index - 1].id // previous fabOption
-                    }
-
-                    this[index].layoutParams = fabParams
-                }
-            }
-
-            return removedFabOption
+            return super.removeAt(index).also { setFabOptionAnchor(this[index], index) }
         }
 
         override fun remove(element: FabOption): Boolean {
@@ -67,4 +54,23 @@ class OrientationConfiguration {
         }
     }
         internal set
+
+    /**
+     * Sets the anchor of the given FabOption, allowing the list of FabOptions in this orientation
+     * to stack correctly.
+     * */
+    @JvmSynthetic
+    internal fun setFabOptionAnchor(fabOption: FabOption, index: Int){
+        if(fabOptions.size > index){
+            (fabOption.layoutParams as CoordinatorLayout.LayoutParams).let { fabParams ->
+                when(index){
+                    0 -> efab?.let { fabParams.anchorId = it.id }
+                    else -> fabParams.anchorId = fabOptions[index - 1].id // previous fabOption
+                }
+
+                efab?.let { fabParams.anchorGravity = it.fabOptionPosition.value }
+                fabOption.layoutParams = fabParams
+            }
+        }
+    }
 }
