@@ -1,5 +1,7 @@
 package com.nambimobile.widgets.efab
 
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+
 /**
  * Holder for all the views of an ExpandableFab widget in a specific [Orientation].
  * Not meant to be instantiated by clients, as an instance can be retrieved via
@@ -28,8 +30,41 @@ class OrientationConfiguration {
     var efab: ExpandableFab? = null
         internal set
 
-    /** The [FabOption]s (with optional labels) in this orientation. May be empty. **/
+    /**
+     * The [FabOption]s (with optional labels) in this orientation. May be empty.
+     *
+     * To remove a FabOption from this orientation, simply call remove(FabOption) or remove(int)
+     * (the latter is named removeAt(int) in Kotlin).
+     * */
     @set:JvmSynthetic
-    var fabOptions: MutableList<FabOption> = mutableListOf()
+    var fabOptions: MutableList<FabOption> = object : ArrayList<FabOption>() {
+        override fun removeAt(index: Int): FabOption {
+            val removedFabOption = super.removeAt(index)
+
+            if(this.size > index){
+                (this[index].layoutParams as CoordinatorLayout.LayoutParams).let { fabParams ->
+                    when(index){
+                        0 -> efab?.let { fabParams.anchorId = it.id }
+                        else -> fabParams.anchorId = this[index - 1].id // previous fabOption
+                    }
+
+                    this[index].layoutParams = fabParams
+                }
+            }
+
+            return removedFabOption
+        }
+
+        override fun remove(element: FabOption): Boolean {
+            this.forEachIndexed { index, fabOption ->
+                if(element == fabOption){
+                    removeAt(index)
+                    return true
+                }
+            }
+
+            return false
+        }
+    }
         internal set
 }

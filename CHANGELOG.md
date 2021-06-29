@@ -8,9 +8,12 @@ Note: Dates are formatted as YEAR-MONTH-DAY.
 
 #
 
-## [v1.0.3] - 2021-06-28
+## [v1.1.0] - 2021-06-29
 ### Fixed
 - The alpha channel (degree of transparency) is now respected when setting Label background colors (`label.labelBackgroundColor`). Colors should be set as an integer in the form 0xAARRGGBB (check [documentation for `label.labelBackgroundColor`](https://nambicompany.github.io/expandable-fab/kdoc/) for more details).
+
+### Added
+- FabOptions can now be removed programmatically by calling remove(FabOption) or remove(int) (the latter is named removeAt(int) in Kotlin) on the list of FabOptions contained within an `OrientationConfiguration`. You can easily obtain an `OrientationConfiguration` from an instance of ExpandableFabLayout by calling `expandableFabLayout.portraitConfiguration` or `expandableFabLayout.landscapeConfiguration` or `expandableFabLayout.getCurrentConfiguration`.
 
 ## [v1.0.2] - 2020-10-26
 ### Fixed
