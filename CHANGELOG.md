@@ -8,6 +8,11 @@ Note: Dates are formatted as YEAR-MONTH-DAY.
 
 #
 
+## [v1.1.1] - 2021-06-30
+### Fixed
+- FabOptions that are dynamically removed while the ExpandableFab is still open are now properly removed from the ExpandableFabLayout (and consequently removed from the UI).
+- FabOption removal logic updated to actually remove the correct FabOption (indexing issue).
+
 ## [v1.1.0] - 2021-06-29
 ### Fixed
 - The alpha channel (degree of transparency) is now respected when setting Label background colors (`label.labelBackgroundColor`). Colors should be set as an integer in the form 0xAARRGGBB (check [documentation for `label.labelBackgroundColor`](https://nambicompany.github.io/expandable-fab/kdoc/) for more details).
