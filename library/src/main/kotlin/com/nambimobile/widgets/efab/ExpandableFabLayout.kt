@@ -149,10 +149,15 @@ class ExpandableFabLayout : CoordinatorLayout {
      * Removes all child views in both portrait and landscape orientation from the
      * ExpandableFabLayout.
      *
-     * This is the only correct way to remove views from your ExpandableFab widget should you
+     * This is the only correct way to remove *ALL* views from your ExpandableFab widget should you
      * choose to reuse the same ExpandableFabLayout instead of instantiating a new one. Using any
      * other removeView variation will provide no guarantees of proper internal state control,
      * and thus could potentially lead to Exceptions during runtime.
+     *
+     * If you only want to remove certain FabOptions, get the current OrientationConfiguration
+     * ([portraitConfiguration] or [landscapeConfiguration] or [getCurrentConfiguration]), then
+     * call remove(FabOption) or remove(int) (the latter is named removeAt(int) in Kotlin) on its
+     * list of FabOptions.
      * */
     override fun removeAllViews() {
         super.removeAllViews()
