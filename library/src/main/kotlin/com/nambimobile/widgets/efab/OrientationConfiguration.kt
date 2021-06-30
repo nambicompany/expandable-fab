@@ -1,5 +1,6 @@
 package com.nambimobile.widgets.efab
 
+import android.view.ViewGroup
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 
 /**
@@ -39,7 +40,19 @@ class OrientationConfiguration {
     @set:JvmSynthetic
     var fabOptions: MutableList<FabOption> = object : ArrayList<FabOption>() {
         override fun removeAt(index: Int): FabOption {
-            return super.removeAt(index).also { setFabOptionAnchor(this[index], index) }
+            return super.removeAt(index).also { fabOptionToRemove ->
+                if(this.size != 0){
+                    when (index) {
+                        this.size -> setFabOptionAnchor(this[index - 1], index - 1)
+                        else -> setFabOptionAnchor(this[index], index)
+                    }
+                }
+
+                (fabOptionToRemove.parent as ViewGroup).let { expandableFabLayout ->
+                    expandableFabLayout.removeView(fabOptionToRemove.label)
+                    expandableFabLayout.removeView(fabOptionToRemove)
+                }
+            }
         }
 
         override fun remove(element: FabOption): Boolean {
@@ -58,6 +71,9 @@ class OrientationConfiguration {
     /**
      * Sets the anchor of the given FabOption, allowing the list of FabOptions in this orientation
      * to stack correctly.
+     *
+     * @param fabOption the FabOption to anchor
+     * @param index the index of the FabOption to anchor, in [fabOptions]
      * */
     @JvmSynthetic
     internal fun setFabOptionAnchor(fabOption: FabOption, index: Int){
