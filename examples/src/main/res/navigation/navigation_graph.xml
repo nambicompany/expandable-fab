@@ -40,6 +40,10 @@
         android:name="com.nambimobile.examples.efab.NoLabelsFragment"
         android:label="@string/no_labels_fragment" />
     <fragment
+        android:id="@+id/remove_faboptions_fragment"
+        android:name="com.nambimobile.examples.efab.RemoveFabOptionsFragment"
+        android:label="@string/remove_faboptions_fragment" />
+    <fragment
         android:id="@+id/open_downwards_fragment"
         android:name="com.nambimobile.examples.efab.OpenDownwardsFragment"
         android:label="@string/open_downwards_fragment" />

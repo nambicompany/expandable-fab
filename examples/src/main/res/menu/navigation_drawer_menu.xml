@@ -38,6 +38,9 @@
             android:id="@+id/no_labels_fragment"
             android:title="@string/no_labels_fragment"/>
         <item
+            android:id="@+id/remove_faboptions_fragment"
+            android:title="@string/remove_faboptions_fragment"/>
+        <item
             android:id="@+id/open_downwards_fragment"
             android:title="@string/open_downwards_fragment"/>
         <item

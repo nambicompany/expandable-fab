@@ -11,6 +11,7 @@
     <string name="overlay_fragment">Overlay</string>
     <string name="no_faboptions_fragment">No FabOptions</string>
     <string name="no_labels_fragment">No Labels</string>
+    <string name="remove_faboptions_fragment">Remove FabOptions</string>
 
     <string name="open_downwards_fragment">Open Downwards</string>
     <string name="disabled_fragment">Disabled</string>
@@ -73,6 +74,13 @@
         visible label (even if it was set via XML) at any time programmatically by setting the
         \'labelText\' property to null. If later set non-null, the label will still retain all
         previous customizations.
+    </string>
+    <string name="remove_faboptions_fragment_info">
+        You can dynamically remove FabOptions at runtime.\n\nSelect the index of a FabOption to
+        remove from the Spinner below, then click \'Remove\' to see it disappear from the
+        ExpandableFab. Note that the indices are zero based, so Option 1 has an index of 0.
+        \n\nCheck the code of this Fragment to see how to remove FabOptions by index and by object
+        reference in both Java and Kotlin.
     </string>
     <string name="open_downwards_fragment_info">
         You can specify a \'FabOptionPosition\' that will be applied to all FabOptions in a
@@ -138,4 +146,5 @@
     </string>
     <string name="clcf_snackbar_above_efab">Display Snackbar above ExpandableFab</string>
     <string name="clcf_snackbar_below_efab">Display Snackbar below ExpandableFab</string>
+    <string name="remove">Remove</string>
 </resources>
