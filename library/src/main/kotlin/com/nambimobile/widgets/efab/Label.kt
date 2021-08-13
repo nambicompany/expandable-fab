@@ -6,6 +6,7 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.util.TypedValue
@@ -91,7 +92,7 @@ class Label : AppCompatTextView {
             background.let {
                 when(it){
                     is GradientDrawable -> it.setColor(value)
-                    else -> it.setColorFilter(value, PorterDuff.Mode.SRC_ATOP)
+                    else -> it.setColorFilter(PorterDuffColorFilter(value, PorterDuff.Mode.SRC_ATOP))
                 }
             }
 
@@ -133,7 +134,7 @@ class Label : AppCompatTextView {
                 val disabledColor = ContextCompat.getColor(context, R.color.efab_disabled)
                 val disabledTextColor = ContextCompat.getColor(context, R.color.efab_disabled_text)
 
-                background.setColorFilter(disabledColor, PorterDuff.Mode.SRC_ATOP)
+                background.setColorFilter(PorterDuffColorFilter(disabledColor, PorterDuff.Mode.SRC_ATOP))
                 setTextColor(disabledTextColor)
             }
 
