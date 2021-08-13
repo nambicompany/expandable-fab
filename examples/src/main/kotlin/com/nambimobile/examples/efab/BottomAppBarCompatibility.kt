@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.view.updateLayoutParams
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.nambimobile.widgets.efab.ExpandableFab
 
@@ -32,11 +33,11 @@ class BottomAppBarCompatibility : Fragment() {
         val bottomAppBar = view.findViewById<BottomAppBar>(R.id.bottom_app_bar)
 
         if(expandableFabPortrait.visibility == View.VISIBLE){
-            (expandableFabPortrait.layoutParams as CoordinatorLayout.LayoutParams).anchorId = bottomAppBar.id
-            (expandableFabLandscape.layoutParams as CoordinatorLayout.LayoutParams).anchorId = View.NO_ID
+            expandableFabPortrait.updateLayoutParams<CoordinatorLayout.LayoutParams> {anchorId = bottomAppBar.id}
+            expandableFabLandscape.updateLayoutParams<CoordinatorLayout.LayoutParams> {anchorId = View.NO_ID}
         } else {
-            (expandableFabPortrait.layoutParams as CoordinatorLayout.LayoutParams).anchorId = View.NO_ID
-            (expandableFabLandscape.layoutParams as CoordinatorLayout.LayoutParams).anchorId = bottomAppBar.id
+            expandableFabPortrait.updateLayoutParams<CoordinatorLayout.LayoutParams> {anchorId = View.NO_ID}
+            expandableFabLandscape.updateLayoutParams<CoordinatorLayout.LayoutParams> {anchorId = bottomAppBar.id}
         }
     }
 }

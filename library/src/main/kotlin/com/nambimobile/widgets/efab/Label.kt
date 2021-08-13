@@ -1,12 +1,10 @@
 package com.nambimobile.widgets.efab
 
 import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.util.TypedValue
@@ -15,8 +13,12 @@ import android.view.View
 import android.view.animation.OvershootInterpolator
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.animation.addListener
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.toColorFilter
 import androidx.core.view.ViewCompat
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePadding
 
 /**
  * A label of text attached to a view of the ExpandableFab widget.
@@ -92,7 +94,7 @@ class Label : AppCompatTextView {
             background.let {
                 when(it){
                     is GradientDrawable -> it.setColor(value)
-                    else -> it.setColorFilter(PorterDuffColorFilter(value, PorterDuff.Mode.SRC_ATOP))
+                    else -> it.setColorFilter(PorterDuff.Mode.SRC_ATOP.toColorFilter(value))
                 }
             }
 
@@ -134,7 +136,7 @@ class Label : AppCompatTextView {
                 val disabledColor = ContextCompat.getColor(context, R.color.efab_disabled)
                 val disabledTextColor = ContextCompat.getColor(context, R.color.efab_disabled_text)
 
-                background.setColorFilter(PorterDuffColorFilter(disabledColor, PorterDuff.Mode.SRC_ATOP))
+                background.setColorFilter(PorterDuff.Mode.SRC_ATOP.toColorFilter(disabledColor))
                 setTextColor(disabledTextColor)
             }
 
@@ -213,14 +215,6 @@ class Label : AppCompatTextView {
             field = value
         }
 
-    // Declared as a property so we don't create a new one each animation... slight waste reduction?
-    private val hideOnAnimationEnd = object : AnimatorListenerAdapter(){
-        override fun onAnimationEnd(animation: Animator?) {
-            this@Label.visibility = View.GONE
-        }
-    }
-
-
     /**
      * Used to create a Label programmatically. Clients should not need to call this directly as
      * all labeled Views of the ExpandableFab widget already create their own labels which can
@@ -259,11 +253,11 @@ class Label : AppCompatTextView {
         val backgroundDrawable = GradientDrawable().apply {
             setColor(ContextCompat.getColor(context, R.color.efab_label_background))
             cornerRadius = resources.getDimension(R.dimen.efab_ui_margin_xxs)
-            setPadding(
-                resources.getDimension(R.dimen.efab_ui_margin_xs).toInt(),
-                resources.getDimension(R.dimen.efab_ui_margin_xxs).toInt(),
-                resources.getDimension(R.dimen.efab_ui_margin_xs).toInt(),
-                resources.getDimension(R.dimen.efab_ui_margin_xxs).toInt()
+            updatePadding(
+                left = resources.getDimension(R.dimen.efab_ui_margin_xs).toInt(),
+                top = resources.getDimension(R.dimen.efab_ui_margin_xxs).toInt(),
+                right = resources.getDimension(R.dimen.efab_ui_margin_xs).toInt(),
+                bottom = resources.getDimension(R.dimen.efab_ui_margin_xxs).toInt()
             )
         }
         ViewCompat.setBackground(this, backgroundDrawable)
@@ -356,16 +350,17 @@ class Label : AppCompatTextView {
                 ObjectAnimator.ofFloat(this@Label, "alpha", 0f).apply {
                     this.duration = visibleToHiddenAnimationDurationMs
                 })
-            addListener(hideOnAnimationEnd)
+            addListener(onEnd = {
+                this@Label.visibility = View.GONE
+            })
         }
     }
 
     private fun positionSelf(){
-        (layoutParams as CoordinatorLayout.LayoutParams).let {
-            if(it.anchorId != View.NO_ID){
-                it.anchorGravity = position.value
-                it.gravity = position.value
-                layoutParams = it
+        updateLayoutParams<CoordinatorLayout.LayoutParams> {
+            if(anchorId != View.NO_ID){
+                anchorGravity = position.value
+                gravity = position.value
             }
         }
     }

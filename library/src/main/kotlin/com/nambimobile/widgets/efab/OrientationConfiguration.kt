@@ -2,6 +2,7 @@ package com.nambimobile.widgets.efab
 
 import android.view.ViewGroup
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.view.updateLayoutParams
 
 /**
  * Holder for all the views of an ExpandableFab widget in a specific [Orientation].
@@ -78,14 +79,13 @@ class OrientationConfiguration {
     @JvmSynthetic
     internal fun setFabOptionAnchor(fabOption: FabOption, index: Int){
         if(fabOptions.size > index){
-            (fabOption.layoutParams as CoordinatorLayout.LayoutParams).let { fabParams ->
+            fabOption.updateLayoutParams<CoordinatorLayout.LayoutParams> {
                 when(index){
-                    0 -> efab?.let { fabParams.anchorId = it.id }
-                    else -> fabParams.anchorId = fabOptions[index - 1].id // previous fabOption
+                    0 -> efab?.let { anchorId = it.id }
+                    else -> anchorId = fabOptions[index - 1].id // previous fabOption
                 }
 
-                efab?.let { fabParams.anchorGravity = it.fabOptionPosition.value }
-                fabOption.layoutParams = fabParams
+                efab?.let { anchorGravity = it.fabOptionPosition.value }
             }
         }
     }

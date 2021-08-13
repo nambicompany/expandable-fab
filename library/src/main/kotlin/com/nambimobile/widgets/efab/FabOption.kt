@@ -1,7 +1,6 @@
 package com.nambimobile.widgets.efab
 
 import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
@@ -10,6 +9,7 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.OvershootInterpolator
+import androidx.core.animation.addListener
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.widget.ImageViewCompat
@@ -182,14 +182,6 @@ class FabOption : FloatingActionButton {
             return field
         }
         set // Redundant declaration, but must be defined for JvmSynthetic to hide from Java clients
-
-    // Declared as a property so we don't create a new one each animation... slight waste reduction?
-    private val hideOnAnimationEnd = object : AnimatorListenerAdapter(){
-        override fun onAnimationEnd(animation: Animator?) {
-            this@FabOption.visibility = View.GONE
-        }
-    }
-
 
     /**
      * Used to create a FabOption programmatically (do not use the other constructor
@@ -454,7 +446,9 @@ class FabOption : FloatingActionButton {
                     this.duration = closingAnimationDurationMs
                 }
             )
-            addListener(hideOnAnimationEnd)
+            addListener(onEnd = {
+                this@FabOption.visibility = View.GONE
+            })
         }
 
         return AnimatorSet().apply { playTogether(closingAnimations, label.visibleToHiddenAnimations()) }

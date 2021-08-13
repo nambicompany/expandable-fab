@@ -1,12 +1,12 @@
 package com.nambimobile.widgets.efab
 
 import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
+import androidx.core.animation.addListener
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 
@@ -102,14 +102,6 @@ class Overlay : FrameLayout {
             return field
         }
         set // Redundant declaration, but must be defined for JvmSynthetic to hide from Java clients
-
-    // Declared as a property so we don't create a new one each animation... slight waste reduction?
-    private val hideOnAnimationEnd = object : AnimatorListenerAdapter(){
-        override fun onAnimationEnd(animation: Animator?) {
-            this@Overlay.visibility = View.GONE
-        }
-    }
-
 
     /**
      * Used to create an Overlay programmatically (do not use the other constructor Overlay(context,
@@ -231,7 +223,9 @@ class Overlay : FrameLayout {
     internal fun closingAnimations(): Animator {
         return ObjectAnimator.ofFloat(this, "alpha", 0f).apply {
             this.duration = closingAnimationDurationMs
-            addListener(hideOnAnimationEnd)
+            addListener(onEnd = {
+                this@Overlay.visibility = View.GONE
+            })
         }
     }
 }

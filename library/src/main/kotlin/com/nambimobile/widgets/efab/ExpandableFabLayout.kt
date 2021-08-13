@@ -1,7 +1,6 @@
 package com.nambimobile.widgets.efab
 
 import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.content.Context
 import android.content.res.Configuration
@@ -9,7 +8,9 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.animation.addListener
 import androidx.core.view.ViewCompat
+import androidx.core.view.updateLayoutParams
 
 /**
  * The container and controller for all children views of the ExpandableFab widget (Overlay,
@@ -256,9 +257,8 @@ class ExpandableFabLayout : CoordinatorLayout {
         efab.label.let { label ->
             addView(label)
 
-            (label.layoutParams as LayoutParams).let {
-                it.anchorId = efab.id
-                label.layoutParams = it
+            label.updateLayoutParams<LayoutParams> {
+                anchorId = efab.id
             }
 
             label.showLabel()
@@ -317,9 +317,8 @@ class ExpandableFabLayout : CoordinatorLayout {
         fabOption.label.let { label ->
             addView(label)
 
-            (label.layoutParams as LayoutParams).let {
-                it.anchorId = fabOption.id
-                label.layoutParams = it
+            label.updateLayoutParams<LayoutParams> {
+                anchorId = fabOption.id
             }
         }
 
@@ -386,7 +385,10 @@ class ExpandableFabLayout : CoordinatorLayout {
                 AnimatorSet().apply { playSequentially(optionAndLabelAnimationPairs) }
             )
 
-            addListener(setStateAsOpened)
+            addListener(onEnd = {
+                groupAnimationsFinished = true
+                setState(true)
+            })
         }
     }
 
@@ -406,7 +408,10 @@ class ExpandableFabLayout : CoordinatorLayout {
                 AnimatorSet().apply { playSequentially(optionAndLabelAnimationPairs.reversed()) }
             )
 
-            addListener(setStateAsClosed)
+            addListener(onEnd = {
+                groupAnimationsFinished = true
+                setState(false)
+            })
         }
     }
 
@@ -455,22 +460,6 @@ class ExpandableFabLayout : CoordinatorLayout {
                 closeWhenAble = false
                 fabOptionAlreadyClicked = false
             }
-        }
-    }
-
-    private var setStateAsOpened = object : AnimatorListenerAdapter(){
-        override fun onAnimationEnd(animation: Animator?) {
-            groupAnimationsFinished = true
-
-            setState(true)
-        }
-    }
-
-    private var setStateAsClosed = object : AnimatorListenerAdapter(){
-        override fun onAnimationEnd(animation: Animator?) {
-            groupAnimationsFinished = true
-
-            setState(false)
         }
     }
 }
