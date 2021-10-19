@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -101,35 +102,35 @@ class DefaultConfigurationCodeFragment : Fragment() {
 
         val portraitFabOptions = arrayOf(
             FabOption(parentActivity).apply {
-                fabOptionIcon = ContextCompat.getDrawable(parentActivity, R.drawable.ic_walk_white_24dp)
+                fabOptionIcon = AppCompatResources.getDrawable(parentActivity, R.drawable.ic_walk_white_24dp)
                 label.labelText = "Option 1"
             },
             FabOption(parentActivity).apply {
-                fabOptionIcon = ContextCompat.getDrawable(parentActivity, R.drawable.ic_bike_white_24dp)
+                fabOptionIcon = AppCompatResources.getDrawable(parentActivity, R.drawable.ic_bike_white_24dp)
                 label.labelText = "Option 2"
             },
             FabOption(parentActivity).apply {
-                fabOptionIcon = ContextCompat.getDrawable(parentActivity, R.drawable.ic_car_white_24dp)
+                fabOptionIcon = AppCompatResources.getDrawable(parentActivity, R.drawable.ic_car_white_24dp)
                 label.labelText = "Option 3"
             },
             FabOption(parentActivity).apply {
-                fabOptionIcon = ContextCompat.getDrawable(parentActivity, R.drawable.ic_train_white_24dp)
+                fabOptionIcon = AppCompatResources.getDrawable(parentActivity, R.drawable.ic_train_white_24dp)
                 label.labelText = "Option 4"
             },
             FabOption(parentActivity).apply {
-                fabOptionIcon = ContextCompat.getDrawable(parentActivity, R.drawable.ic_flight_white_24dp)
+                fabOptionIcon = AppCompatResources.getDrawable(parentActivity, R.drawable.ic_flight_white_24dp)
                 label.labelText = "Option 5"
             }
         )
         val landscapeFabOptions = arrayOf(
             FabOption(parentActivity, Orientation.LANDSCAPE).apply {
                 fabOptionColor = ContextCompat.getColor(parentActivity, R.color.randomColor3)
-                fabOptionIcon = ContextCompat.getDrawable(parentActivity, R.drawable.ic_event_white_24dp)
+                fabOptionIcon = AppCompatResources.getDrawable(parentActivity, R.drawable.ic_event_white_24dp)
                 label.labelText = "Unique Option 1 for Landscape!"
             },
             FabOption(parentActivity, Orientation.LANDSCAPE).apply {
                 fabOptionColor = ContextCompat.getColor(parentActivity, R.color.randomColor3)
-                fabOptionIcon = ContextCompat.getDrawable(parentActivity, R.drawable.ic_reminder_white_24dp)
+                fabOptionIcon = AppCompatResources.getDrawable(parentActivity, R.drawable.ic_reminder_white_24dp)
                 label.labelText = "Unique Option 2 for Landscape!"
             }
         )
