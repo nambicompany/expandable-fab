@@ -6,12 +6,14 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.OvershootInterpolator
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.widget.ImageViewCompat
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -148,6 +150,7 @@ class FabOption : FloatingActionButton {
      * labelText = null
      * labelTextColor = white
      * labelTextSize = 14sp
+     * labelFont = Typeface.DEFAULT
      * labelBackgroundColor = gray (#333333)
      * labelElevation = 6dp
      * position = LabelPosition.LEFT
@@ -161,6 +164,7 @@ class FabOption : FloatingActionButton {
         labelText = null
         labelTextColor = ContextCompat.getColor(context, android.R.color.white)
         labelTextSize = resources.getDimension(R.dimen.efab_label_text_size)
+        labelFont = Typeface.DEFAULT
         labelBackgroundColor = ContextCompat.getColor(context, R.color.efab_label_background)
         labelElevation = resources.getDimensionPixelSize(R.dimen.efab_label_elevation)
         position = LabelPosition.LEFT
@@ -235,6 +239,12 @@ class FabOption : FloatingActionButton {
                         R.styleable.FabOption_label_textSize,
                         label.labelTextSize
                     )
+                    val fontResourceId = getResourceId(R.styleable.FabOption_label_font, 0)
+                    labelFont = if(fontResourceId == 0){
+                        label.labelFont
+                    } else {
+                        ResourcesCompat.getFont(context, fontResourceId)
+                    }
                     labelBackgroundColor = getColor(
                         R.styleable.FabOption_label_backgroundColor,
                         label.labelBackgroundColor

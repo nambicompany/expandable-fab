@@ -21,6 +21,13 @@
     <attr name="label_textSize" format="dimension"/>
 
     <!--
+        The font of the Label's text. Retrieve this value in the correct form from your resources
+        using: ResourcesCompat.getFont(context, R.font.name_of_font). Usage of this property is
+        preferred over the inherited set/getTypeface methods.
+    -->
+    <attr name="label_font" format="dimension"/>
+
+    <!--
         The color of the Label's background. Usage of this property is preferred over the inherited
         setBackgroundColor method.
     -->
@@ -250,6 +257,7 @@
         <attr name="label_text"/>
         <attr name="label_textColor"/>
         <attr name="label_textSize"/>
+        <attr name="label_font"/>
         <attr name="label_backgroundColor"/>
         <attr name="label_elevation"/>
         <attr name="label_position"/>
@@ -324,6 +332,7 @@
         <attr name="label_text"/>
         <attr name="label_textColor"/>
         <attr name="label_textSize"/>
+        <attr name="label_font"/>
         <attr name="label_backgroundColor"/>
         <attr name="label_elevation"/>
         <attr name="label_position"/>

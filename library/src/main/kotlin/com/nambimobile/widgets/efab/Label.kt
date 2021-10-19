@@ -6,6 +6,7 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.PorterDuff
+import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.util.TypedValue
@@ -75,6 +76,17 @@ class Label : AppCompatTextView {
         set(value) {
             // resources.getDimension already converts SP to PX, so we set the unit to PX below
             setTextSize(TypedValue.COMPLEX_UNIT_PX, value)
+            field = value
+        }
+
+    /**
+     * The font of the Label's text. Retrieve this value in the correct form from your resources
+     * using: ResourcesCompat.getFont(context, R.font.name_of_font). Usage of this property is
+     * preferred over the inherited set/getTypeface methods.
+     * */
+    var labelFont = Typeface.DEFAULT
+        set(value) {
+            typeface = value
             field = value
         }
 
@@ -233,6 +245,7 @@ class Label : AppCompatTextView {
         labelText = labelText
         labelTextColor = labelTextColor
         labelTextSize = labelTextSize
+        labelFont = labelFont
         labelBackgroundColor = labelBackgroundColor
         labelElevation = labelElevation
         position = position
