@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 
 def versionMajor = 1
 def versionMinor = 1
-def versionPatch = 1
+def versionPatch = 2
 
 android {
     compileSdkVersion 30
@@ -39,5 +39,5 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
     implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
 
-    implementation 'com.nambimobile.widgets:expandable-fab:1.1.1'
+    implementation project(':library')
 }
