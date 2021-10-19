@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.OvershootInterpolator
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.widget.ImageViewCompat
@@ -273,10 +274,20 @@ class FabOption : FloatingActionButton {
                 val closingDuration = getString(R.styleable.FabOption_fab_closingAnimationDurationMs)?.toLong()
                     ?: closingAnimationDurationMs
 
+                // In case the drawable is a Vector Drawable, we retrieve it in a
+                // backwards-compatible way. Calling [getDrawable] directly may result in a crash
+                // on some devices, in certain scenarios.
+                val iconResourceId = getResourceId(R.styleable.FabOption_fab_icon, 0)
+                val icon = if(iconResourceId == 0){
+                    null
+                } else {
+                    AppCompatResources.getDrawable(context, iconResourceId)
+                }
+
                 setOptionalProperties(
                     orientation = Orientation.values()[orientationIndex],
                     fabOptionColor = getColor(R.styleable.FabOption_fab_color, fabOptionColor),
-                    fabOptionIcon = getDrawable(R.styleable.FabOption_fab_icon),
+                    fabOptionIcon = icon,
                     fabOptionEnabled = getBoolean(R.styleable.FabOption_fab_enabled, true),
                     openingAnimationDurationMs = openingDuration,
                     closingAnimationDurationMs = closingDuration,

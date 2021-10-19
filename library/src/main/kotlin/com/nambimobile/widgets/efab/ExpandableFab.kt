@@ -8,6 +8,7 @@ import android.graphics.Matrix
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.widget.ImageViewCompat
@@ -70,7 +71,7 @@ class ExpandableFab : FloatingActionButton {
      *
      * Usage of this property is preferred over the inherited set/getImageXXX methods.
      * */
-    var efabIcon = ContextCompat.getDrawable(context, R.drawable.ic_plus_white_24dp)
+    var efabIcon = AppCompatResources.getDrawable(context, R.drawable.ic_plus_white_24dp)
         set(value) {
             this.setImageDrawable(value)
             field = value
@@ -365,10 +366,20 @@ class ExpandableFab : FloatingActionButton {
                 val closingDuration = getString(R.styleable.ExpandableFab_efab_closingAnimationDurationMs)?.toLong()
                     ?: closingAnimationDurationMs
 
+                // In case the drawable is a Vector Drawable, we retrieve it in a
+                // backwards-compatible way. Calling [getDrawable] directly may result in a crash
+                // on some devices, in certain scenarios.
+                val iconResourceId = getResourceId(R.styleable.ExpandableFab_efab_icon, 0)
+                val icon = if(iconResourceId == 0){
+                    null
+                } else {
+                    AppCompatResources.getDrawable(context, iconResourceId)
+                }
+
                 setOptionalProperties(
                     orientation = Orientation.values()[orientationIndex],
                     efabColor = getColor(R.styleable.ExpandableFab_efab_color, efabColor),
-                    efabIcon = getDrawable(R.styleable.ExpandableFab_efab_icon) ?: efabIcon,
+                    efabIcon = icon ?: efabIcon,
                     efabSize = FabSize.values()[efabSizeIndex],
                     efabEnabled = getBoolean(R.styleable.ExpandableFab_efab_enabled, true),
                     iconAnimationRotationDeg = getFloat(R.styleable.ExpandableFab_efab_iconAnimationRotationDeg, iconAnimationRotationDeg),
