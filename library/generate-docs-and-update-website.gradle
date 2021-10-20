@@ -6,13 +6,12 @@ def websiteRootDirectory = "$rootDir/docs"
 
 /**
  * Generates JavaDoc and outputs to $websiteRootDirectory so the library website is auto
- * updated on merge to master. Must be ran with Java 8 or Dokka fails.
+ * updated on merge to master.
  * */
-task generateJavaDocForWebsite(type: dokka.getClass()) {
-    outputFormat = "javadoc"
-    outputDirectory = "$websiteRootDirectory/javadoc/$docVersion"
+task generateJavaDocForWebsite(type: dokkaJavadoc.getClass()) {
+    outputDirectory = new File("$websiteRootDirectory${File.separator}javadoc${File.separator}$docVersion")
     doLast {
-        new File("$websiteRootDirectory/api_doc_versions/${docVersion}.javadoc").createNewFile()
+        new File("$websiteRootDirectory${File.separator}api_doc_versions${File.separator}${docVersion}.javadoc").createNewFile()
     }
 }
 
@@ -20,11 +19,10 @@ task generateJavaDocForWebsite(type: dokka.getClass()) {
  * Generates KotlinDoc and outputs to $websiteRootDirectory so the library website is auto
  * updated on merge to master.
  * */
-task generateKDocForWebsite(type: dokka.getClass()) {
-    outputFormat = "html"
-    outputDirectory = "$websiteRootDirectory/kdoc/$docVersion"
+task generateKDocForWebsite(type: dokkaHtml.getClass()) {
+    outputDirectory = new File("$websiteRootDirectory${File.separator}kdoc${File.separator}$docVersion")
     doLast {
-        new File("$websiteRootDirectory/api_doc_versions/${docVersion}.kdoc").createNewFile()
+        new File("$websiteRootDirectory${File.separator}api_doc_versions${File.separator}${docVersion}.kdoc").createNewFile()
     }
 }
 
@@ -32,31 +30,21 @@ task generateKDocForWebsite(type: dokka.getClass()) {
  * Generates library documentation in all supported formats. Once these changes are merged to
  * master, the library website will be automatically updated.
  *
- * Dokka (the documentation engine for Kotlin) was still in beta as of this release, and thus
- * contains some bugs you may come across while running this Gradle task. The bugs and their
- * solutions are described below.
+ * Dokka (the documentation engine for Kotlin) was still in alpha as of this release, and thus
+ * contains some bugs and is not fully stable. There is a bug in particular that may happen on
+ * Windows PCs and cause this task to fail on subsequent runs if there are running Gradle daemons.
  *
- * (Bug #1): Dokka must be ran with Java 8 when generating JavaDoc variant or else it fails.
- * (Solution #1): Tell Gradle to use Java 8 when running this task (see 'How to Run' below).
- *
- * (Bug #2): After running any Dokka task, subsequent Gradle tasks for this project (assemble,
- * generateDocsAndUpdateWebsite, etc) may yield a FileSystemException on Windows machines.
- * (Solution #2): Run this task without use of a Gradle daemon (or kill the daemon after this
- * task is ran; see 'How to Run' below).
+ * To get around this bug, simply run this command with the '--no-daemon' option.
  *
  * ---------------------
  *
  * How To Run...
  *
  * ... on the Command Line:
- * ./gradlew -Dorg.gradle.java.home=[path_to_java8] --no-daemon clean generateDocsAndUpdateWebsite
- *
- * Replace [path_to_java8] with your local Java 8 installation. Android Studio usually ships
- * with Java 8, so you can specify the Android Studio jre directory (on Windows, this may be
- * something like "C:\Program Files\Android\Android Studio\jre").
+ * ./gradlew --no-daemon clean generateDocsAndUpdateWebsite
  *
  * ... within Android Studio:
- * We recommend not running via AS studio in order to avoid some of the bugs listed above.
+ * We recommend not running via AS studio in order to avoid the bug listed above.
  * */
 task generateDocsAndUpdateWebsite(){
     dependsOn generateJavaDocForWebsite

@@ -12,10 +12,10 @@ apply plugin: 'signing'
  * 4) The Gradle Module Metadata file
  * 5) The Maven POM file
  *
- * NOTE: Because of the issues described in 'generate-docs-and-update-website.gradle', we need to
- * run the 'publish' task without the Gradle Daemon and using Java 8. See the cmd below:
+ * NOTE: Because of the issue described in 'generate-docs-and-update-website.gradle', we need to
+ * run the 'publish' task without the Gradle Daemon. See the cmd below:
  *
- * ./gradlew -Dorg.gradle.java.home=[path-to-java8] --no-daemon clean publish
+ * ./gradlew --no-daemon clean publish
  *
  * Resources:
  * https://docs.gradle.org/current/userguide/publishing_setup.html (starting page of the guide)
@@ -42,13 +42,11 @@ version = mavenVersion
  * Generates documentation in various formats to be later packaged in JARs for maven publishing.
  * To generate docs for the library website, see the 'generate-docs-and-update-website.gradle' file.
  * */
-task generateJavaDocInBuildDir(type: dokka.getClass()) {
-    outputFormat = "javadoc"
-    outputDirectory = javadocOutputDir
+task generateJavaDocInBuildDir(type: dokkaJavadoc.getClass()) {
+    outputDirectory = new File(javadocOutputDir)
 }
-task generateKDocInBuildDir(type: dokka.getClass()) {
-    outputFormat = "html"
-    outputDirectory = kdocOutputDir
+task generateKDocInBuildDir(type: dokkaHtml.getClass()) {
+    outputDirectory = new File(kdocOutputDir)
 }
 
 /** Generate JAR artifacts for the various documentation formats from above, and our source code. **/
@@ -84,7 +82,7 @@ signing {
  * https://developer.android.com/studio/build/maven-publish-plugin
  *
  * To run:
- *./gradlew -Dorg.gradle.java.home=[path_to_java8] --no-daemon clean publish
+ *./gradlew --no-daemon clean publish
  * */
 afterEvaluate {
     publishing {
