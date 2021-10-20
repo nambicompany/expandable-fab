@@ -1,119 +1,152 @@
-<HTML>
-<HEAD>
-<meta charset="UTF-8">
-<title>Overlay - library</title>
-<link rel="stylesheet" href="../../../style.css">
-</HEAD>
-<BODY>
-<a href="../../index.html">library</a>&nbsp;/&nbsp;<a href="../index.html">com.nambimobile.widgets.efab</a>&nbsp;/&nbsp;<a href="./index.html">Overlay</a><br/>
-<br/>
-<h1>Overlay</h1>
-<code><span class="keyword">class </span><span class="identifier">Overlay</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/widget/FrameLayout.html"><span class="identifier">FrameLayout</span></a></code>
-<p>An overlay that will show when an <a href="../-expandable-fab/index.html">ExpandableFab</a> is clicked in order to partially or fully
-obscure the screen's content, allowing the <a href="../-expandable-fab/index.html">ExpandableFab</a> and <a href="../-fab-option/index.html">FabOption</a>s to become more
-apparent.</p>
-<p>Developer Notes:</p>
-<ol><li>If you would like the Overlay to cover the entire screen, layout_width and layout_height must
-both be set to match_parent (assuming the parent ExpandableFabLayout has no size restrictions).</li>
-<li>Overlays must be defined within an <a href="../-expandable-fab-layout/index.html">ExpandableFabLayout</a> to function properly.</li>
-<li>To ensure that Overlays cover screen content but NOT the ExpandableFab widget itself,
-ensure the Overlay is the first child of ExpandableFabLayout via XML, or the first view passed
-to ExpandableFabLayout's addView/addViews methods via code.</li>
-</ol>
-<p>Implementation Notes:</p>
-<ol><li>Since the Kotlin 'internal' modifier translates to 'public' in Java, the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-synthetic/index.html">JvmSynthetic</a>
-annotation is used on those functions and properties to hide them from the published API for
-Java clients. A proper solution to this issue would be a package-private visibility modifier,
-but Kotlin has yet to implement it (https://youtrack.jetbrains.com/issue/KT-29227). Until
-then, the JvmSynthetic annotations should remain in order to present the proper published API
-to both Java &amp; Kotlin clients.</li>
-</ol>
-<p><strong>Since</strong><br/>
-1.0.0</p>
-<h3>Constructors</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="-init-.html">&lt;init&gt;</a></h4>
-</td>
-<td>
-<p>Used to create an Overlay programmatically (do not use the other constructor Overlay(context,
-attributeSet) - it is for use by the Android framework when inflating an Overlay via XML).
-This constructor keeps all optional properties of an Overlay at their default values,
-though you can always change these values after instantiation by using the appropriate
-setter methods (with the exception of <a href="-init-.html#com.nambimobile.widgets.efab.Overlay$<init>(android.content.Context, com.nambimobile.widgets.efab.Orientation)/orientation">orientation</a>, which cannot be changed after
-instantiation).</p>
-<code><span class="identifier">Overlay</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.Overlay$<init>(android.content.Context, com.nambimobile.widgets.efab.Orientation)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">, </span><span class="identifier" id="com.nambimobile.widgets.efab.Overlay$<init>(android.content.Context, com.nambimobile.widgets.efab.Orientation)/orientation">orientation</span><span class="symbol">:</span>&nbsp;<a href="../-orientation/index.html"><span class="identifier">Orientation</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;Orientation.PORTRAIT<span class="symbol">)</span></code>
-<p>Called by the system when creating an Overlay via XML (don't call this directly).
-To create an Overlay programmatically, use the Overlay(context, orientation) constructor.</p>
-<code><span class="identifier">Overlay</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.Overlay$<init>(android.content.Context, android.util.AttributeSet)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">, </span><span class="identifier" id="com.nambimobile.widgets.efab.Overlay$<init>(android.content.Context, android.util.AttributeSet)/attributeSet">attributeSet</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/util/AttributeSet.html"><span class="identifier">AttributeSet</span></a><span class="symbol">)</span></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Properties</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="closing-animation-duration-ms.html">closingAnimationDurationMs</a></h4>
-</td>
-<td>
-<p>The duration (in milliseconds as a positive long) of the animations that will be played
-when this Overlay is being hidden from a visible state (when the ExpandableFab is closing).
-Set to 0L if you don't want closing animations played. Default value is 300L.</p>
-<code><span class="keyword">var </span><span class="identifier">closingAnimationDurationMs</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="opening-animation-duration-ms.html">openingAnimationDurationMs</a></h4>
-</td>
-<td>
-<p>The duration (in milliseconds as a positive long) of the animations that will be played
-when this Overlay is being shown from a hidden state (when the ExpandableFab is opening).
-Set to 0L if you don't want opening animations played. Default value is 300L.</p>
-<code><span class="keyword">var </span><span class="identifier">openingAnimationDurationMs</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="orientation.html">orientation</a></h4>
-</td>
-<td>
-<p>The <a href="../-orientation/index.html">Orientation</a> this Overlay is viewable in. Default value is <a href="../-orientation/-p-o-r-t-r-a-i-t.html">Orientation.PORTRAIT</a>.</p>
-<code><span class="keyword">var </span><span class="identifier">orientation</span><span class="symbol">: </span><a href="../-orientation/index.html"><span class="identifier">Orientation</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="overlay-alpha.html">overlayAlpha</a></h4>
-</td>
-<td>
-<p>The opacity of the overlay as a positive float, where 0 is completely transparent and 1 is
-completely opaque. Default value is 0.78431f.</p>
-<code><span class="keyword">var </span><span class="identifier">overlayAlpha</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="overlay-color.html">overlayColor</a></h4>
-</td>
-<td>
-<p>The color of the overlay. Default value is white.</p>
-<code><span class="keyword">var </span><span class="identifier">overlayColor</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Functions</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="set-on-click-listener.html">setOnClickListener</a></h4>
-</td>
-<td>
-<p>Registers a callback to be invoked when this Overlay is clicked. The default behavior the
-Overlay will be executed before this custom callback.</p>
-<code><span class="keyword">fun </span><span class="identifier">setOnClickListener</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.Overlay$setOnClickListener(android.view.View.OnClickListener)/onClickListener">onClickListener</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/View/OnClickListener.html"><span class="identifier">OnClickListener</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-</tbody>
-</table>
-</BODY>
-</HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>Overlay</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="library::com.nambimobile.widgets.efab/Overlay///PointingToDeclaration//-1887420133">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">library</a>/<a href="../index.html">com.nambimobile.widgets.efab</a>/<a href="index.html">Overlay</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span><span>Overlay</span></span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">class <a href="index.html">Overlay</a> : <a href="https://developer.android.com/reference/kotlin/android/widget/FrameLayout.html">FrameLayout</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">An overlay that will show when an <a href="../-expandable-fab/index.html">ExpandableFab</a> is clicked in order to partially or fully obscure the screen's content, allowing the <a href="../-expandable-fab/index.html">ExpandableFab</a> and <a href="../-fab-option/index.html">FabOption</a>s to become more apparent.</p><p class="paragraph">Developer Notes:</p><ol><li><p class="paragraph">If you would like the Overlay to cover the entire screen, layout_width and layout_height must both be set to match_parent (assuming the parent ExpandableFabLayout has no size restrictions).</p></li><li><p class="paragraph">Overlays must be defined within an <a href="../-expandable-fab-layout/index.html">ExpandableFabLayout</a> to function properly.</p></li><li><p class="paragraph">To ensure that Overlays cover screen content but NOT the ExpandableFab widget itself, ensure the Overlay is the first child of ExpandableFabLayout via XML, or the first view passed to ExpandableFabLayout's addView/addViews methods via code.</p></li></ol><p class="paragraph">Implementation Notes:</p><ol><li><p class="paragraph">Since the Kotlin 'internal' modifier translates to 'public' in Java, the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-synthetic/index.html">JvmSynthetic</a> annotation is used on those functions and properties to hide them from the published API for Java clients. A proper solution to this issue would be a package-private visibility modifier, but Kotlin has yet to implement it (https://youtrack.jetbrains.com/issue/KT-29227). Until then, the JvmSynthetic annotations should remain in order to present the proper published API to both Java & Kotlin clients.</p></li></ol><h4 class="">Since</h4><p class="paragraph">1.0.0</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+            <div class="tabs-section-body">
+              <h2 class="tabbedcontent">Constructors</h2>
+              <div class="table" data-togglable="Constructors"><a data-name="1535998820%2FConstructors%2F-1887420133" anchor-label="Overlay" id="1535998820%2FConstructors%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue TabbedContent">
+                    <div class=""><span class="inline-flex"><a href="-overlay.html">Overlay</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1535998820%2FConstructors%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">fun <a href="-overlay.html">Overlay</a>(context: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>, orientation: <a href="../-orientation/index.html">Orientation</a>? = Orientation.PORTRAIT)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Used to create an Overlay programmatically (do not use the other constructor Overlay(context, attributeSet) - it is for use by the Android framework when inflating an Overlay via XML). This constructor keeps all optional properties of an Overlay at their default values, though you can always change these values after instantiation by using the appropriate setter methods (with the exception of <span data-unresolved-link="com.nambimobile.widgets.efab/Overlay/&amp;lt;init&amp;gt;/#android.content.Context#com.nambimobile.widgets.efab.Orientation?/PointingToCallableParameters(1)/">orientation</span>, which cannot be changed after instantiation).</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="529729141%2FConstructors%2F-1887420133" anchor-label="Overlay" id="529729141%2FConstructors%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue TabbedContent">
+                    <div class=""><span class="inline-flex"><a href="-overlay.html">Overlay</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="529729141%2FConstructors%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">fun <a href="-overlay.html">Overlay</a>(context: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>, attributeSet: <a href="https://developer.android.com/reference/kotlin/android/util/AttributeSet.html">AttributeSet</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Called by the system when creating an Overlay via XML (don't call this directly). To create an Overlay programmatically, use the Overlay(context, orientation) constructor.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="1665223532%2FFunctions%2F-1887420133" anchor-label="setOnClickListener" id="1665223532%2FFunctions%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-on-click-listener.html"><span>set</span><wbr></wbr><span>On</span><wbr></wbr><span>Click</span><wbr></wbr><span><span>Listener</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1665223532%2FFunctions%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="set-on-click-listener.html">setOnClickListener</a>(onClickListener: <a href="https://developer.android.com/reference/kotlin/android/view/View.OnClickListener.html">View.OnClickListener</a>?)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Registers a callback to be invoked when this Overlay is clicked. The default behavior the Overlay will be executed before this custom callback.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="-1894003233%2FProperties%2F-1887420133" anchor-label="closingAnimationDurationMs" id="-1894003233%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="closing-animation-duration-ms.html">closingAnimationDurationMs</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1894003233%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-1894003233%2FProperties%2F-1887420133" anchor-label="closingAnimationDurationMs" id="-1894003233%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="closing-animation-duration-ms.html">closingAnimationDurationMs</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a> = 300L<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1894003233%2FProperties%2F-1887420133" anchor-label="closingAnimationDurationMs" id="-1894003233%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The duration (in milliseconds as a positive long) of the animations that will be played when this Overlay is being hidden from a visible state (when the ExpandableFab is closing). Set to 0L if you don't want closing animations played. Default value is 300L.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1676844546%2FProperties%2F-1887420133" anchor-label="openingAnimationDurationMs" id="1676844546%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="opening-animation-duration-ms.html">openingAnimationDurationMs</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1676844546%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="1676844546%2FProperties%2F-1887420133" anchor-label="openingAnimationDurationMs" id="1676844546%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="opening-animation-duration-ms.html">openingAnimationDurationMs</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a> = 300L<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1676844546%2FProperties%2F-1887420133" anchor-label="openingAnimationDurationMs" id="1676844546%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The duration (in milliseconds as a positive long) of the animations that will be played when this Overlay is being shown from a hidden state (when the ExpandableFab is opening). Set to 0L if you don't want opening animations played. Default value is 300L.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-963378366%2FProperties%2F-1887420133" anchor-label="orientation" id="-963378366%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="orientation.html">orientation</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-963378366%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-963378366%2FProperties%2F-1887420133" anchor-label="orientation" id="-963378366%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="orientation.html">orientation</a>: <a href="../-orientation/index.html">Orientation</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-963378366%2FProperties%2F-1887420133" anchor-label="orientation" id="-963378366%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The <a href="../-orientation/index.html">Orientation</a> this Overlay is viewable in. Default value is <a href="../-orientation/-p-o-r-t-r-a-i-t/index.html">Orientation.PORTRAIT</a>.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1765358554%2FProperties%2F-1887420133" anchor-label="overlayAlpha" id="1765358554%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="overlay-alpha.html">overlayAlpha</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1765358554%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="1765358554%2FProperties%2F-1887420133" anchor-label="overlayAlpha" id="1765358554%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="overlay-alpha.html">overlayAlpha</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a> = 0.78431f<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1765358554%2FProperties%2F-1887420133" anchor-label="overlayAlpha" id="1765358554%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The opacity of the overlay as a positive float, where 0 is completely transparent and 1 is completely opaque. Default value is 0.78431f.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-740024971%2FProperties%2F-1887420133" anchor-label="overlayColor" id="-740024971%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="overlay-color.html">overlayColor</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-740024971%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-740024971%2FProperties%2F-1887420133" anchor-label="overlayColor" id="-740024971%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="overlay-color.html">overlayColor</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-740024971%2FProperties%2F-1887420133" anchor-label="overlayColor" id="-740024971%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The color of the overlay. Default value is white.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

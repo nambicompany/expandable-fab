@@ -16,9 +16,15 @@ Upgrade your ExpandableFab dependency to at least [version] in order to gain acc
 ---
 
 {% for file in site.static_files %}
-{% if file.extname == ".javadoc" %}
+{% if file.name == "v0.javadoc" %}
   {% capture doc_link %}
   {{ site.javadoc_path | relative_url }}/{{ file.basename }}/index.html
+  {% endcapture %}
+  
+  [{{ file.basename }}]({{ doc_link }})
+{% elsif file.extname == ".javadoc" %}
+  {% capture doc_link %}
+  {{ site.javadoc_path | relative_url }}/{{ file.basename }}/com/nambimobile/widgets/efab/package-summary.html
   {% endcapture %}
   
   [{{ file.basename }}]({{ doc_link }})

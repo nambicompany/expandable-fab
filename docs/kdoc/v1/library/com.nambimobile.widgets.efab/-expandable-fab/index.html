@@ -1,249 +1,320 @@
-<HTML>
-<HEAD>
-<meta charset="UTF-8">
-<title>ExpandableFab - library</title>
-<link rel="stylesheet" href="../../../style.css">
-</HEAD>
-<BODY>
-<a href="../../index.html">library</a>&nbsp;/&nbsp;<a href="../index.html">com.nambimobile.widgets.efab</a>&nbsp;/&nbsp;<a href="./index.html">ExpandableFab</a><br/>
-<br/>
-<h1>ExpandableFab</h1>
-<code><span class="keyword">class </span><span class="identifier">ExpandableFab</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FloatingActionButton</span></code>
-<p>The design and behavior of a Floating Action Button which can animate and expand to show
-optional <a href="../-fab-option/index.html">FabOption</a>s when clicked. It's the focal point for the ExpandableFab widget's
-functionality, from an end-user's perspective.</p>
-<p>Developer Notes:</p>
-<ol><li>Layout_width and layout_height should be set to wrap_content, unless you're setting custom
-dimensions.</li>
-<li>ExpandableFabs must be defined within an <a href="../-expandable-fab-layout/index.html">ExpandableFabLayout</a> to function properly.</li>
-<li><a href="#">label.labelText</a> must be non-null for the optional label to show and other label properties
-to take effect.</li>
-</ol>
-<p>Implementation Notes:</p>
-<ol><li>Since the Kotlin 'internal' modifier translates to 'public' in Java, the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-synthetic/index.html">JvmSynthetic</a>
-annotation is used on those functions and properties to hide them from the published API for
-Java clients. A proper solution to this issue would be a package-private visibility modifier,
-but Kotlin has yet to implement it (https://youtrack.jetbrains.com/issue/KT-29227). Until
-then, the JvmSynthetic annotations should remain in order to present the proper published API
-to both Java &amp; Kotlin clients.</li>
-</ol>
-<p><strong>Since</strong><br/>
-1.0.0</p>
-<h3>Constructors</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="-init-.html">&lt;init&gt;</a></h4>
-</td>
-<td>
-<p>Used to create an ExpandableFab programmatically (do not use the other constructor
-ExpandableFab(context, attributeSet) - it is for use by the Android framework when
-inflating an ExpandableFab via XML). This constructor keeps all optional properties of an
-ExpandableFab and its optional label at their default values, though you can always change
-these values after instantiation by using the appropriate setter methods (with the
-exception of <a href="-init-.html#com.nambimobile.widgets.efab.ExpandableFab$<init>(android.content.Context, com.nambimobile.widgets.efab.Orientation)/orientation">orientation</a>, which cannot be changed after instantiation).</p>
-<code><span class="identifier">ExpandableFab</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.ExpandableFab$<init>(android.content.Context, com.nambimobile.widgets.efab.Orientation)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">, </span><span class="identifier" id="com.nambimobile.widgets.efab.ExpandableFab$<init>(android.content.Context, com.nambimobile.widgets.efab.Orientation)/orientation">orientation</span><span class="symbol">:</span>&nbsp;<a href="../-orientation/index.html"><span class="identifier">Orientation</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;Orientation.PORTRAIT<span class="symbol">)</span></code>
-<p>Called by the system when creating an ExpandableFab via XML (don't call this directly).
-To create an ExpandableFab programmatically, use the ExpandableFab(context, orientation)
-constructor.</p>
-<code><span class="identifier">ExpandableFab</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.ExpandableFab$<init>(android.content.Context, android.util.AttributeSet)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">, </span><span class="identifier" id="com.nambimobile.widgets.efab.ExpandableFab$<init>(android.content.Context, android.util.AttributeSet)/attributeSet">attributeSet</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/util/AttributeSet.html"><span class="identifier">AttributeSet</span></a><span class="symbol">)</span></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Properties</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="closing-animation-duration-ms.html">closingAnimationDurationMs</a></h4>
-</td>
-<td>
-<p>The duration (in milliseconds as a positive long) of the ExpandableFab's closing animations.
-Set to 0L if you don't want closing animations played. Default value is 500L.</p>
-<code><span class="keyword">var </span><span class="identifier">closingAnimationDurationMs</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="closing-anticipate-tension.html">closingAnticipateTension</a></h4>
-</td>
-<td>
-<p>The tension (as a positive float) applied on the ExpandableFab's icon to mimic an
-AnticipateInterpolator when it's playing its closing animations. An AnticipateInterpolator
-allows us to have a closing animation where the ExpandableFab's icon will begin rotating
-slightly backwards, before smoothly rotating forward to its default 0 degree rotation.
-Every multiple of 10f will be a full 360 degree rotation backwards. Default value is 2f.</p>
-<code><span class="keyword">var </span><span class="identifier">closingAnticipateTension</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="efab-color.html">efabColor</a></h4>
-</td>
-<td>
-<p>The color of the ExpandableFab, as an integer in the form 0xAARRGGBB.</p>
-<code><span class="keyword">var </span><span class="identifier">efabColor</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="efab-enabled.html">efabEnabled</a></h4>
-</td>
-<td>
-<p>The enabled state of this ExpandableFab and its label. Disabled ExpandableFabs and labels
-will be visually distinct and unclickable. Default value is true (enabled).</p>
-<code><span class="keyword">var </span><span class="identifier">efabEnabled</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="efab-icon.html">efabIcon</a></h4>
-</td>
-<td>
-<p>The drawable to show as the ExpandableFab's icon. Default value is a white plus sign vector
-drawable.</p>
-<code><span class="keyword">var </span><span class="identifier">efabIcon</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/drawable/Drawable.html"><span class="identifier">Drawable</span></a><span class="symbol">?</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="efab-size.html">efabSize</a></h4>
-</td>
-<td>
-<p>The size of this ExpandableFab (NOT its FabOptions. For that, see property <a href="fab-option-size.html">fabOptionSize</a>).
-Must be <a href="../-fab-size/-m-i-n-i.html">FabSize.MINI</a>, <a href="../-fab-size/-n-o-r-m-a-l.html">FabSize.NORMAL</a>, <a href="../-fab-size/-a-u-t-o.html">FabSize.AUTO</a> or <a href="../-fab-size/-c-u-s-t-o-m.html">FabSize.CUSTOM</a>.
-FabSize.CUSTOM should be used when you're setting the size of the ExpandableFab's
-layout_width and layout_height to a custom value manually (when using CUSTOM, make sure to
-also set app:fabCustomSize equal to your custom layout_width/layout_height size and
-app:maxImageSize equal to your icon size in order to ensure your icon is centered
-properly). Default value is <a href="../-fab-size/-n-o-r-m-a-l.html">FabSize.NORMAL</a>.</p>
-<code><span class="keyword">var </span><span class="identifier">efabSize</span><span class="symbol">: </span><a href="../-fab-size/index.html"><span class="identifier">FabSize</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="fab-option-position.html">fabOptionPosition</a></h4>
-</td>
-<td>
-<p>How each FabOption in this orientation will be positioned relative to the previous
-FabOption. Default value is <a href="../-fab-option-position/-a-b-o-v-e.html">FabOptionPosition.ABOVE</a>.</p>
-<code><span class="keyword">var </span><span class="identifier">fabOptionPosition</span><span class="symbol">: </span><a href="../-fab-option-position/index.html"><span class="identifier">FabOptionPosition</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="fab-option-size.html">fabOptionSize</a></h4>
-</td>
-<td>
-<p>The size of each FabOption in this orientation (NOT the size of the ExpandableFab. For that,
-see property <a href="efab-size.html">efabSize</a>). Must be <a href="../-fab-size/-m-i-n-i.html">FabSize.MINI</a>, <a href="../-fab-size/-n-o-r-m-a-l.html">FabSize.NORMAL</a>, <a href="../-fab-size/-a-u-t-o.html">FabSize.AUTO</a> or
-<a href="../-fab-size/-c-u-s-t-o-m.html">FabSize.CUSTOM</a>. FabSize.CUSTOM should be used when you're setting the size of the
-FabOptions' layout_width and layout_height to a custom value manually (when using CUSTOM,
-make sure to also set app:fabCustomSize equal to your custom layout_width/layout_height
-size and app:maxImageSize equal to your icon size in order to ensure your icon is centered
-properly). Default value is <a href="../-fab-size/-m-i-n-i.html">FabSize.MINI</a>.</p>
-<code><span class="keyword">var </span><span class="identifier">fabOptionSize</span><span class="symbol">: </span><a href="../-fab-size/index.html"><span class="identifier">FabSize</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="first-fab-option-margin-px.html">firstFabOptionMarginPx</a></h4>
-</td>
-<td>
-<p>The margin (in pixels as a positive float) between the first FabOption in this orientation
-and the ExpandableFab itself. Depending on the size you set for the ExpandableFab, you may
-want this margin to be different than <a href="successive-fab-option-margin-px.html">successiveFabOptionMarginPx</a>. Default value is 80f.</p>
-<code><span class="keyword">var </span><span class="identifier">firstFabOptionMarginPx</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="icon-animation-rotation-deg.html">iconAnimationRotationDeg</a></h4>
-</td>
-<td>
-<p>A float, in degrees, representing how much the ExpandableFab's icon will rotate when
-animating. When opening, the ExpandableFab will rotate from 0 to this value. When closing,
-the icon will rotate from this value to its initial position of 0. Default value is -135f.</p>
-<code><span class="keyword">var </span><span class="identifier">iconAnimationRotationDeg</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="label.html">label</a></h4>
-</td>
-<td>
-<p>The optional label attached to this ExpandableFab. The label will only be shown when its
-labelText is not null. Default values for the label are as follows:</p>
-<code><span class="keyword">val </span><span class="identifier">label</span><span class="symbol">: </span><a href="../-label/index.html"><span class="identifier">Label</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="opening-animation-duration-ms.html">openingAnimationDurationMs</a></h4>
-</td>
-<td>
-<p>The duration (in milliseconds as a positive long) of the ExpandableFab's opening animations.
-Set to 0L if you don't want opening animations played. Default value is 250L.</p>
-<code><span class="keyword">var </span><span class="identifier">openingAnimationDurationMs</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="orientation.html">orientation</a></h4>
-</td>
-<td>
-<p>The <a href="../-orientation/index.html">Orientation</a> this ExpandableFab is viewable in. Default value is <a href="../-orientation/-p-o-r-t-r-a-i-t.html">Orientation.PORTRAIT</a>.</p>
-<code><span class="keyword">var </span><span class="identifier">orientation</span><span class="symbol">: </span><a href="../-orientation/index.html"><span class="identifier">Orientation</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="successive-fab-option-margin-px.html">successiveFabOptionMarginPx</a></h4>
-</td>
-<td>
-<p>The margin (in pixels as a positive float) between successive FabOptions in this
-ExpandableFab orientation. See <a href="first-fab-option-margin-px.html">firstFabOptionMarginPx</a> if trying to set the margin
-between the first FabOption in this orientation and the ExpandableFab itself. Default value
-is 75f.</p>
-<code><span class="keyword">var </span><span class="identifier">successiveFabOptionMarginPx</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Functions</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="hide.html">hide</a></h4>
-</td>
-<td>
-<p>Hides the ExpandableFab and optional label.</p>
-<code><span class="keyword">fun </span><span class="identifier">hide</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="on-detached-from-window.html">onDetachedFromWindow</a></h4>
-</td>
-<td>
-<p>Called when the view is detached from a window. At this point it no longer has a surface
-for drawing. Stops any animations on the ExpandableFab, as it's no longer on screen.</p>
-<code><span class="keyword">fun </span><span class="identifier">onDetachedFromWindow</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-on-click-listener.html">setOnClickListener</a></h4>
-</td>
-<td>
-<p>Registers a callback to be invoked when this ExpandableFab or its label is clicked. The
-default behavior the ExpandableFab will be executed before this custom callback.</p>
-<code><span class="keyword">fun </span><span class="identifier">setOnClickListener</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.ExpandableFab$setOnClickListener(android.view.View.OnClickListener)/onClickListener">onClickListener</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/View/OnClickListener.html"><span class="identifier">OnClickListener</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="set-size.html">setSize</a></h4>
-</td>
-<td>
-<p>Sets the size of the ExpandableFab. Overridden to ensure we never set the size to be
-<a href="../-fab-size/-c-u-s-t-o-m.html">FabSize.CUSTOM</a>.</p>
-<code><span class="keyword">fun </span><span class="identifier">setSize</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.ExpandableFab$setSize(kotlin.Int)/size">size</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="show.html">show</a></h4>
-</td>
-<td>
-<p>Shows the ExpandableFab and optional label.</p>
-<code><span class="keyword">fun </span><span class="identifier">show</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-</tbody>
-</table>
-</BODY>
-</HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ExpandableFab</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="library::com.nambimobile.widgets.efab/ExpandableFab///PointingToDeclaration//-1887420133">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">library</a>/<a href="../index.html">com.nambimobile.widgets.efab</a>/<a href="index.html">ExpandableFab</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Expandable</span><wbr></wbr><span><span>Fab</span></span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">class <a href="index.html">ExpandableFab</a> : <span data-unresolved-link="com.google.android.material.floatingactionbutton/FloatingActionButton///PointingToDeclaration/">FloatingActionButton</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">The design and behavior of a Floating Action Button which can animate and expand to show optional <a href="../-fab-option/index.html">FabOption</a>s when clicked. It's the focal point for the ExpandableFab widget's functionality, from an end-user's perspective.</p><p class="paragraph">Developer Notes:</p><ol><li><p class="paragraph">Layout_width and layout_height should be set to wrap_content, unless you're setting custom dimensions.</p></li><li><p class="paragraph">ExpandableFabs must be defined within an <a href="../-expandable-fab-layout/index.html">ExpandableFabLayout</a> to function properly.</p></li><li><p class="paragraph">label.labelText must be non-null for the optional label to show and other label properties to take effect.</p></li></ol><p class="paragraph">Implementation Notes:</p><ol><li><p class="paragraph">Since the Kotlin 'internal' modifier translates to 'public' in Java, the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-synthetic/index.html">JvmSynthetic</a> annotation is used on those functions and properties to hide them from the published API for Java clients. A proper solution to this issue would be a package-private visibility modifier, but Kotlin has yet to implement it (https://youtrack.jetbrains.com/issue/KT-29227). Until then, the JvmSynthetic annotations should remain in order to present the proper published API to both Java & Kotlin clients.</p></li></ol><h4 class="">Since</h4><p class="paragraph">1.0.0</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+            <div class="tabs-section-body">
+              <h2 class="tabbedcontent">Constructors</h2>
+              <div class="table" data-togglable="Constructors"><a data-name="-944967382%2FConstructors%2F-1887420133" anchor-label="ExpandableFab" id="-944967382%2FConstructors%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue TabbedContent">
+                    <div class=""><span class="inline-flex"><a href="-expandable-fab.html">ExpandableFab</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-944967382%2FConstructors%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">fun <a href="-expandable-fab.html">ExpandableFab</a>(context: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>, orientation: <a href="../-orientation/index.html">Orientation</a>? = Orientation.PORTRAIT)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Used to create an ExpandableFab programmatically (do not use the other constructor ExpandableFab(context, attributeSet) - it is for use by the Android framework when inflating an ExpandableFab via XML). This constructor keeps all optional properties of an ExpandableFab and its optional label at their default values, though you can always change these values after instantiation by using the appropriate setter methods (with the exception of <span data-unresolved-link="com.nambimobile.widgets.efab/ExpandableFab/&amp;lt;init&amp;gt;/#android.content.Context#com.nambimobile.widgets.efab.Orientation?/PointingToCallableParameters(1)/">orientation</span>, which cannot be changed after instantiation).</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1242380229%2FConstructors%2F-1887420133" anchor-label="ExpandableFab" id="-1242380229%2FConstructors%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue TabbedContent">
+                    <div class=""><span class="inline-flex"><a href="-expandable-fab.html">ExpandableFab</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1242380229%2FConstructors%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">fun <a href="-expandable-fab.html">ExpandableFab</a>(context: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>, attributeSet: <a href="https://developer.android.com/reference/kotlin/android/util/AttributeSet.html">AttributeSet</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Called by the system when creating an ExpandableFab via XML (don't call this directly). To create an ExpandableFab programmatically, use the ExpandableFab(context, orientation) constructor.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="1635488617%2FFunctions%2F-1887420133" anchor-label="hide" id="1635488617%2FFunctions%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="hide.html"><span><span>hide</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1635488617%2FFunctions%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="hide.html">hide</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Hides the ExpandableFab and optional label.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="325443023%2FFunctions%2F-1887420133" anchor-label="setOnClickListener" id="325443023%2FFunctions%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-on-click-listener.html"><span>set</span><wbr></wbr><span>On</span><wbr></wbr><span>Click</span><wbr></wbr><span><span>Listener</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="325443023%2FFunctions%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="set-on-click-listener.html">setOnClickListener</a>(onClickListener: <a href="https://developer.android.com/reference/kotlin/android/view/View.OnClickListener.html">View.OnClickListener</a>?)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Registers a callback to be invoked when this ExpandableFab or its label is clicked. The default behavior the ExpandableFab will be executed before this custom callback.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1328133430%2FFunctions%2F-1887420133" anchor-label="setSize" id="-1328133430%2FFunctions%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-size.html"><span>set</span><wbr></wbr><span><span>Size</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1328133430%2FFunctions%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="set-size.html">setSize</a>(size: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Sets the size of the ExpandableFab. Overridden to ensure we never set the size to be <a href="../-fab-size/-c-u-s-t-o-m/index.html">FabSize.CUSTOM</a>.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-824381938%2FFunctions%2F-1887420133" anchor-label="show" id="-824381938%2FFunctions%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="show.html"><span><span>show</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-824381938%2FFunctions%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="show.html">show</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Shows the ExpandableFab and optional label.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="431298050%2FProperties%2F-1887420133" anchor-label="closingAnimationDurationMs" id="431298050%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="closing-animation-duration-ms.html">closingAnimationDurationMs</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="431298050%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="431298050%2FProperties%2F-1887420133" anchor-label="closingAnimationDurationMs" id="431298050%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="closing-animation-duration-ms.html">closingAnimationDurationMs</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a> = 500L<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="431298050%2FProperties%2F-1887420133" anchor-label="closingAnimationDurationMs" id="431298050%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The duration (in milliseconds as a positive long) of the ExpandableFab's closing animations. Set to 0L if you don't want closing animations played. Default value is 500L.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="215579000%2FProperties%2F-1887420133" anchor-label="closingAnticipateTension" id="215579000%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="closing-anticipate-tension.html">closingAnticipateTension</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="215579000%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="215579000%2FProperties%2F-1887420133" anchor-label="closingAnticipateTension" id="215579000%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="closing-anticipate-tension.html">closingAnticipateTension</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a> = 2f<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="215579000%2FProperties%2F-1887420133" anchor-label="closingAnticipateTension" id="215579000%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The tension (as a positive float) applied on the ExpandableFab's icon to mimic an AnticipateInterpolator when it's playing its closing animations. An AnticipateInterpolator allows us to have a closing animation where the ExpandableFab's icon will begin rotating slightly backwards, before smoothly rotating forward to its default 0 degree rotation. Every multiple of 10f will be a full 360 degree rotation backwards. Default value is 2f.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-7182098%2FProperties%2F-1887420133" anchor-label="efabColor" id="-7182098%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="efab-color.html">efabColor</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-7182098%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-7182098%2FProperties%2F-1887420133" anchor-label="efabColor" id="-7182098%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="efab-color.html">efabColor</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-7182098%2FProperties%2F-1887420133" anchor-label="efabColor" id="-7182098%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The color of the ExpandableFab, as an integer in the form 0xAARRGGBB.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="133006800%2FProperties%2F-1887420133" anchor-label="efabEnabled" id="133006800%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="efab-enabled.html">efabEnabled</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="133006800%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="133006800%2FProperties%2F-1887420133" anchor-label="efabEnabled" id="133006800%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="efab-enabled.html">efabEnabled</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a> = true<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="133006800%2FProperties%2F-1887420133" anchor-label="efabEnabled" id="133006800%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The enabled state of this ExpandableFab and its label. Disabled ExpandableFabs and labels will be visually distinct and unclickable. Default value is true (enabled).</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1152486320%2FProperties%2F-1887420133" anchor-label="efabIcon" id="1152486320%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="efab-icon.html">efabIcon</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1152486320%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="1152486320%2FProperties%2F-1887420133" anchor-label="efabIcon" id="1152486320%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="efab-icon.html">efabIcon</a>: <a href="https://developer.android.com/reference/kotlin/android/graphics/drawable/Drawable.html">Drawable</a>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1152486320%2FProperties%2F-1887420133" anchor-label="efabIcon" id="1152486320%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The drawable to show as the ExpandableFab's icon. Default value is a white plus sign vector drawable.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-326209240%2FProperties%2F-1887420133" anchor-label="efabSize" id="-326209240%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="efab-size.html">efabSize</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-326209240%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-326209240%2FProperties%2F-1887420133" anchor-label="efabSize" id="-326209240%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="efab-size.html">efabSize</a>: <a href="../-fab-size/index.html">FabSize</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-326209240%2FProperties%2F-1887420133" anchor-label="efabSize" id="-326209240%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The size of this ExpandableFab (NOT its FabOptions. For that, see property <a href="fab-option-size.html">fabOptionSize</a>). Must be <a href="../-fab-size/-m-i-n-i/index.html">FabSize.MINI</a>, <a href="../-fab-size/-n-o-r-m-a-l/index.html">FabSize.NORMAL</a>, <a href="../-fab-size/-a-u-t-o/index.html">FabSize.AUTO</a> or <a href="../-fab-size/-c-u-s-t-o-m/index.html">FabSize.CUSTOM</a>. FabSize.CUSTOM should be used when you're setting the size of the ExpandableFab's layout_width and layout_height to a custom value manually (when using CUSTOM, make sure to also set app:fabCustomSize equal to your custom layout_width/layout_height size and app:maxImageSize equal to your icon size in order to ensure your icon is centered properly). Default value is <a href="../-fab-size/-n-o-r-m-a-l/index.html">FabSize.NORMAL</a>.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1071062070%2FProperties%2F-1887420133" anchor-label="fabOptionPosition" id="-1071062070%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="fab-option-position.html">fabOptionPosition</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1071062070%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-1071062070%2FProperties%2F-1887420133" anchor-label="fabOptionPosition" id="-1071062070%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="fab-option-position.html">fabOptionPosition</a>: <a href="../-fab-option-position/index.html">FabOptionPosition</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1071062070%2FProperties%2F-1887420133" anchor-label="fabOptionPosition" id="-1071062070%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">How each FabOption in this orientation will be positioned relative to the previous FabOption. Default value is <a href="../-fab-option-position/-a-b-o-v-e/index.html">FabOptionPosition.ABOVE</a>.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="219839218%2FProperties%2F-1887420133" anchor-label="fabOptionSize" id="219839218%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="fab-option-size.html">fabOptionSize</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="219839218%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="219839218%2FProperties%2F-1887420133" anchor-label="fabOptionSize" id="219839218%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="fab-option-size.html">fabOptionSize</a>: <a href="../-fab-size/index.html">FabSize</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="219839218%2FProperties%2F-1887420133" anchor-label="fabOptionSize" id="219839218%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The size of each FabOption in this orientation (NOT the size of the ExpandableFab. For that, see property <a href="efab-size.html">efabSize</a>). Must be <a href="../-fab-size/-m-i-n-i/index.html">FabSize.MINI</a>, <a href="../-fab-size/-n-o-r-m-a-l/index.html">FabSize.NORMAL</a>, <a href="../-fab-size/-a-u-t-o/index.html">FabSize.AUTO</a> or <a href="../-fab-size/-c-u-s-t-o-m/index.html">FabSize.CUSTOM</a>. FabSize.CUSTOM should be used when you're setting the size of the FabOptions' layout_width and layout_height to a custom value manually (when using CUSTOM, make sure to also set app:fabCustomSize equal to your custom layout_width/layout_height size and app:maxImageSize equal to your icon size in order to ensure your icon is centered properly). Default value is <a href="../-fab-size/-m-i-n-i/index.html">FabSize.MINI</a>.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="601428777%2FProperties%2F-1887420133" anchor-label="firstFabOptionMarginPx" id="601428777%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="first-fab-option-margin-px.html">firstFabOptionMarginPx</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="601428777%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="601428777%2FProperties%2F-1887420133" anchor-label="firstFabOptionMarginPx" id="601428777%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="first-fab-option-margin-px.html">firstFabOptionMarginPx</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a> = 80f<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="601428777%2FProperties%2F-1887420133" anchor-label="firstFabOptionMarginPx" id="601428777%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The margin (in pixels as a positive float) between the first FabOption in this orientation and the ExpandableFab itself. Depending on the size you set for the ExpandableFab, you may want this margin to be different than <a href="successive-fab-option-margin-px.html">successiveFabOptionMarginPx</a>. Default value is 80f.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1812673938%2FProperties%2F-1887420133" anchor-label="iconAnimationRotationDeg" id="-1812673938%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="icon-animation-rotation-deg.html">iconAnimationRotationDeg</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1812673938%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-1812673938%2FProperties%2F-1887420133" anchor-label="iconAnimationRotationDeg" id="-1812673938%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="icon-animation-rotation-deg.html">iconAnimationRotationDeg</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1812673938%2FProperties%2F-1887420133" anchor-label="iconAnimationRotationDeg" id="-1812673938%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">A float, in degrees, representing how much the ExpandableFab's icon will rotate when animating. When opening, the ExpandableFab will rotate from 0 to this value. When closing, the icon will rotate from this value to its initial position of 0. Default value is -135f.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-185452965%2FProperties%2F-1887420133" anchor-label="label" id="-185452965%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="label.html">label</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-185452965%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-185452965%2FProperties%2F-1887420133" anchor-label="label" id="-185452965%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">val <a href="label.html">label</a>: <a href="../-label/index.html">Label</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-185452965%2FProperties%2F-1887420133" anchor-label="label" id="-185452965%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The optional label attached to this ExpandableFab. The label will only be shown when its labelText is not null. Default values for the label are as follows:</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-292821467%2FProperties%2F-1887420133" anchor-label="openingAnimationDurationMs" id="-292821467%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="opening-animation-duration-ms.html">openingAnimationDurationMs</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-292821467%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-292821467%2FProperties%2F-1887420133" anchor-label="openingAnimationDurationMs" id="-292821467%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="opening-animation-duration-ms.html">openingAnimationDurationMs</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a> = 250L<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-292821467%2FProperties%2F-1887420133" anchor-label="openingAnimationDurationMs" id="-292821467%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The duration (in milliseconds as a positive long) of the ExpandableFab's opening animations. Set to 0L if you don't want opening animations played. Default value is 250L.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="2031475071%2FProperties%2F-1887420133" anchor-label="orientation" id="2031475071%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="orientation.html">orientation</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2031475071%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="2031475071%2FProperties%2F-1887420133" anchor-label="orientation" id="2031475071%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="orientation.html">orientation</a>: <a href="../-orientation/index.html">Orientation</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="2031475071%2FProperties%2F-1887420133" anchor-label="orientation" id="2031475071%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The <a href="../-orientation/index.html">Orientation</a> this ExpandableFab is viewable in. Default value is <a href="../-orientation/-p-o-r-t-r-a-i-t/index.html">Orientation.PORTRAIT</a>.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-24117614%2FProperties%2F-1887420133" anchor-label="successiveFabOptionMarginPx" id="-24117614%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="successive-fab-option-margin-px.html">successiveFabOptionMarginPx</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-24117614%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-24117614%2FProperties%2F-1887420133" anchor-label="successiveFabOptionMarginPx" id="-24117614%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="successive-fab-option-margin-px.html">successiveFabOptionMarginPx</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a> = 75f<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-24117614%2FProperties%2F-1887420133" anchor-label="successiveFabOptionMarginPx" id="-24117614%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The margin (in pixels as a positive float) between successive FabOptions in this ExpandableFab orientation. See <a href="first-fab-option-margin-px.html">firstFabOptionMarginPx</a> if trying to set the margin between the first FabOption in this orientation and the ExpandableFab itself. Default value is 75f.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

@@ -1,112 +1,209 @@
-<HTML>
-<HEAD>
-<meta charset="UTF-8">
-<title>com.nambimobile.widgets.efab - library</title>
-<link rel="stylesheet" href="../../style.css">
-</HEAD>
-<BODY>
-<a href="../index.html">library</a>&nbsp;/&nbsp;<a href="./index.html">com.nambimobile.widgets.efab</a><br/>
-<br/>
-<h2>Package com.nambimobile.widgets.efab</h2>
-<h3>Types</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="-expandable-fab/index.html">ExpandableFab</a></h4>
-</td>
-<td>
-<p>The design and behavior of a Floating Action Button which can animate and expand to show
-optional <a href="-fab-option/index.html">FabOption</a>s when clicked. It's the focal point for the ExpandableFab widget's
-functionality, from an end-user's perspective.</p>
-<code><span class="keyword">class </span><span class="identifier">ExpandableFab</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FloatingActionButton</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-expandable-fab-layout/index.html">ExpandableFabLayout</a></h4>
-</td>
-<td>
-<p>The container and controller for all children views of the ExpandableFab widget (Overlay,
-ExpandableFab, FabOption, Label). The ExpandableFabLayout handles the bulk of the functionality
-for the ExpandableFab widget as a whole (from coordinating opening and closing animations to
-screen orientation changes, etc). See below for an example on how to easily set up the
-ExpandableFab widget using the ExpandableFabLayout as the containing ViewGroup.</p>
-<code><span class="keyword">class </span><span class="identifier">ExpandableFabLayout</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CoordinatorLayout</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-fab-option/index.html">FabOption</a></h4>
-</td>
-<td>
-<p>The design and behavior of a single option within an <a href="-expandable-fab/index.html">ExpandableFab</a>.</p>
-<code><span class="keyword">class </span><span class="identifier">FabOption</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FloatingActionButton</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-fab-option-position/index.html">FabOptionPosition</a></h4>
-</td>
-<td>
-<p>The legal positions of FabOptions, in relation to the previous FabOption in an orientation.
-By default, FabOptions are positioned <a href="-fab-option-position/-a-b-o-v-e.html">ABOVE</a> the previous FabOption in an orientation.</p>
-<code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">FabOptionPosition</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-fab-size/index.html">FabSize</a></h4>
-</td>
-<td>
-<p>The legal sizes of ExpandableFabs and FabOptions.</p>
-<code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">FabSize</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-label/index.html">Label</a></h4>
-</td>
-<td>
-<p>A label of text attached to a view of the ExpandableFab widget.</p>
-<code><span class="keyword">class </span><span class="identifier">Label</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AppCompatTextView</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-label-position/index.html">LabelPosition</a></h4>
-</td>
-<td>
-<p>The legal positions of Labels, in relation to the view they're attached to.
-By default, labels are positioned to the <a href="-label-position/-l-e-f-t.html">LEFT</a> of the view they're attached to.</p>
-<code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">LabelPosition</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-orientation/index.html">Orientation</a></h4>
-</td>
-<td>
-<p>The screen orientations that the views of this widget can be in. If you only set a single
-ExpandableFab widget, it will automatically be used for both portrait and landscape orientations.</p>
-<code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">Orientation</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-orientation-configuration/index.html">OrientationConfiguration</a></h4>
-</td>
-<td>
-<p>Holder for all the views of an ExpandableFab widget in a specific <a href="-orientation/index.html">Orientation</a>.
-Not meant to be instantiated by clients, as an instance can be retrieved via
-<a href="-expandable-fab-layout/portrait-configuration.html">ExpandableFabLayout.portraitConfiguration</a> or <a href="-expandable-fab-layout/landscape-configuration.html">ExpandableFabLayout.landscapeConfiguration</a>.
-Values for the views will only be populated after they are added through calls to
-ExpandableFabLayout's addView methods (or after they're defined via XML).</p>
-<code><span class="keyword">class </span><span class="identifier">OrientationConfiguration</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="-overlay/index.html">Overlay</a></h4>
-</td>
-<td>
-<p>An overlay that will show when an <a href="-expandable-fab/index.html">ExpandableFab</a> is clicked in order to partially or fully
-obscure the screen's content, allowing the <a href="-expandable-fab/index.html">ExpandableFab</a> and <a href="-fab-option/index.html">FabOption</a>s to become more
-apparent.</p>
-<code><span class="keyword">class </span><span class="identifier">Overlay</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/widget/FrameLayout.html"><span class="identifier">FrameLayout</span></a></code></td>
-</tr>
-</tbody>
-</table>
-</BODY>
-</HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>com.nambimobile.widgets.efab</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script><script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../styles/style.css" rel="Stylesheet"><link href="../../styles/logo-styles.css" rel="Stylesheet"><link href="../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="library::com.nambimobile.widgets.efab////PointingToDeclaration//-1887420133">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../index.html">library</a>/<a href="index.html">com.nambimobile.widgets.efab</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span><span>Package</span></span> <span>com.</span><wbr></wbr><span>nambimobile.</span><wbr></wbr><span>widgets.</span><wbr></wbr><span>efab</span></h1>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button></div>
+            <div class="tabs-section-body">
+              <h2 class="">Types</h2>
+              <div class="table" data-togglable="Types"><a data-name="-1535869036%2FClasslikes%2F-1887420133" anchor-label="ExpandableFab" id="-1535869036%2FClasslikes%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-expandable-fab/index.html"><span>Expandable</span><wbr></wbr><span><span>Fab</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1535869036%2FClasslikes%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">class <a href="-expandable-fab/index.html">ExpandableFab</a> : <span data-unresolved-link="com.google.android.material.floatingactionbutton/FloatingActionButton///PointingToDeclaration/">FloatingActionButton</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">The design and behavior of a Floating Action Button which can animate and expand to show optional <a href="-fab-option/index.html">FabOption</a>s when clicked. It's the focal point for the ExpandableFab widget's functionality, from an end-user's perspective.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-638670518%2FClasslikes%2F-1887420133" anchor-label="ExpandableFabLayout" id="-638670518%2FClasslikes%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-expandable-fab-layout/index.html"><span>Expandable</span><wbr></wbr><span>Fab</span><wbr></wbr><span><span>Layout</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-638670518%2FClasslikes%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">class <a href="-expandable-fab-layout/index.html">ExpandableFabLayout</a> : <a href="https://developer.android.com/reference/kotlin/androidx/coordinatorlayout/widget/CoordinatorLayout.html">CoordinatorLayout</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">The container and controller for all children views of the ExpandableFab widget (Overlay, ExpandableFab, FabOption, Label). The ExpandableFabLayout handles the bulk of the functionality for the ExpandableFab widget as a whole (from coordinating opening and closing animations to screen orientation changes, etc). See below for an example on how to easily set up the ExpandableFab widget using the ExpandableFabLayout as the containing ViewGroup.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1482906571%2FClasslikes%2F-1887420133" anchor-label="FabOption" id="1482906571%2FClasslikes%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-fab-option/index.html"><span>Fab</span><wbr></wbr><span><span>Option</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1482906571%2FClasslikes%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">class <a href="-fab-option/index.html">FabOption</a> : <span data-unresolved-link="com.google.android.material.floatingactionbutton/FloatingActionButton///PointingToDeclaration/">FloatingActionButton</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">The design and behavior of a single option within an <a href="-expandable-fab/index.html">ExpandableFab</a>.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-2048165726%2FClasslikes%2F-1887420133" anchor-label="FabOptionPosition" id="-2048165726%2FClasslikes%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-fab-option-position/index.html"><span>Fab</span><wbr></wbr><span>Option</span><wbr></wbr><span><span>Position</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2048165726%2FClasslikes%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">enum <a href="-fab-option-position/index.html">FabOptionPosition</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a>&lt;<a href="-fab-option-position/index.html">FabOptionPosition</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">The legal positions of FabOptions, in relation to the previous FabOption in an orientation. By default, FabOptions are positioned <a href="-fab-option-position/-a-b-o-v-e/index.html">ABOVE</a> the previous FabOption in an orientation.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-324490881%2FClasslikes%2F-1887420133" anchor-label="FabSize" id="-324490881%2FClasslikes%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-fab-size/index.html"><span>Fab</span><wbr></wbr><span><span>Size</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-324490881%2FClasslikes%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">enum <a href="-fab-size/index.html">FabSize</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a>&lt;<a href="-fab-size/index.html">FabSize</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">The legal sizes of ExpandableFabs and FabOptions.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="80363827%2FClasslikes%2F-1887420133" anchor-label="Label" id="80363827%2FClasslikes%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-label/index.html"><span><span>Label</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="80363827%2FClasslikes%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">class <a href="-label/index.html">Label</a> : <a href="https://developer.android.com/reference/kotlin/androidx/appcompat/widget/AppCompatTextView.html">AppCompatTextView</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">A label of text attached to a view of the ExpandableFab widget.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-546671094%2FClasslikes%2F-1887420133" anchor-label="LabelPosition" id="-546671094%2FClasslikes%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-label-position/index.html"><span>Label</span><wbr></wbr><span><span>Position</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-546671094%2FClasslikes%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">enum <a href="-label-position/index.html">LabelPosition</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a>&lt;<a href="-label-position/index.html">LabelPosition</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">The legal positions of Labels, in relation to the view they're attached to. By default, labels are positioned to the <a href="-label-position/-l-e-f-t/index.html">LEFT</a> of the view they're attached to.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1350891177%2FClasslikes%2F-1887420133" anchor-label="Orientation" id="-1350891177%2FClasslikes%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-orientation/index.html"><span><span>Orientation</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1350891177%2FClasslikes%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">enum <a href="-orientation/index.html">Orientation</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a>&lt;<a href="-orientation/index.html">Orientation</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">The screen orientations that the views of this widget can be in. If you only set a single ExpandableFab widget, it will automatically be used for both portrait and landscape orientations.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1805240501%2FClasslikes%2F-1887420133" anchor-label="OrientationConfiguration" id="1805240501%2FClasslikes%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-orientation-configuration/index.html"><span>Orientation</span><wbr></wbr><span><span>Configuration</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1805240501%2FClasslikes%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">class <a href="-orientation-configuration/index.html">OrientationConfiguration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Holder for all the views of an ExpandableFab widget in a specific <a href="-orientation/index.html">Orientation</a>. Not meant to be instantiated by clients, as an instance can be retrieved via <a href="-expandable-fab-layout/portrait-configuration.html">ExpandableFabLayout.portraitConfiguration</a> or <a href="-expandable-fab-layout/landscape-configuration.html">ExpandableFabLayout.landscapeConfiguration</a>. Values for the views will only be populated after they are added through calls to ExpandableFabLayout's addView methods (or after they're defined via XML).</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-827787817%2FClasslikes%2F-1887420133" anchor-label="Overlay" id="-827787817%2FClasslikes%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-overlay/index.html"><span><span>Overlay</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-827787817%2FClasslikes%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">class <a href="-overlay/index.html">Overlay</a> : <a href="https://developer.android.com/reference/kotlin/android/widget/FrameLayout.html">FrameLayout</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">An overlay that will show when an <a href="-expandable-fab/index.html">ExpandableFab</a> is clicked in order to partially or fully obscure the screen's content, allowing the <a href="-expandable-fab/index.html">ExpandableFab</a> and <a href="-fab-option/index.html">FabOption</a>s to become more apparent.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

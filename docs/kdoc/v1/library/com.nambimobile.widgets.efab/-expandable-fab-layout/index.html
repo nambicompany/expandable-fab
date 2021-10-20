@@ -1,165 +1,302 @@
-<HTML>
-<HEAD>
-<meta charset="UTF-8">
-<title>ExpandableFabLayout - library</title>
-<link rel="stylesheet" href="../../../style.css">
-</HEAD>
-<BODY>
-<a href="../../index.html">library</a>&nbsp;/&nbsp;<a href="../index.html">com.nambimobile.widgets.efab</a>&nbsp;/&nbsp;<a href="./index.html">ExpandableFabLayout</a><br/>
-<br/>
-<h1>ExpandableFabLayout</h1>
-<code><span class="keyword">class </span><span class="identifier">ExpandableFabLayout</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CoordinatorLayout</span></code>
-<p>The container and controller for all children views of the ExpandableFab widget (Overlay,
-ExpandableFab, FabOption, Label). The ExpandableFabLayout handles the bulk of the functionality
-for the ExpandableFab widget as a whole (from coordinating opening and closing animations to
-screen orientation changes, etc). See below for an example on how to easily set up the
-ExpandableFab widget using the ExpandableFabLayout as the containing ViewGroup.</p>
-<p>Protip: If you only set a single ExpandableFab widget, it will automatically be used for both
-portrait and landscape orientations. No need to set duplicate views if you would like the same
-widget in both orientations. If you would like two different widgets for portrait and
-landscape however, you can do so by explicitly defining different orientations for the
-different sets of widget views. In the example below we don't set orientation for any of the
-views, so they default to 'portrait'. However, since we didn't explicitly set landscape views,
-the widget will actually be used for both portrait <em>and</em> landscape.</p>
-<p>ExpandableFab widget Example via XML:</p>
-<p>&lt;com.nambimobile.widgets.efab.ExpandableFabLayout
-android:layout_width="match_parent"
-android:layout_height="match_parent"&gt;</p>
-<p>&lt;com.nambimobile.widgets.efab.Overlay
-android:layout_width="match_parent"
-android:layout_height="match_parent"/&gt;</p>
-<p>&lt;com.nambimobile.widgets.efab.ExpandableFab
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_gravity="bottom|end"
-android:layout_marginBottom="@dimen/ui_margin_medium"
-android:layout_marginEnd="@dimen/ui_margin_medium"
-android:layout_marginRight="@dimen/ui_margin_medium"/&gt;</p>
-<p>&lt;com.nambimobile.widgets.efab.FabOption
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"/&gt;</p>
-<p>&lt;/com.nambimobile.widgets.efab.ExpandableFabLayout&gt;</p>
-<p>Developer Notes:</p>
-<ol><li>The ExpandableFabLayout should be given a layout_width and layout_height of match_parent,
-and it should be a child of a ViewGroup that has access to draw over the full screen as well.
-This is necessary as some views of the widget (like the <a href="../-overlay/index.html">Overlay</a>) may need the ability to draw
-over the full screen. Setting the dimensions as such will not impede the viewability,
-clickability or focusability of any other views in your layout.</li>
-</ol>
-<p>Implementation Notes:</p>
-<ol><li>Since the Kotlin 'internal' modifier translates to 'public' in Java, the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-synthetic/index.html">JvmSynthetic</a>
-annotation is used on those functions and properties to hide them from the published API for
-Java clients. A proper solution to this issue would be a package-private visibility modifier,
-but Kotlin has yet to implement it (https://youtrack.jetbrains.com/issue/KT-29227). Until
-then, the JvmSynthetic annotations should remain in order to present the proper published API
-to both Java &amp; Kotlin clients.</li>
-</ol>
-<p><strong>Since</strong><br/>
-1.0.0</p>
-<h3>Constructors</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="-init-.html">&lt;init&gt;</a></h4>
-</td>
-<td>
-<p>Used to create an ExpandableFabLayout programmatically (do not use the other constructor
-ExpandableFabLayout(context, attributeSet) - it is for use by the Android framework when
-inflating an ExpandableFabLayout via XML).</p>
-<code><span class="identifier">ExpandableFabLayout</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.ExpandableFabLayout$<init>(android.content.Context)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">)</span></code>
-<p>Called by the system when creating an ExpandableFabLayout via XML (don't call this directly).
-To create an ExpandableFabLayout programmatically, use the ExpandableFabLayout(context)
-constructor.</p>
-<code><span class="identifier">ExpandableFabLayout</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.ExpandableFabLayout$<init>(android.content.Context, android.util.AttributeSet)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">, </span><span class="identifier" id="com.nambimobile.widgets.efab.ExpandableFabLayout$<init>(android.content.Context, android.util.AttributeSet)/attributeSet">attributeSet</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/util/AttributeSet.html"><span class="identifier">AttributeSet</span></a><span class="symbol">)</span></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Properties</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="landscape-configuration.html">landscapeConfiguration</a></h4>
-</td>
-<td>
-<p>A holder for all the views of the ExpandableFab widget declared in the landscape screen
-orientation. Values for the views will only be populated after they are added through calls
-to ExpandableFabLayout's addView methods (or after they're defined via XML).</p>
-<code><span class="keyword">var </span><span class="identifier">landscapeConfiguration</span><span class="symbol">: </span><a href="../-orientation-configuration/index.html"><span class="identifier">OrientationConfiguration</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="portrait-configuration.html">portraitConfiguration</a></h4>
-</td>
-<td>
-<p>A holder for all the views of the ExpandableFab widget declared in the portrait screen
-orientation. Values for the views will only be populated after they are added through calls
-to ExpandableFabLayout's addView methods (or after they're defined via XML).</p>
-<code><span class="keyword">var </span><span class="identifier">portraitConfiguration</span><span class="symbol">: </span><a href="../-orientation-configuration/index.html"><span class="identifier">OrientationConfiguration</span></a></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Functions</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="add-view.html">addView</a></h4>
-</td>
-<td>
-<p>Adds a child view with the specified layout parameters to the ExpandableFabLayout.</p>
-<code><span class="keyword">fun </span><span class="identifier">addView</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.ExpandableFabLayout$addView(android.view.View, kotlin.Int, android.view.ViewGroup.LayoutParams)/child">child</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="com.nambimobile.widgets.efab.ExpandableFabLayout$addView(android.view.View, kotlin.Int, android.view.ViewGroup.LayoutParams)/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="com.nambimobile.widgets.efab.ExpandableFabLayout$addView(android.view.View, kotlin.Int, android.view.ViewGroup.LayoutParams)/params">params</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/ViewGroup/LayoutParams.html"><span class="identifier">LayoutParams</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="add-views.html">addViews</a></h4>
-</td>
-<td>
-<p>Convenience method for adding multiple <a href="add-views.html#com.nambimobile.widgets.efab.ExpandableFabLayout$addViews(kotlin.Array((android.view.View)))/children">children</a> views to the ExpandableFabLayout at once,
-programmatically. Ensure your children views are of type Overlay, ExpandableFab or FabOption
-only.</p>
-<code><span class="keyword">fun </span><span class="identifier">addViews</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="com.nambimobile.widgets.efab.ExpandableFabLayout$addViews(kotlin.Array((android.view.View)))/children">children</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/View.html"><span class="identifier">View</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="close.html">close</a></h4>
-</td>
-<td>
-<p>Attempts to close the ExpandableFab, playing the appropriate animations in the process. If
-the ExpandableFab is not in a position to close (it's still playing its opening
-animations), it will remind itself to close once it is able.</p>
-<code><span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="get-current-configuration.html">getCurrentConfiguration</a></h4>
-</td>
-<td>
-<p>Returns the OrientationConfiguration showing for the current screen orientation.
-An OrientationConfiguration is just a holder for all the views of an ExpandableFab widget
-in a specific <a href="../-orientation/index.html">Orientation</a>.</p>
-<code><span class="keyword">fun </span><span class="identifier">getCurrentConfiguration</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-orientation-configuration/index.html"><span class="identifier">OrientationConfiguration</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="is-open.html">isOpen</a></h4>
-</td>
-<td>
-<p>Returns true if the ExpandableFab is currently open (any attached Overlay, FabOption and
-Labels are visible and all animations are done).</p>
-<code><span class="keyword">fun </span><span class="identifier">isOpen</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="remove-all-views.html">removeAllViews</a></h4>
-</td>
-<td>
-<p>Removes all child views in both portrait and landscape orientation from the
-ExpandableFabLayout.</p>
-<code><span class="keyword">fun </span><span class="identifier">removeAllViews</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
-</tr>
-</tbody>
-</table>
-</BODY>
-</HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ExpandableFabLayout</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="library::com.nambimobile.widgets.efab/ExpandableFabLayout///PointingToDeclaration//-1887420133">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">library</a>/<a href="../index.html">com.nambimobile.widgets.efab</a>/<a href="index.html">ExpandableFabLayout</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Expandable</span><wbr></wbr><span>Fab</span><wbr></wbr><span><span>Layout</span></span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">class <a href="index.html">ExpandableFabLayout</a> : <a href="https://developer.android.com/reference/kotlin/androidx/coordinatorlayout/widget/CoordinatorLayout.html">CoordinatorLayout</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">The container and controller for all children views of the ExpandableFab widget (Overlay, ExpandableFab, FabOption, Label). The ExpandableFabLayout handles the bulk of the functionality for the ExpandableFab widget as a whole (from coordinating opening and closing animations to screen orientation changes, etc). See below for an example on how to easily set up the ExpandableFab widget using the ExpandableFabLayout as the containing ViewGroup.</p><p class="paragraph">Protip: If you only set a single ExpandableFab widget, it will automatically be used for both portrait and landscape orientations. No need to set duplicate views if you would like the same widget in both orientations. If you would like two different widgets for portrait and landscape however, you can do so by explicitly defining different orientations for the different sets of widget views. In the example below we don't set orientation for any of the views, so they default to 'portrait'. However, since we didn't explicitly set landscape views, the widget will actually be used for both portrait <i>and</i> landscape.</p><p class="paragraph">ExpandableFab widget Example via XML:</p><p class="paragraph"></p><p class="paragraph"></p><p class="paragraph"></p><p class="paragraph"></p><p class="paragraph"></p><p class="paragraph">Developer Notes:</p><ol><li><p class="paragraph">The ExpandableFabLayout should be given a layout_width and layout_height of match_parent, and it should be a child of a ViewGroup that has access to draw over the full screen as well. This is necessary as some views of the widget (like the <a href="../-overlay/index.html">Overlay</a>) may need the ability to draw over the full screen. Setting the dimensions as such will not impede the viewability, clickability or focusability of any other views in your layout.</p></li></ol><p class="paragraph">Implementation Notes:</p><ol><li><p class="paragraph">Since the Kotlin 'internal' modifier translates to 'public' in Java, the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-synthetic/index.html">JvmSynthetic</a> annotation is used on those functions and properties to hide them from the published API for Java clients. A proper solution to this issue would be a package-private visibility modifier, but Kotlin has yet to implement it (https://youtrack.jetbrains.com/issue/KT-29227). Until then, the JvmSynthetic annotations should remain in order to present the proper published API to both Java & Kotlin clients.</p></li></ol><h4 class="">Since</h4><p class="paragraph">1.0.0</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+            <div class="tabs-section-body">
+              <h2 class="tabbedcontent">Constructors</h2>
+              <div class="table" data-togglable="Constructors"><a data-name="-1812086785%2FConstructors%2F-1887420133" anchor-label="ExpandableFabLayout" id="-1812086785%2FConstructors%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue TabbedContent">
+                    <div class=""><span class="inline-flex"><a href="-expandable-fab-layout.html">ExpandableFabLayout</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1812086785%2FConstructors%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">fun <a href="-expandable-fab-layout.html">ExpandableFabLayout</a>(context: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Used to create an ExpandableFabLayout programmatically (do not use the other constructor ExpandableFabLayout(context, attributeSet) - it is for use by the Android framework when inflating an ExpandableFabLayout via XML).</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="482352719%2FConstructors%2F-1887420133" anchor-label="ExpandableFabLayout" id="482352719%2FConstructors%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue TabbedContent">
+                    <div class=""><span class="inline-flex"><a href="-expandable-fab-layout.html">ExpandableFabLayout</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="482352719%2FConstructors%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">fun <a href="-expandable-fab-layout.html">ExpandableFabLayout</a>(context: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>, attributeSet: <a href="https://developer.android.com/reference/kotlin/android/util/AttributeSet.html">AttributeSet</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Called by the system when creating an ExpandableFabLayout via XML (don't call this directly). To create an ExpandableFabLayout programmatically, use the ExpandableFabLayout(context) constructor.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="-273542752%2FFunctions%2F-1887420133" anchor-label="addView" id="-273542752%2FFunctions%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="add-view.html"><span>add</span><wbr></wbr><span><span>View</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-273542752%2FFunctions%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="add-view.html">addView</a>(child: <a href="https://developer.android.com/reference/kotlin/android/view/View.html">View</a>?, index: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, params: <a href="https://developer.android.com/reference/kotlin/android/view/ViewGroup.LayoutParams.html">ViewGroup.LayoutParams</a>?)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Adds a child view with the specified layout parameters to the ExpandableFabLayout.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1220793930%2FFunctions%2F-1887420133" anchor-label="addViews" id="1220793930%2FFunctions%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="add-views.html"><span>add</span><wbr></wbr><span><span>Views</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1220793930%2FFunctions%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">fun <a href="add-views.html">addViews</a>(vararg children: <a href="https://developer.android.com/reference/kotlin/android/view/View.html">View</a>?)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Convenience method for adding multiple <a href="add-views.html">children</a> views to the ExpandableFabLayout at once, programmatically. Ensure your children views are of type Overlay, ExpandableFab or FabOption only.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="848268557%2FFunctions%2F-1887420133" anchor-label="close" id="848268557%2FFunctions%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="close.html"><span><span>close</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="848268557%2FFunctions%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">fun <a href="close.html">close</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Attempts to close the ExpandableFab, playing the appropriate animations in the process. If the ExpandableFab is not in a position to close (it's still playing its opening animations), it will remind itself to close once it is able.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-555874062%2FFunctions%2F-1887420133" anchor-label="getCurrentConfiguration" id="-555874062%2FFunctions%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="get-current-configuration.html"><span>get</span><wbr></wbr><span>Current</span><wbr></wbr><span><span>Configuration</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-555874062%2FFunctions%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">fun <a href="get-current-configuration.html">getCurrentConfiguration</a>(): <a href="../-orientation-configuration/index.html">OrientationConfiguration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Returns the OrientationConfiguration showing for the current screen orientation. An OrientationConfiguration is just a holder for all the views of an ExpandableFab widget in a specific <a href="../-orientation/index.html">Orientation</a>.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-113485727%2FFunctions%2F-1887420133" anchor-label="isOpen" id="-113485727%2FFunctions%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-open.html"><span>is</span><wbr></wbr><span><span>Open</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-113485727%2FFunctions%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">fun <a href="is-open.html">isOpen</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Returns true if the ExpandableFab is currently open (any attached Overlay, FabOption and Labels are visible and all animations are done).</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1757835356%2FFunctions%2F-1887420133" anchor-label="removeAllViews" id="-1757835356%2FFunctions%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="remove-all-views.html"><span>remove</span><wbr></wbr><span>All</span><wbr></wbr><span><span>Views</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1757835356%2FFunctions%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="remove-all-views.html">removeAllViews</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Removes all child views in both portrait and landscape orientation from the ExpandableFabLayout.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="310826409%2FProperties%2F-1887420133" anchor-label="expandableFabClosingAnimationDurationMs" id="310826409%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="expandable-fab-closing-animation-duration-ms.html">expandableFabClosingAnimationDurationMs</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="310826409%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="310826409%2FProperties%2F-1887420133" anchor-label="expandableFabClosingAnimationDurationMs" id="310826409%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="expandable-fab-closing-animation-duration-ms.html">expandableFabClosingAnimationDurationMs</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="310826409%2FProperties%2F-1887420133" anchor-label="expandableFabClosingAnimationDurationMs" id="310826409%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The duration (in milliseconds as a positive long) of the closing animations for ALL the ExpandableFabs inside of this ExpandableFabLayout. A convenience method so that clients don't have to set the same value for every ExpandableFab within a single ExpandableFabLayout.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-413293108%2FProperties%2F-1887420133" anchor-label="expandableFabOpeningAnimationDurationMs" id="-413293108%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="expandable-fab-opening-animation-duration-ms.html">expandableFabOpeningAnimationDurationMs</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-413293108%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-413293108%2FProperties%2F-1887420133" anchor-label="expandableFabOpeningAnimationDurationMs" id="-413293108%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="expandable-fab-opening-animation-duration-ms.html">expandableFabOpeningAnimationDurationMs</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-413293108%2FProperties%2F-1887420133" anchor-label="expandableFabOpeningAnimationDurationMs" id="-413293108%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The duration (in milliseconds as a positive long) of the opening animations for ALL the ExpandableFabs inside of this ExpandableFabLayout. A convenience method so that clients don't have to set the same value for every ExpandableFab within a single ExpandableFabLayout.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="243549216%2FProperties%2F-1887420133" anchor-label="fabOptionClosingAnimationDurationMs" id="243549216%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="fab-option-closing-animation-duration-ms.html">fabOptionClosingAnimationDurationMs</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="243549216%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="243549216%2FProperties%2F-1887420133" anchor-label="fabOptionClosingAnimationDurationMs" id="243549216%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="fab-option-closing-animation-duration-ms.html">fabOptionClosingAnimationDurationMs</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="243549216%2FProperties%2F-1887420133" anchor-label="fabOptionClosingAnimationDurationMs" id="243549216%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The duration (in milliseconds as a positive long) of the closing animations for ALL the FabOptions inside of this ExpandableFabLayout. A convenience method so that clients don't have to set the same value for every FabOption within a single ExpandableFabLayout.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-480570301%2FProperties%2F-1887420133" anchor-label="fabOptionOpeningAnimationDurationMs" id="-480570301%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="fab-option-opening-animation-duration-ms.html">fabOptionOpeningAnimationDurationMs</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-480570301%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-480570301%2FProperties%2F-1887420133" anchor-label="fabOptionOpeningAnimationDurationMs" id="-480570301%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="fab-option-opening-animation-duration-ms.html">fabOptionOpeningAnimationDurationMs</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-480570301%2FProperties%2F-1887420133" anchor-label="fabOptionOpeningAnimationDurationMs" id="-480570301%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The duration (in milliseconds as a positive long) of the opening animations for ALL the FabOptions inside of this ExpandableFabLayout. A convenience method so that clients don't have to set the same value for every FabOption within a single ExpandableFabLayout.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-2063272256%2FProperties%2F-1887420133" anchor-label="labelHiddenToVisibleAnimationDurationMs" id="-2063272256%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="label-hidden-to-visible-animation-duration-ms.html">labelHiddenToVisibleAnimationDurationMs</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2063272256%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-2063272256%2FProperties%2F-1887420133" anchor-label="labelHiddenToVisibleAnimationDurationMs" id="-2063272256%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="label-hidden-to-visible-animation-duration-ms.html">labelHiddenToVisibleAnimationDurationMs</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-2063272256%2FProperties%2F-1887420133" anchor-label="labelHiddenToVisibleAnimationDurationMs" id="-2063272256%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The duration (in milliseconds as a positive long) of the hidden to visible state animations for ALL the Labels inside of this ExpandableFabLayout. A convenience method so that clients don't have to set the same value for every Label within a single ExpandableFabLayout. This property will affect Labels on ExpandableFabs AND FabOptions.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="558131050%2FProperties%2F-1887420133" anchor-label="labelVisibleToHiddenAnimationDurationMs" id="558131050%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="label-visible-to-hidden-animation-duration-ms.html">labelVisibleToHiddenAnimationDurationMs</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="558131050%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="558131050%2FProperties%2F-1887420133" anchor-label="labelVisibleToHiddenAnimationDurationMs" id="558131050%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="label-visible-to-hidden-animation-duration-ms.html">labelVisibleToHiddenAnimationDurationMs</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="558131050%2FProperties%2F-1887420133" anchor-label="labelVisibleToHiddenAnimationDurationMs" id="558131050%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The duration (in milliseconds as a positive long) of the visible to hidden state animations for ALL the Labels inside of this ExpandableFabLayout. A convenience method so that clients don't have to set the same value for every Label within a single ExpandableFabLayout. This property will affect Labels on ExpandableFabs AND FabOptions.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="944702170%2FProperties%2F-1887420133" anchor-label="landscapeConfiguration" id="944702170%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="landscape-configuration.html">landscapeConfiguration</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="944702170%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="944702170%2FProperties%2F-1887420133" anchor-label="landscapeConfiguration" id="944702170%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="landscape-configuration.html">landscapeConfiguration</a>: <a href="../-orientation-configuration/index.html">OrientationConfiguration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="944702170%2FProperties%2F-1887420133" anchor-label="landscapeConfiguration" id="944702170%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">A holder for all the views of the ExpandableFab widget declared in the landscape screen orientation. Values for the views will only be populated after they are added through calls to ExpandableFabLayout's addView methods (or after they're defined via XML).</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-431270996%2FProperties%2F-1887420133" anchor-label="overlayClosingAnimationDurationMs" id="-431270996%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="overlay-closing-animation-duration-ms.html">overlayClosingAnimationDurationMs</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-431270996%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-431270996%2FProperties%2F-1887420133" anchor-label="overlayClosingAnimationDurationMs" id="-431270996%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="overlay-closing-animation-duration-ms.html">overlayClosingAnimationDurationMs</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-431270996%2FProperties%2F-1887420133" anchor-label="overlayClosingAnimationDurationMs" id="-431270996%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The duration (in milliseconds as a positive long) of the closing animations for ALL the Overlays inside of this ExpandableFabLayout. A convenience method so that clients don't have to set the same value for every Overlay within a single ExpandableFabLayout.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1155390513%2FProperties%2F-1887420133" anchor-label="overlayOpeningAnimationDurationMs" id="-1155390513%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="overlay-opening-animation-duration-ms.html">overlayOpeningAnimationDurationMs</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1155390513%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-1155390513%2FProperties%2F-1887420133" anchor-label="overlayOpeningAnimationDurationMs" id="-1155390513%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="overlay-opening-animation-duration-ms.html">overlayOpeningAnimationDurationMs</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1155390513%2FProperties%2F-1887420133" anchor-label="overlayOpeningAnimationDurationMs" id="-1155390513%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The duration (in milliseconds as a positive long) of the opening animations for ALL the Overlays inside of this ExpandableFabLayout. A convenience method so that clients don't have to set the same value for every Overlay within a single ExpandableFabLayout.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="680737610%2FProperties%2F-1887420133" anchor-label="portraitConfiguration" id="680737610%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="portrait-configuration.html">portraitConfiguration</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="680737610%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="680737610%2FProperties%2F-1887420133" anchor-label="portraitConfiguration" id="680737610%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="portrait-configuration.html">portraitConfiguration</a>: <a href="../-orientation-configuration/index.html">OrientationConfiguration</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="680737610%2FProperties%2F-1887420133" anchor-label="portraitConfiguration" id="680737610%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">A holder for all the views of the ExpandableFab widget declared in the portrait screen orientation. Values for the views will only be populated after they are added through calls to ExpandableFabLayout's addView methods (or after they're defined via XML).</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

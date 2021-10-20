@@ -8,7 +8,7 @@ def websiteRootDirectory = "$rootDir/docs"
  * Generates JavaDoc and outputs to $websiteRootDirectory so the library website is auto
  * updated on merge to master.
  * */
-task generateJavaDocForWebsite(type: dokkaJavadoc.getClass()) {
+dokkaJavadoc {
     outputDirectory = new File("$websiteRootDirectory${File.separator}javadoc${File.separator}$docVersion")
     suppressInheritedMembers = true
     doLast {
@@ -20,7 +20,7 @@ task generateJavaDocForWebsite(type: dokkaJavadoc.getClass()) {
  * Generates KotlinDoc and outputs to $websiteRootDirectory so the library website is auto
  * updated on merge to master.
  * */
-task generateKDocForWebsite(type: dokkaHtml.getClass()) {
+dokkaHtml {
     outputDirectory = new File("$websiteRootDirectory${File.separator}kdoc${File.separator}$docVersion")
     suppressInheritedMembers = true
     doLast {
@@ -49,6 +49,6 @@ task generateKDocForWebsite(type: dokkaHtml.getClass()) {
  * We recommend not running via AS studio in order to avoid the bug listed above.
  * */
 task generateDocsAndUpdateWebsite(){
-    dependsOn generateJavaDocForWebsite
-    dependsOn generateKDocForWebsite
+    dependsOn dokkaJavadoc
+    dependsOn dokkaHtml
 }

@@ -1,168 +1,230 @@
-<HTML>
-<HEAD>
-<meta charset="UTF-8">
-<title>Label - library</title>
-<link rel="stylesheet" href="../../../style.css">
-</HEAD>
-<BODY>
-<a href="../../index.html">library</a>&nbsp;/&nbsp;<a href="../index.html">com.nambimobile.widgets.efab</a>&nbsp;/&nbsp;<a href="./index.html">Label</a><br/>
-<br/>
-<h1>Label</h1>
-<code><span class="keyword">class </span><span class="identifier">Label</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AppCompatTextView</span></code>
-<p>A label of text attached to a view of the ExpandableFab widget.</p>
-<p>Developer Notes:</p>
-<ol><li>Different views within the ExpandableFab widget can be labeled (like ExpandableFab and
-FabOption). Each labeled view will set their own default values for the properties of their
-specific label. Look at the documentation for the label property declared in each of theses
-classes to see what the default values of their labels are.</li>
-</ol>
-<p>Implementation Notes:</p>
-<ol><li>Since the Kotlin 'internal' modifier translates to 'public' in Java, the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-synthetic/index.html">JvmSynthetic</a>
-annotation is used on those functions and properties to hide them from the published API for
-Java clients. A proper solution to this issue would be a package-private visibility modifier,
-but Kotlin has yet to implement it (https://youtrack.jetbrains.com/issue/KT-29227). Until
-then, the JvmSynthetic annotations should remain in order to present the proper published API
-to both Java &amp; Kotlin clients.</li>
-</ol>
-<p><strong>Since</strong><br/>
-1.0.0</p>
-<h3>Constructors</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="-init-.html">&lt;init&gt;</a></h4>
-</td>
-<td>
-<p>Used to create a Label programmatically. Clients should not need to call this directly as
-all labeled Views of the ExpandableFab widget already create their own labels which can
-be retrieved and modified (but not reassigned) as needed.</p>
-<code><span class="identifier">Label</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.Label$<init>(android.content.Context)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/content/Context.html"><span class="identifier">Context</span></a><span class="symbol">)</span></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Properties</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="hidden-to-visible-animation-duration-ms.html">hiddenToVisibleAnimationDurationMs</a></h4>
-</td>
-<td>
-<p>The duration (in milliseconds as a positive long) of the animations that the Label will
-play when going from a hidden to visible state. Set to 0L if you don't want animations played.</p>
-<code><span class="keyword">var </span><span class="identifier">hiddenToVisibleAnimationDurationMs</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="label-background-color.html">labelBackgroundColor</a></h4>
-</td>
-<td>
-<p>The color of the Label's background, as an integer in the form 0xAARRGGBB.</p>
-<code><span class="keyword">var </span><span class="identifier">labelBackgroundColor</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="label-elevation.html">labelElevation</a></h4>
-</td>
-<td>
-<p>The elevation of the Label, in pixels as a positive float. Retrieve this value in the
-correct form from your dimens.xml file using:
-resources.getDimensionPixelSize(R.dimen.name_of_elevation_size). Usage of this property is
-preferred over the inherited set/getElevation methods.</p>
-<code><span class="keyword">var </span><span class="identifier">labelElevation</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="label-text.html">labelText</a></h4>
-</td>
-<td>
-<p>The text of the Label. Can be set to null to hide the label. Usage of this property is
-preferred over the inherited set/getText methods.</p>
-<code><span class="keyword">var </span><span class="identifier">labelText</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a><span class="symbol">?</span></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="label-text-color.html">labelTextColor</a></h4>
-</td>
-<td>
-<p>The color of the Label's text, as an integer in the form 0xAARRGGBB.</p>
-<code><span class="keyword">var </span><span class="identifier">labelTextColor</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="label-text-size.html">labelTextSize</a></h4>
-</td>
-<td>
-<p>The size of the Label's text, as a float. Retrieve this value in the correct form from your
-dimens.xml file using: resources.getDimension(R.dimen.name_of_text_size). Text sizes should
-use sp as the unit. Usage of this property is preferred over the inherited set/getTextSize
-methods.</p>
-<code><span class="keyword">var </span><span class="identifier">labelTextSize</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="margin-px.html">marginPx</a></h4>
-</td>
-<td>
-<p>The margin (in pixels as a positive float) between the Label and the view it is attached to.
-Negative values are not allowed since clients should likely be changing the Label's
-<a href="position.html">position</a> if they wanted to move the Label to the opposite side of the view it's attached
-to.</p>
-<code><span class="keyword">var </span><span class="identifier">marginPx</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="overshoot-tension.html">overshootTension</a></h4>
-</td>
-<td>
-<p>The tension (as a positive float) in an OvershootInterpolator applied on the Label when it
-is being shown from a hidden state. Larger values will exaggerate the effect more.</p>
-<code><span class="keyword">var </span><span class="identifier">overshootTension</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="position.html">position</a></h4>
-</td>
-<td>
-<p>The Label's <a href="../-label-position/index.html">LabelPosition</a>, in relation to the view it's attached to.</p>
-<code><span class="keyword">var </span><span class="identifier">position</span><span class="symbol">: </span><a href="../-label-position/index.html"><span class="identifier">LabelPosition</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="translation-x-px.html">translationXPx</a></h4>
-</td>
-<td>
-<p>The distance (in pixels as a float) the Label will travel horizontally during animations.
-A negative value will make the Label travel to the left, while a positive value will make
-it travel to the right. See its use in <a href="#">visibleToHiddenAnimations</a> and
-<a href="#">hiddenToVisibleAnimations</a>.</p>
-<code><span class="keyword">var </span><span class="identifier">translationXPx</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="visible-to-hidden-animation-duration-ms.html">visibleToHiddenAnimationDurationMs</a></h4>
-</td>
-<td>
-<p>The duration (in milliseconds as a positive long) of the animations that the Label will
-play when going from a visible to hidden state. Set to 0L if you don't want animations played.</p>
-<code><span class="keyword">var </span><span class="identifier">visibleToHiddenAnimationDurationMs</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code></td>
-</tr>
-</tbody>
-</table>
-<h3>Functions</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="on-touch-event.html">onTouchEvent</a></h4>
-</td>
-<td>
-<p>Scales the Label down when pressed, and back up when released. Gives the user some visual
-feedback to show that the Label was pressed.</p>
-<code><span class="keyword">fun </span><span class="identifier">onTouchEvent</span><span class="symbol">(</span><span class="identifier" id="com.nambimobile.widgets.efab.Label$onTouchEvent(android.view.MotionEvent)/event">event</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/view/MotionEvent.html"><span class="identifier">MotionEvent</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
-</tr>
-</tbody>
-</table>
-</BODY>
-</HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>Label</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="library::com.nambimobile.widgets.efab/Label///PointingToDeclaration//-1887420133">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">library</a>/<a href="../index.html">com.nambimobile.widgets.efab</a>/<a href="index.html">Label</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span><span>Label</span></span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">class <a href="index.html">Label</a> : <a href="https://developer.android.com/reference/kotlin/androidx/appcompat/widget/AppCompatTextView.html">AppCompatTextView</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">A label of text attached to a view of the ExpandableFab widget.</p><p class="paragraph">Developer Notes:</p><ol><li><p class="paragraph">Different views within the ExpandableFab widget can be labeled (like ExpandableFab and FabOption). Each labeled view will set their own default values for the properties of their specific label. Look at the documentation for the label property declared in each of theses classes to see what the default values of their labels are.</p></li></ol><p class="paragraph">Implementation Notes:</p><ol><li><p class="paragraph">Since the Kotlin 'internal' modifier translates to 'public' in Java, the <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-synthetic/index.html">JvmSynthetic</a> annotation is used on those functions and properties to hide them from the published API for Java clients. A proper solution to this issue would be a package-private visibility modifier, but Kotlin has yet to implement it (https://youtrack.jetbrains.com/issue/KT-29227). Until then, the JvmSynthetic annotations should remain in order to present the proper published API to both Java & Kotlin clients.</p></li></ol><h4 class="">Since</h4><p class="paragraph">1.0.0</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+            <div class="tabs-section-body">
+              <h2 class="tabbedcontent">Constructors</h2>
+              <div class="table" data-togglable="Constructors"><a data-name="-1566355667%2FConstructors%2F-1887420133" anchor-label="Label" id="-1566355667%2FConstructors%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue TabbedContent">
+                    <div class=""><span class="inline-flex"><a href="-label.html">Label</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1566355667%2FConstructors%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">fun <a href="-label.html">Label</a>(context: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Used to create a Label programmatically. Clients should not need to call this directly as all labeled Views of the ExpandableFab widget already create their own labels which can be retrieved and modified (but not reassigned) as needed.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="-1606733365%2FFunctions%2F-1887420133" anchor-label="onTouchEvent" id="-1606733365%2FFunctions%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="on-touch-event.html"><span>on</span><wbr></wbr><span>Touch</span><wbr></wbr><span><span>Event</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1606733365%2FFunctions%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="on-touch-event.html">onTouchEvent</a>(event: <a href="https://developer.android.com/reference/kotlin/android/view/MotionEvent.html">MotionEvent</a>?): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Scales the Label down when pressed, and back up when released. Gives the user some visual feedback to show that the Label was pressed.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="-126393285%2FProperties%2F-1887420133" anchor-label="hiddenToVisibleAnimationDurationMs" id="-126393285%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="hidden-to-visible-animation-duration-ms.html">hiddenToVisibleAnimationDurationMs</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-126393285%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-126393285%2FProperties%2F-1887420133" anchor-label="hiddenToVisibleAnimationDurationMs" id="-126393285%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="hidden-to-visible-animation-duration-ms.html">hiddenToVisibleAnimationDurationMs</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a> = 75L<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-126393285%2FProperties%2F-1887420133" anchor-label="hiddenToVisibleAnimationDurationMs" id="-126393285%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The duration (in milliseconds as a positive long) of the animations that the Label will play when going from a hidden to visible state. Set to 0L if you don't want animations played.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1891000331%2FProperties%2F-1887420133" anchor-label="labelBackgroundColor" id="1891000331%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="label-background-color.html">labelBackgroundColor</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1891000331%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="1891000331%2FProperties%2F-1887420133" anchor-label="labelBackgroundColor" id="1891000331%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="label-background-color.html">labelBackgroundColor</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1891000331%2FProperties%2F-1887420133" anchor-label="labelBackgroundColor" id="1891000331%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The color of the Label's background, as an integer in the form 0xAARRGGBB.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="76238787%2FProperties%2F-1887420133" anchor-label="labelElevation" id="76238787%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="label-elevation.html">labelElevation</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="76238787%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="76238787%2FProperties%2F-1887420133" anchor-label="labelElevation" id="76238787%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="label-elevation.html">labelElevation</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="76238787%2FProperties%2F-1887420133" anchor-label="labelElevation" id="76238787%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The elevation of the Label, in pixels as a positive float. Retrieve this value in the correct form from your dimens.xml file using: resources.getDimensionPixelSize(R.dimen.name_of_elevation_size). Usage of this property is preferred over the inherited set/getElevation methods.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1229403989%2FProperties%2F-1887420133" anchor-label="labelFont" id="-1229403989%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="label-font.html">labelFont</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1229403989%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-1229403989%2FProperties%2F-1887420133" anchor-label="labelFont" id="-1229403989%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="label-font.html">labelFont</a>: <a href="https://developer.android.com/reference/kotlin/android/graphics/Typeface.html">Typeface</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1229403989%2FProperties%2F-1887420133" anchor-label="labelFont" id="-1229403989%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The font of the Label's text. Retrieve this value in the correct form from your resources using: ResourcesCompat.getFont(context, R.font.name_of_font). Usage of this property is preferred over the inherited set/getTypeface methods.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-837311091%2FProperties%2F-1887420133" anchor-label="labelText" id="-837311091%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="label-text.html">labelText</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-837311091%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-837311091%2FProperties%2F-1887420133" anchor-label="labelText" id="-837311091%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="label-text.html">labelText</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html">CharSequence</a>? = null<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-837311091%2FProperties%2F-1887420133" anchor-label="labelText" id="-837311091%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The text of the Label. Can be set to null to hide the label. Usage of this property is preferred over the inherited set/getText methods.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="290563594%2FProperties%2F-1887420133" anchor-label="labelTextColor" id="290563594%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="label-text-color.html">labelTextColor</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="290563594%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="290563594%2FProperties%2F-1887420133" anchor-label="labelTextColor" id="290563594%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="label-text-color.html">labelTextColor</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="290563594%2FProperties%2F-1887420133" anchor-label="labelTextColor" id="290563594%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The color of the Label's text, as an integer in the form 0xAARRGGBB.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-39509876%2FProperties%2F-1887420133" anchor-label="labelTextSize" id="-39509876%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="label-text-size.html">labelTextSize</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-39509876%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-39509876%2FProperties%2F-1887420133" anchor-label="labelTextSize" id="-39509876%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="label-text-size.html">labelTextSize</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-39509876%2FProperties%2F-1887420133" anchor-label="labelTextSize" id="-39509876%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The size of the Label's text, as a float. Retrieve this value in the correct form from your dimens.xml file using: resources.getDimension(R.dimen.name_of_text_size). Text sizes should use sp as the unit. Usage of this property is preferred over the inherited set/getTextSize methods.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-584610538%2FProperties%2F-1887420133" anchor-label="marginPx" id="-584610538%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="margin-px.html">marginPx</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-584610538%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-584610538%2FProperties%2F-1887420133" anchor-label="marginPx" id="-584610538%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="margin-px.html">marginPx</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a> = 50f<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-584610538%2FProperties%2F-1887420133" anchor-label="marginPx" id="-584610538%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The margin (in pixels as a positive float) between the Label and the view it is attached to. Negative values are not allowed since clients should likely be changing the Label's <a href="position.html">position</a> if they wanted to move the Label to the opposite side of the view it's attached to.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1104594555%2FProperties%2F-1887420133" anchor-label="overshootTension" id="-1104594555%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="overshoot-tension.html">overshootTension</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1104594555%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-1104594555%2FProperties%2F-1887420133" anchor-label="overshootTension" id="-1104594555%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="overshoot-tension.html">overshootTension</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a> = 3.5f<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1104594555%2FProperties%2F-1887420133" anchor-label="overshootTension" id="-1104594555%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The tension (as a positive float) in an OvershootInterpolator applied on the Label when it is being shown from a hidden state. Larger values will exaggerate the effect more.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-800992349%2FProperties%2F-1887420133" anchor-label="position" id="-800992349%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="position.html">position</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-800992349%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-800992349%2FProperties%2F-1887420133" anchor-label="position" id="-800992349%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="position.html">position</a>: <a href="../-label-position/index.html">LabelPosition</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-800992349%2FProperties%2F-1887420133" anchor-label="position" id="-800992349%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The Label's <a href="../-label-position/index.html">LabelPosition</a>, in relation to the view it's attached to.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1652688867%2FProperties%2F-1887420133" anchor-label="translationXPx" id="-1652688867%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="translation-x-px.html">translationXPx</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1652688867%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-1652688867%2FProperties%2F-1887420133" anchor-label="translationXPx" id="-1652688867%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="translation-x-px.html">translationXPx</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a> = 100f<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1652688867%2FProperties%2F-1887420133" anchor-label="translationXPx" id="-1652688867%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The distance (in pixels as a float) the Label will travel horizontally during animations. A negative value will make the Label travel to the left, while a positive value will make it travel to the right. See its use in <span data-unresolved-link="com.nambimobile.widgets.efab/Label/visibleToHiddenAnimations/#kotlin.Long?/PointingToDeclaration/">visibleToHiddenAnimations</span> and <span data-unresolved-link="com.nambimobile.widgets.efab/Label/hiddenToVisibleAnimations/#kotlin.Long?/PointingToDeclaration/">hiddenToVisibleAnimations</span>.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1799957275%2FProperties%2F-1887420133" anchor-label="visibleToHiddenAnimationDurationMs" id="-1799957275%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="visible-to-hidden-animation-duration-ms.html">visibleToHiddenAnimationDurationMs</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1799957275%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-1799957275%2FProperties%2F-1887420133" anchor-label="visibleToHiddenAnimationDurationMs" id="-1799957275%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">var <a href="visible-to-hidden-animation-duration-ms.html">visibleToHiddenAnimationDurationMs</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a> = 250L<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1799957275%2FProperties%2F-1887420133" anchor-label="visibleToHiddenAnimationDurationMs" id="-1799957275%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><p class="paragraph">The duration (in milliseconds as a positive long) of the animations that the Label will play when going from a visible to hidden state. Set to 0L if you don't want animations played.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

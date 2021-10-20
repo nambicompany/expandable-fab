@@ -16,9 +16,15 @@ Upgrade your ExpandableFab dependency to at least [version] in order to gain acc
 ---
 
 {% for file in site.static_files %}
-{% if file.extname == ".kdoc" %}
+{% if file.name == "v0.kdoc" %}
   {% capture doc_link %}
   {{ site.kdoc_path | relative_url }}/{{ file.basename }}/library/index.html
+  {% endcapture %}
+  
+  [{{ file.basename }}]({{ doc_link }})
+{% elsif file.extname == ".kdoc" %}
+  {% capture doc_link %}
+  {{ site.kdoc_path | relative_url }}/{{ file.basename }}/index.html
   {% endcapture %}
   
   [{{ file.basename }}]({{ doc_link }})

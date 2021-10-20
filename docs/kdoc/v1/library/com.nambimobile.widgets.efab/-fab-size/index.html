@@ -1,82 +1,107 @@
-<HTML>
-<HEAD>
-<meta charset="UTF-8">
-<title>FabSize - library</title>
-<link rel="stylesheet" href="../../../style.css">
-</HEAD>
-<BODY>
-<a href="../../index.html">library</a>&nbsp;/&nbsp;<a href="../index.html">com.nambimobile.widgets.efab</a>&nbsp;/&nbsp;<a href="./index.html">FabSize</a><br/>
-<br/>
-<h1>FabSize</h1>
-<code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">FabSize</span></code>
-<p>The legal sizes of ExpandableFabs and FabOptions.</p>
-<p><a href="-m-i-n-i.html">FabSize.MINI</a>, <a href="-n-o-r-m-a-l.html">FabSize.NORMAL</a> and <a href="-a-u-t-o.html">FabSize.AUTO</a> map to <a href="#">FloatingActionButton.SIZE_MINI</a>,
-<a href="#">FloatingActionButton.SIZE_NORMAL</a> and <a href="#">FloatingActionButton.SIZE_AUTO</a>, respectively.
-<a href="-c-u-s-t-o-m.html">FabSize.CUSTOM</a> should be used when setting the size of the ExpandableFab or FabOption's
-layout_width and layout_height to a custom value manually, and thus maps to a random value
-that will never be used.</p>
-<p>Developer Notes:</p>
-<ol><li>When using <a href="-c-u-s-t-o-m.html">CUSTOM</a>, the Android Framework also requires you to set app:fabCustomSize
-equal to your custom layout_width/layout_height size and app:maxImageSize equal to your icon
-size in order to ensure your icon is centered and sized properly.</li>
-</ol>
-<p>Example:</p>
-<p>&lt;com.nambimobile.widgets.efab.ExpandableFab
-android:id="@+id/expandable_fab"
-android:layout_width="175dp"
-android:layout_height="175dp"
-app:efab_size="custom"
-app:efab_fabOptionSize="custom"
-app:efab_icon="@drawable/ic_random11_white_84dp"
-app:fabCustomSize="175dp"   
-app:maxImageSize="84dp"     
-/&gt;</p>
-<p><strong>Since</strong><br/>
-1.0.0</p>
-<h3>Enum Values</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="-m-i-n-i.html">MINI</a></h4>
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td>
-<h4><a href="-n-o-r-m-a-l.html">NORMAL</a></h4>
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td>
-<h4><a href="-a-u-t-o.html">AUTO</a></h4>
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td>
-<h4><a href="-c-u-s-t-o-m.html">CUSTOM</a></h4>
-</td>
-<td>
-</td>
-</tr>
-</tbody>
-</table>
-<h3>Properties</h3>
-<table>
-<tbody>
-<tr>
-<td>
-<h4><a href="value.html">value</a></h4>
-</td>
-<td>
-<code><span class="keyword">val </span><span class="identifier">value</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
-</tr>
-</tbody>
-</table>
-</BODY>
-</HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>FabSize</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="library::com.nambimobile.widgets.efab/FabSize///PointingToDeclaration//-1887420133">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">library</a>/<a href="../index.html">com.nambimobile.widgets.efab</a>/<a href="index.html">FabSize</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Fab</span><wbr></wbr><span><span>Size</span></span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace">enum <a href="index.html">FabSize</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a>&lt;<a href="index.html">FabSize</a>&gt; <span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">The legal sizes of ExpandableFabs and FabOptions.</p><p class="paragraph"><a href="-m-i-n-i/index.html">FabSize.MINI</a>, <a href="-n-o-r-m-a-l/index.html">FabSize.NORMAL</a> and <a href="-a-u-t-o/index.html">FabSize.AUTO</a> map to <span data-unresolved-link="com.google.android.material.floatingactionbutton/FloatingActionButton/SIZE_MINI/#/PointingToDeclaration/">FloatingActionButton.SIZE_MINI</span>, <span data-unresolved-link="com.google.android.material.floatingactionbutton/FloatingActionButton/SIZE_NORMAL/#/PointingToDeclaration/">FloatingActionButton.SIZE_NORMAL</span> and <span data-unresolved-link="com.google.android.material.floatingactionbutton/FloatingActionButton/SIZE_AUTO/#/PointingToDeclaration/">FloatingActionButton.SIZE_AUTO</span>, respectively. <a href="-c-u-s-t-o-m/index.html">FabSize.CUSTOM</a> should be used when setting the size of the ExpandableFab or FabOption's layout_width and layout_height to a custom value manually, and thus maps to a random value that will never be used.</p><p class="paragraph">Developer Notes:</p><ol><li><p class="paragraph">When using <a href="-c-u-s-t-o-m/index.html">CUSTOM</a>, the Android Framework also requires you to set app:fabCustomSize equal to your custom layout_width/layout_height size and app:maxImageSize equal to your icon size in order to ensure your icon is centered and sized properly.</p></li></ol><p class="paragraph">Example:</p><p class="paragraph"><!-- Required by Android Framework, equal to layout_width/layout_height  --> app:maxImageSize=&quot;84dp&quot;     <!-- Required by Android Framework, equal to efab_icon/fab_icon--> /></p><h4 class="">Since</h4><p class="paragraph">1.0.0</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Entries">Entries</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+            <div class="tabs-section-body">
+              <h2 class="tabbedcontent">Entries</h2>
+              <div class="table" data-togglable="Entries"><a data-name="6347492%2FClasslikes%2F-1887420133" anchor-label="CUSTOM" id="6347492%2FClasslikes%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-c-u-s-t-o-m/index.html">CUSTOM</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="6347492%2FClasslikes%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace"><div class="block"><a href="-c-u-s-t-o-m/index.html">CUSTOM</a>(-1234)</div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1750902938%2FClasslikes%2F-1887420133" anchor-label="AUTO" id="-1750902938%2FClasslikes%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-a-u-t-o/index.html">AUTO</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1750902938%2FClasslikes%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace"><div class="block"><a href="-a-u-t-o/index.html">AUTO</a>(FloatingActionButton.SIZE_AUTO)</div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-16377298%2FClasslikes%2F-1887420133" anchor-label="NORMAL" id="-16377298%2FClasslikes%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-n-o-r-m-a-l/index.html">NORMAL</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-16377298%2FClasslikes%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace"><div class="block"><a href="-n-o-r-m-a-l/index.html">NORMAL</a>(FloatingActionButton.SIZE_NORMAL)</div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-627614274%2FClasslikes%2F-1887420133" anchor-label="MINI" id="-627614274%2FClasslikes%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-m-i-n-i/index.html">MINI</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-627614274%2FClasslikes%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><div class="symbol monospace"><div class="block"><a href="-m-i-n-i/index.html">MINI</a>(FloatingActionButton.SIZE_MINI)</div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="-1408972759%2FProperties%2F-1887420133" anchor-label="value" id="-1408972759%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":library:dokkaHtml/release" data-filterable-set=":library:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="value.html">value</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1408972759%2FProperties%2F-1887420133"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":library:dokkaHtml/release"><a data-name="-1408972759%2FProperties%2F-1887420133" anchor-label="value" id="-1408972759%2FProperties%2F-1887420133" data-filterable-set=":library:dokkaHtml/release"></a><div class="symbol monospace">val <a href="value.html">value</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+
