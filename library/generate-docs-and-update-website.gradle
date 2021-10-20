@@ -3,13 +3,15 @@ apply plugin: 'org.jetbrains.dokka'
 // versionMajor is defined in build.gradle
 def docVersion = "v$versionMajor"
 def websiteRootDirectory = "$rootDir/docs"
+ext.javadocOutputDirectory = new File("$websiteRootDirectory${File.separator}javadoc${File.separator}$docVersion")
+ext.kdocOutputDirectory = new File("$websiteRootDirectory${File.separator}kdoc${File.separator}$docVersion")
 
 /**
  * Generates JavaDoc and outputs to $websiteRootDirectory so the library website is auto
  * updated on merge to master.
  * */
 dokkaJavadoc {
-    outputDirectory = new File("$websiteRootDirectory${File.separator}javadoc${File.separator}$docVersion")
+    outputDirectory = javadocOutputDirectory
     suppressInheritedMembers = true
     doLast {
         new File("$websiteRootDirectory${File.separator}api_doc_versions${File.separator}${docVersion}.javadoc").createNewFile()
@@ -21,7 +23,7 @@ dokkaJavadoc {
  * updated on merge to master.
  * */
 dokkaHtml {
-    outputDirectory = new File("$websiteRootDirectory${File.separator}kdoc${File.separator}$docVersion")
+    outputDirectory = kdocOutputDirectory
     suppressInheritedMembers = true
     doLast {
         new File("$websiteRootDirectory${File.separator}api_doc_versions${File.separator}${docVersion}.kdoc").createNewFile()

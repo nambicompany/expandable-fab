@@ -28,8 +28,6 @@ apply plugin: 'signing'
 def mavenGroupId = "com.nambimobile.widgets"
 def mavenArtifactId = archivesBaseName
 def mavenVersion = android.defaultConfig.versionName
-def javadocOutputDir = "$buildDir/javadoc"
-def kdocOutputDir = "$buildDir/kdoc"
 
 /**
  * Although also set in the MavenPublication task at the bottom of this page, version also needs to
@@ -38,30 +36,23 @@ def kdocOutputDir = "$buildDir/kdoc"
  * */
 version = mavenVersion
 
-/**
- * Generates documentation in various formats to be later packaged in JARs for maven publishing.
- * To generate docs for the library website, see the 'generate-docs-and-update-website.gradle' file.
- * */
-task generateJavaDocInBuildDir(type: dokkaJavadoc.getClass()) {
-    outputDirectory = new File(javadocOutputDir)
-    suppressInheritedMembers = true
-}
-task generateKDocInBuildDir(type: dokkaHtml.getClass()) {
-    outputDirectory = new File(kdocOutputDir)
-    suppressInheritedMembers = true
-}
 
-/** Generate JAR artifacts for the various documentation formats from above, and our source code. **/
+/**
+ * Generates JAR artifacts for the documentation formats we support (see
+ * 'generate-docs-and-update-website.gradle')
+ * */
 task generateJavaDocJar(type: Jar){
-    dependsOn generateJavaDocInBuildDir
+    dependsOn dokkaJavadoc
     archiveClassifier.set('javadoc')
-    from javadocOutputDir
+    from javadocOutputDirectory.getAbsolutePath() // see 'generate-docs-and-update-website.gradle'
 }
 task generateKDocJar(type: Jar){
-    dependsOn generateKDocInBuildDir
+    dependsOn dokkaHtml
     archiveClassifier.set('kdoc')
-    from kdocOutputDir
+    from kdocOutputDirectory.getAbsolutePath() // see 'generate-docs-and-update-website.gradle'
 }
+
+/** Generates a JAR of our source code. **/
 task generateSourcesJar(type: Jar){
     archiveClassifier.set('sources')
     from android.sourceSets.main.java.srcDirs
