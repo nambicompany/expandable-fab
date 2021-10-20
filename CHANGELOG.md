@@ -8,17 +8,25 @@ Note: Dates are formatted as YEAR-MONTH-DAY.
 
 #
 
+## [v1.2.0] - 2021-10-20
+### Added
+- Clients can now set global animation durations for all children widgets of the `ExpandableFabLayout` right on the layout itself. This can be done programmatically or via XML layout attributes. So instead of having to update the animation durations on every `Overlay`, `ExpandableFab`, `FabOption`, and `Label` within an ExpandableFabLayout (which can become tedious), a developer can now set the value once for each widget type right on the parent. Note that these global duration fields will *overwrite* any duration set on individual widgets, so be mindful when using them. See the documentation of `ExpandableFabLayout` for more details.
+- Font (typeface) can now be set on all `Labels` programmatically and via XML layout attributes. Each Label can use a different font if desired. See the documentation of `Label` for more details.
+
+### Fixed
+- Icons using vector drawables are now loaded using `AppCompatResources` instead of `ContextCompat` in order to prevent a rare crash that occurred on certain devices when those vector drawables were referencing other resources (e.g. a vector drawable `ic_smile.xml` that referenced `@color/white` as its fill color, for instance).
+
 ## [v1.1.1] - 2021-06-30
 ### Fixed
 - FabOptions that are dynamically removed while the ExpandableFab is still open are now properly removed from the ExpandableFabLayout (and consequently removed from the UI).
 - FabOption removal logic updated to actually remove the correct FabOption (indexing issue).
 
 ## [v1.1.0] - 2021-06-29
-### Fixed
-- The alpha channel (degree of transparency) is now respected when setting Label background colors (`label.labelBackgroundColor`). Colors should be set as an integer in the form 0xAARRGGBB (check [documentation for `label.labelBackgroundColor`](https://nambicompany.github.io/expandable-fab/kdoc/) for more details).
-
 ### Added
 - FabOptions can now be dynamically removed at runtime by calling remove(FabOption) or remove(int) (the latter is named removeAt(int) in Kotlin) on the list of FabOptions contained within an `OrientationConfiguration`. You can easily obtain an `OrientationConfiguration` from an instance of ExpandableFabLayout by calling `expandableFabLayout.portraitConfiguration` or `expandableFabLayout.landscapeConfiguration` or `expandableFabLayout.getCurrentConfiguration`.
+
+### Fixed
+- The alpha channel (degree of transparency) is now respected when setting Label background colors (`label.labelBackgroundColor`). Colors should be set as an integer in the form 0xAARRGGBB (check [documentation for `label.labelBackgroundColor`](https://nambicompany.github.io/expandable-fab/kdoc/) for more details).
 
 ## [v1.0.2] - 2020-10-26
 ### Fixed
