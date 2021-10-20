@@ -84,6 +84,121 @@ class ExpandableFabLayout : CoordinatorLayout {
     var landscapeConfiguration = OrientationConfiguration()
         private set
 
+    /**
+     * The duration (in milliseconds as a positive long) of the opening animations for ALL the
+     * Overlays inside of this ExpandableFabLayout. A convenience method so that clients
+     * don't have to set the same value for every Overlay within a single ExpandableFabLayout.
+     *
+     * Set to 0L if you don't want opening animations for ANY Overlays within this
+     * ExpandableFabLayout.
+     *
+     * NOTE: This property will override whatever you set on individual Overlays. If you
+     * only want to change the opening animation duration for a single Overlay, leave this
+     * property as null. See [Overlay.openingAnimationDurationMs].
+     * */
+    var overlayOpeningAnimationDurationMs: Long? = null
+
+    /**
+     * The duration (in milliseconds as a positive long) of the closing animations for ALL the
+     * Overlays inside of this ExpandableFabLayout. A convenience method so that clients
+     * don't have to set the same value for every Overlay within a single ExpandableFabLayout.
+     *
+     * Set to 0L if you don't want closing animations for ANY Overlays within this
+     * ExpandableFabLayout.
+     *
+     * NOTE: This property will override whatever you set on individual Overlays. If you
+     * only want to change the closing animation duration for a single Overlay, leave this
+     * property as null and see [Overlay.closingAnimationDurationMs].
+     * */
+    var overlayClosingAnimationDurationMs: Long? = null
+
+    /**
+     * The duration (in milliseconds as a positive long) of the opening animations for ALL the
+     * ExpandableFabs inside of this ExpandableFabLayout. A convenience method so that clients
+     * don't have to set the same value for every ExpandableFab within a single
+     * ExpandableFabLayout.
+     *
+     * Set to 0L if you don't want opening animations for ANY ExpandableFabs within this
+     * ExpandableFabLayout.
+     *
+     * NOTE: This property will override whatever you set on individual ExpandableFabs. If you
+     * only want to change the opening animation duration for a single ExpandableFab, leave this
+     * property as null and see [ExpandableFab.openingAnimationDurationMs].
+     * */
+    var expandableFabOpeningAnimationDurationMs: Long? = null
+
+    /**
+     * The duration (in milliseconds as a positive long) of the closing animations for ALL the
+     * ExpandableFabs inside of this ExpandableFabLayout. A convenience method so that clients
+     * don't have to set the same value for every ExpandableFab within a single ExpandableFabLayout.
+     *
+     * Set to 0L if you don't want closing animations for ANY ExpandableFabs within this
+     * ExpandableFabLayout.
+     *
+     * NOTE: This property will override whatever you set on individual ExpandableFabs. If you
+     * only want to change the closing animation duration for a single ExpandableFab, leave this
+     * property as null and see [ExpandableFab.closingAnimationDurationMs].
+     * */
+    var expandableFabClosingAnimationDurationMs: Long? = null
+
+    /**
+     * The duration (in milliseconds as a positive long) of the opening animations for ALL the
+     * FabOptions inside of this ExpandableFabLayout. A convenience method so that clients
+     * don't have to set the same value for every FabOption within a single ExpandableFabLayout.
+     *
+     * Set to 0L if you don't want opening animations for ANY FabOptions within this
+     * ExpandableFabLayout.
+     *
+     * NOTE: This property will override whatever you set on individual FabOptions. If you
+     * only want to change the opening animation duration for a single FabOption, leave this
+     * property as null and see [FabOption.openingAnimationDurationMs].
+     * */
+    var fabOptionOpeningAnimationDurationMs: Long? = null
+
+    /**
+     * The duration (in milliseconds as a positive long) of the closing animations for ALL the
+     * FabOptions inside of this ExpandableFabLayout. A convenience method so that clients
+     * don't have to set the same value for every FabOption within a single ExpandableFabLayout.
+     *
+     * Set to 0L if you don't want closing animations for ANY FabOptions within this
+     * ExpandableFabLayout.
+     *
+     * NOTE: This property will override whatever you set on individual FabOptions. If you
+     * only want to change the closing animation duration for a single FabOption, leave this
+     * property as null and see [FabOption.closingAnimationDurationMs].
+     * */
+    var fabOptionClosingAnimationDurationMs: Long? = null
+
+    /**
+     * The duration (in milliseconds as a positive long) of the visible to hidden state animations
+     * for ALL the Labels inside of this ExpandableFabLayout. A convenience method so that
+     * clients don't have to set the same value for every Label within a single
+     * ExpandableFabLayout. This property will affect Labels on ExpandableFabs AND FabOptions.
+     *
+     * Set to 0L if you don't want visible to hidden animations for ANY Labels within this
+     * ExpandableFabLayout.
+     *
+     * NOTE: This property will override whatever you set on individual Labels. If you
+     * only want to change the visible to hidden animation duration for a single Label, leave
+     * this property as null and see [Label.visibleToHiddenAnimationDurationMs].
+     * */
+    var labelVisibleToHiddenAnimationDurationMs: Long? = null
+
+    /**
+     * The duration (in milliseconds as a positive long) of the hidden to visible state animations
+     * for ALL the Labels inside of this ExpandableFabLayout. A convenience method so that
+     * clients don't have to set the same value for every Label within a single
+     * ExpandableFabLayout. This property will affect Labels on ExpandableFabs AND FabOptions.
+     *
+     * Set to 0L if you don't want hidden to visible animations for ANY Labels within this
+     * ExpandableFabLayout.
+     *
+     * NOTE: This property will override whatever you set on individual Labels. If you
+     * only want to change the hidden to visible animation duration for a single Label, leave
+     * this property as null and see [Label.hiddenToVisibleAnimationDurationMs].
+     * */
+    var labelHiddenToVisibleAnimationDurationMs: Long? = null
+
     @get:JvmSynthetic
     @set:JvmSynthetic
     internal var efabAnimationsFinished = true
@@ -106,7 +221,32 @@ class ExpandableFabLayout : CoordinatorLayout {
      * To create an ExpandableFabLayout programmatically, use the ExpandableFabLayout(context)
      * constructor.
      * */
-    constructor(context: Context, attributeSet: AttributeSet): super(context, attributeSet)
+    constructor(context: Context, attributeSet: AttributeSet): super(context, attributeSet){
+        context.theme.obtainStyledAttributes(attributeSet, R.styleable.ExpandableFabLayout, 0, 0).apply {
+            try {
+                this@ExpandableFabLayout.overlayOpeningAnimationDurationMs =
+                    getString(R.styleable.ExpandableFabLayout_efab_layout_overlayOpeningAnimationDurationMs)?.toLong()
+                this@ExpandableFabLayout.overlayClosingAnimationDurationMs =
+                    getString(R.styleable.ExpandableFabLayout_efab_layout_overlayClosingAnimationDurationMs)?.toLong()
+                this@ExpandableFabLayout.expandableFabOpeningAnimationDurationMs =
+                    getString(R.styleable.ExpandableFabLayout_efab_layout_expandableFabOpeningAnimationDurationMs)?.toLong()
+                this@ExpandableFabLayout.expandableFabClosingAnimationDurationMs =
+                    getString(R.styleable.ExpandableFabLayout_efab_layout_expandableFabClosingAnimationDurationMs)?.toLong()
+                this@ExpandableFabLayout.fabOptionOpeningAnimationDurationMs =
+                    getString(R.styleable.ExpandableFabLayout_efab_layout_fabOptionOpeningAnimationDurationMs)?.toLong()
+                this@ExpandableFabLayout.fabOptionClosingAnimationDurationMs =
+                    getString(R.styleable.ExpandableFabLayout_efab_layout_fabOptionClosingAnimationDurationMs)?.toLong()
+                this@ExpandableFabLayout.labelVisibleToHiddenAnimationDurationMs =
+                    getString(R.styleable.ExpandableFabLayout_efab_layout_labelVisibleToHiddenAnimationDurationMs)?.toLong()
+                this@ExpandableFabLayout.labelHiddenToVisibleAnimationDurationMs =
+                    getString(R.styleable.ExpandableFabLayout_efab_layout_labelHiddenToVisibleAnimationDurationMs)?.toLong()
+            } catch (e: Exception) {
+                illegalArg(resources.getString(R.string.efab_layout_illegal_optional_properties), e)
+            } finally {
+                recycle()
+            }
+        }
+    }
 
     init {
         if (id == View.NO_ID){
@@ -368,18 +508,24 @@ class ExpandableFabLayout : CoordinatorLayout {
         val efab = configuration.efab as ExpandableFab
         val optionAndLabelAnimationPairs = configuration.fabOptions.mapIndexed { index, fabOption ->
             fabOption.openingAnimations(
-                index,
-                efab.fabOptionSize,
-                efab.fabOptionPosition,
-                efab.firstFabOptionMarginPx,
-                efab.successiveFabOptionMarginPx
+                index = index,
+                size = efab.fabOptionSize,
+                position = efab.fabOptionPosition,
+                firstFabOptionMarginPx = efab.firstFabOptionMarginPx,
+                successiveFabOptionMarginPx = efab.successiveFabOptionMarginPx,
+                globalDurationMs = fabOptionOpeningAnimationDurationMs,
+                globalLabelDurationMs = labelHiddenToVisibleAnimationDurationMs
             )
         }
 
         return AnimatorSet().apply {
             playTogether(
-                configuration.overlay?.openingAnimations() ?: AnimatorSet(),
-                efab.openingAnimations {
+                configuration.overlay?.openingAnimations(
+                    globalDurationMs = overlayOpeningAnimationDurationMs) ?: AnimatorSet(),
+                efab.openingAnimations(
+                    globalDurationMs = expandableFabOpeningAnimationDurationMs,
+                    globalLabelDurationMs = labelVisibleToHiddenAnimationDurationMs
+                ){
                     efabAnimationsFinished = true
                     setState(true)
                 },
@@ -393,13 +539,20 @@ class ExpandableFabLayout : CoordinatorLayout {
     private fun getClosingAnimations(configuration: OrientationConfiguration): Animator {
         val efab = configuration.efab as ExpandableFab
         val optionAndLabelAnimationPairs = configuration.fabOptions.map {
-            it.closingAnimations()
+            it.closingAnimations(
+                globalDurationMs = fabOptionClosingAnimationDurationMs,
+                globalLabelDurationMs = labelVisibleToHiddenAnimationDurationMs
+            )
         }
 
         return AnimatorSet().apply {
             playTogether(
-                configuration.overlay?.closingAnimations() ?: AnimatorSet(),
-                efab.closingAnimations {
+                configuration.overlay?.closingAnimations(
+                    globalDurationMs = overlayClosingAnimationDurationMs) ?: AnimatorSet(),
+                efab.closingAnimations(
+                    globalDurationMs = expandableFabClosingAnimationDurationMs,
+                    globalLabelDurationMs = labelHiddenToVisibleAnimationDurationMs
+                ){
                     efabAnimationsFinished = true
                     setState(false)
                 },

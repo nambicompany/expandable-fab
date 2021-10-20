@@ -9,6 +9,19 @@
         order to function properly. Please see the documentation for how to correctly use the
         ExpandableFab widget.
     </string>
+    <string name="efab_layout_illegal_optional_properties">
+        One or more optional attributes for an ExpandableFab were set, but didn\'t meet the criteria
+        below: \n\n
+        Optional Attribute || Criteria \n
+        overlayOpeningAnimationDurationMs || must be a positive long number \n
+        overlayClosingAnimationDurationMs || must be a positive long number \n
+        expandableFabOpeningAnimationDurationMs || must be a positive long number \n
+        expandableFabClosingAnimationDurationMs || must be a positive long number \n
+        fabOptionOpeningAnimationDurationMs || must be a positive long number \n
+        fabOptionClosingAnimationDurationMs || must be a positive long number \n
+        labelVisibleToHiddenAnimationDurationMs || must be a positive long number \n
+        labelHiddenToVisibleAnimationDurationMs || must be a positive long number \n
+    </string>
 
     <!-- Overlay Errors -->
     <string name="efab_overlay_illegal_optional_properties">

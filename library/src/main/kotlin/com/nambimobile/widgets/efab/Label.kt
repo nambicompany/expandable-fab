@@ -310,9 +310,13 @@ class Label : AppCompatTextView {
      * view it's attached to (relative to its [position]), all while slowly appearing. Before
      * stopping, the label will slightly shoot past the marginPx value using the effect of an
      * OvershootInterpolator (with a tension of [label.overshootTension]).
+     *
+     * @param globalDurationMs the global Label hidden to visible animation duration that a
+     * client set on the ExpandableFabLayout. If set, this value takes precedence over
+     * [hiddenToVisibleAnimationDurationMs].
      * */
     @JvmSynthetic
-    internal fun hiddenToVisibleAnimations(): Animator {
+    internal fun hiddenToVisibleAnimations(globalDurationMs: Long?): Animator {
         if(labelText == null){
             return AnimatorSet()
         }
@@ -334,11 +338,11 @@ class Label : AppCompatTextView {
         return AnimatorSet().apply {
             playTogether(
                 ObjectAnimator.ofFloat(this@Label, "translationX", startTranslation, endTranslation).apply {
-                    this.duration = hiddenToVisibleAnimationDurationMs
+                    this.duration = globalDurationMs ?: hiddenToVisibleAnimationDurationMs
                     interpolator = OvershootInterpolator(overshootTension)
                 },
                 ObjectAnimator.ofFloat(this@Label, "alpha", 0f, 1f).apply {
-                    this.duration = hiddenToVisibleAnimationDurationMs
+                    this.duration = globalDurationMs ?: hiddenToVisibleAnimationDurationMs
                 }
             )
         }
@@ -348,9 +352,13 @@ class Label : AppCompatTextView {
      * The animations to play on the Label when it needs to hide from a visible state. The Label
      * will animate by [label.translationXPx] pixels from its current x position, all while slowly
      * fading out of sight.
+     *
+     * @param globalDurationMs the global Label visible to hidden animation duration that a
+     * client set on the ExpandableFabLayout. If set, this value takes precedence over
+     * [visibleToHiddenAnimationDurationMs].
      * */
     @JvmSynthetic
-    internal fun visibleToHiddenAnimations(): Animator {
+    internal fun visibleToHiddenAnimations(globalDurationMs: Long?): Animator {
         if(labelText == null){
             return AnimatorSet()
         }
@@ -363,10 +371,10 @@ class Label : AppCompatTextView {
         return AnimatorSet().apply {
             playTogether(
                 ObjectAnimator.ofFloat(this@Label, "translationX", translationX, endTranslation).apply {
-                    this.duration = visibleToHiddenAnimationDurationMs
+                    this.duration = globalDurationMs ?: visibleToHiddenAnimationDurationMs
                 },
                 ObjectAnimator.ofFloat(this@Label, "alpha", 0f).apply {
-                    this.duration = visibleToHiddenAnimationDurationMs
+                    this.duration = globalDurationMs ?: visibleToHiddenAnimationDurationMs
                 })
             addListener(hideOnAnimationEnd)
         }

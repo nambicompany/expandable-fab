@@ -212,25 +212,33 @@ class Overlay : FrameLayout {
     /**
      * The set of animations to play when the Overlay is being shown from a hidden state (when the
      * ExpandableFab is opening).
+     *
+     * @param globalDurationMs the global Overlay opening animation duration that a client set on
+     * the ExpandableFabLayout. If set, this value takes precedence over the local
+     * [openingAnimationDurationMs].
      * */
     @JvmSynthetic
-    internal fun openingAnimations(): Animator {
+    internal fun openingAnimations(globalDurationMs: Long?): Animator {
         this.alpha = 0f
         this.visibility = View.VISIBLE
 
         return ObjectAnimator.ofFloat(this, "alpha", 0f,  overlayAlpha).apply {
-            this.duration = openingAnimationDurationMs
+            this.duration = globalDurationMs ?: openingAnimationDurationMs
         }
     }
 
     /**
      * The set of animations to play when the Overlay is being hidden from a visible state (when
      * the ExpandableFab is closing).
+     *
+     * @param globalDurationMs the global Overlay closing animation duration that a client set on
+     * the ExpandableFabLayout. If set, this value takes precedence over the local
+     * [closingAnimationDurationMs].
      * */
     @JvmSynthetic
-    internal fun closingAnimations(): Animator {
+    internal fun closingAnimations(globalDurationMs: Long?): Animator {
         return ObjectAnimator.ofFloat(this, "alpha", 0f).apply {
-            this.duration = closingAnimationDurationMs
+            this.duration = globalDurationMs ?: closingAnimationDurationMs
             addListener(hideOnAnimationEnd)
         }
     }

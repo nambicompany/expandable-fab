@@ -410,6 +410,13 @@ class FabOption : FloatingActionButton {
      * The set of animations to play when the FabOption is being shown from a hidden state (when
      * the ExpandableFab is opening). This kicks off the FabOption's animation along with its
      * optional label's animation.
+     *
+     * @param globalDurationMs the global FabOption opening animation duration that a client
+     * set on the ExpandableFabLayout. If set, this value takes precedence over the local
+     * [openingAnimationDurationMs].
+     * @param globalLabelDurationMs the global Label hidden to visible animation duration that a
+     * client set on the ExpandableFabLayout. If set, this value takes precedence over
+     * [label.hiddenToVisibleAnimationDurationMs].
      * */
     @JvmSynthetic
     internal fun openingAnimations(
@@ -417,7 +424,9 @@ class FabOption : FloatingActionButton {
         size: FabSize,
         position: FabOptionPosition,
         firstFabOptionMarginPx: Float,
-        successiveFabOptionMarginPx: Float
+        successiveFabOptionMarginPx: Float,
+        globalDurationMs: Long?,
+        globalLabelDurationMs: Long?
     ): Animator {
         this.alpha = 0f
         this.visibility = View.VISIBLE
@@ -431,15 +440,15 @@ class FabOption : FloatingActionButton {
         val openingAnimations = AnimatorSet().apply {
             playTogether(
                 ObjectAnimator.ofFloat(this@FabOption, "scaleX", 0f, 1f).apply {
-                    this.duration = openingAnimationDurationMs
+                    this.duration = globalDurationMs ?: openingAnimationDurationMs
                     interpolator = OvershootInterpolator(openingOvershootTension)
                 },
                 ObjectAnimator.ofFloat(this@FabOption, "scaleY", 0f, 1f).apply {
-                    this.duration = openingAnimationDurationMs
+                    this.duration = globalDurationMs ?: openingAnimationDurationMs
                     interpolator = OvershootInterpolator(openingOvershootTension)
                 },
                 ObjectAnimator.ofFloat(this@FabOption, "alpha", 0f, 1f).apply {
-                    this.duration = openingAnimationDurationMs
+                    this.duration = globalDurationMs ?: openingAnimationDurationMs
                 },
                 if (index == 0) {
                     ObjectAnimator.ofFloat(this@FabOption, "translationY", firstMarginPx).apply {
@@ -453,31 +462,45 @@ class FabOption : FloatingActionButton {
             )
         }
 
-        return AnimatorSet().apply { playTogether(openingAnimations, label.hiddenToVisibleAnimations()) }
+        return AnimatorSet().apply {
+            playTogether(openingAnimations, label.hiddenToVisibleAnimations(globalLabelDurationMs))
+        }
     }
 
     /**
      * The set of animations to play when the FabOption is being hidden from a visible state (when
      * the ExpandableFab is closing). This kicks off the FabOption's animation along with its
      * optional label's animation.
+     *
+     * @param globalDurationMs the global FabOption closing animation duration that a client
+     * set on the ExpandableFabLayout. If set, this value takes precedence over the local
+     * [closingAnimationDurationMs].
+     * @param globalLabelDurationMs the global Label visible to hidden animation duration that a
+     * client set on the ExpandableFabLayout. If set, this value takes precedence over
+     * [label.visibleToHiddenAnimationDurationMs].
      * */
     @JvmSynthetic
-    internal fun closingAnimations(): Animator {
+    internal fun closingAnimations(
+        globalDurationMs: Long?,
+        globalLabelDurationMs: Long?
+    ): Animator {
         val closingAnimations = AnimatorSet().apply {
             playTogether(
                 ObjectAnimator.ofFloat(this@FabOption, "scaleX", 0f).apply {
-                    this.duration = closingAnimationDurationMs
+                    this.duration = globalDurationMs ?: closingAnimationDurationMs
                 },
                 ObjectAnimator.ofFloat(this@FabOption, "scaleY", 0f).apply {
-                    this.duration = closingAnimationDurationMs
+                    this.duration = globalDurationMs ?: closingAnimationDurationMs
                 },
                 ObjectAnimator.ofFloat(this@FabOption, "alpha", 0f).apply {
-                    this.duration = closingAnimationDurationMs
+                    this.duration = globalDurationMs ?: closingAnimationDurationMs
                 }
             )
             addListener(hideOnAnimationEnd)
         }
 
-        return AnimatorSet().apply { playTogether(closingAnimations, label.visibleToHiddenAnimations()) }
+        return AnimatorSet().apply {
+            playTogether(closingAnimations, label.visibleToHiddenAnimations(globalLabelDurationMs))
+        }
     }
 }

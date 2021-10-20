@@ -530,13 +530,23 @@ class ExpandableFab : FloatingActionButton {
      * The animations to play when the ExpandableFab is opening. This kicks off the
      * ExpandableFab's manual icon animation along with its optional label's animation.
      *
+     * @param globalDurationMs the global ExpandableFab opening animation duration that a client
+     * set on the ExpandableFabLayout. If set, this value takes precedence over the local
+     * [openingAnimationDurationMs].
+     * @param globalLabelDurationMs the global Label visible to hidden animation duration that a
+     * client set on the ExpandableFabLayout. If set, this value takes precedence over
+     * [label.visibleToHiddenAnimationDurationMs].
      * @param onAnimationFinished the callback our parent wants us to invoke when our animations
      * are done.
      * */
     @JvmSynthetic
-    internal fun openingAnimations(onAnimationFinished: () -> Unit): Animator {
+    internal fun openingAnimations(
+        globalDurationMs: Long?,
+        globalLabelDurationMs: Long?,
+        onAnimationFinished: () -> Unit
+    ): Animator {
         manualIconAnimation(
-            durationMs = openingAnimationDurationMs,
+            durationMs = globalDurationMs ?: openingAnimationDurationMs,
             startRotationDegrees = 0f,
             endRotationDegrees = iconAnimationRotationDeg,
             onAnimationFinished = {
@@ -544,18 +554,28 @@ class ExpandableFab : FloatingActionButton {
             }
         )
 
-        return AnimatorSet().apply { play(label.visibleToHiddenAnimations()) }
+        return AnimatorSet().apply { play(label.visibleToHiddenAnimations(globalLabelDurationMs)) }
     }
 
     /**
      * The animations to play when the ExpandableFab is closing. This kicks off the
      * ExpandableFab's manual icon animation along with its optional label's animation.
      *
+     * @param globalDurationMs the global ExpandableFab closing animation duration that a client
+     * set on the ExpandableFabLayout. If set, this value takes precedence over the local
+     * [closingAnimationDurationMs].
+     * @param globalLabelDurationMs the global Label hidden to visible animation duration that a
+     * client set on the ExpandableFabLayout. If set, this value takes precedence over
+     * [label.hiddenToVisibleAnimationDurationMs].
      * @param onAnimationFinished the callback our parent wants us to invoke when our animations
      * are done.
      * */
     @JvmSynthetic
-    internal fun closingAnimations(onAnimationFinished: () -> Unit): Animator {
+    internal fun closingAnimations(
+        globalDurationMs: Long?,
+        globalLabelDurationMs: Long?,
+        onAnimationFinished: () -> Unit
+    ): Animator {
         val baseAnticipateDegrees = abs(iconAnimationRotationDeg / 10f)
         val totalDegreesToAnticipate = baseAnticipateDegrees * closingAnticipateTension
         val endRotationDegrees = if(iconAnimationRotationDeg < 0){
@@ -563,7 +583,11 @@ class ExpandableFab : FloatingActionButton {
         } else {
             iconAnimationRotationDeg + totalDegreesToAnticipate
         }
-        val anticipateDuration = closingAnimationDurationMs / 5L
+        val anticipateDuration = if(globalDurationMs != null){
+            globalDurationMs / 5L
+        } else {
+            closingAnimationDurationMs / 5L
+        }
         val epsilon = 0.01
         // If anticipateDegrees == 0f or -0f, then we DON'T want to run the anticipate animation
         // at all (abs(0-0) will be less than epsilon). However, anything over 0 is acceptable.
@@ -593,19 +617,19 @@ class ExpandableFab : FloatingActionButton {
                 endRotationDegrees = endRotationDegrees,
                 onAnimationFinished = {
                     regularClosingAnimation(
-                        durationMs = closingAnimationDurationMs - anticipateDuration,
+                        durationMs = (globalDurationMs ?: closingAnimationDurationMs) - anticipateDuration,
                         startingRotationDegrees = endRotationDegrees
                     )
                 }
             )
         } else {
             regularClosingAnimation(
-                durationMs = closingAnimationDurationMs,
+                durationMs = globalDurationMs ?: closingAnimationDurationMs,
                 startingRotationDegrees = iconAnimationRotationDeg
             )
         }
 
-        return AnimatorSet().apply { play(label.hiddenToVisibleAnimations()) }
+        return AnimatorSet().apply { play(label.hiddenToVisibleAnimations(globalLabelDurationMs)) }
     }
 
     /**

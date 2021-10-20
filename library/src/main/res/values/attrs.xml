@@ -87,6 +87,124 @@
     -->
     <attr name="label_overshootTension" format="float"/>
 
+    <declare-styleable name="ExpandableFabLayout">
+        <!--
+            The duration (in milliseconds as a positive long) of the opening animations for ALL the
+            Overlays inside of this ExpandableFabLayout. A convenience attribute so that clients
+            don't have to set the same value for every Overlay within a single ExpandableFabLayout.
+
+            Set to 0L if you don't want opening animations for ANY Overlays within this
+            ExpandableFabLayout.
+
+            NOTE: This property will override whatever you set on individual Overlays. If you
+            only want to change the opening animation duration for a single Overlay, leave this
+            property as null and see [Overlay.openingAnimationDurationMs].
+        -->
+        <attr name="efab_layout_overlayOpeningAnimationDurationMs" format="string"/>
+
+        <!--
+            The duration (in milliseconds as a positive long) of the closing animations for ALL the
+            Overlays inside of this ExpandableFabLayout. A convenience attribute so that clients
+            don't have to set the same value for every Overlay within a single ExpandableFabLayout.
+
+            Set to 0L if you don't want closing animations for ANY Overlays within this
+            ExpandableFabLayout.
+
+            NOTE: This property will override whatever you set on individual Overlays. If you
+            only want to change the closing animation duration for a single Overlay, leave this
+            property as null and see [Overlay.closingAnimationDurationMs].
+        -->
+        <attr name="efab_layout_overlayClosingAnimationDurationMs" format="string"/>
+
+        <!--
+            The duration (in milliseconds as a positive long) of the opening animations for ALL the
+            ExpandableFabs inside of this ExpandableFabLayout. A convenience attribute so that clients
+            don't have to set the same value for every ExpandableFab within a single
+            ExpandableFabLayout.
+
+            Set to 0L if you don't want opening animations for ANY ExpandableFabs within this
+            ExpandableFabLayout.
+
+            NOTE: This property will override whatever you set on individual ExpandableFabs. If you
+            only want to change the opening animation duration for a single ExpandableFab, leave this
+            property as null and see [ExpandableFab.openingAnimationDurationMs].
+        -->
+        <attr name="efab_layout_expandableFabOpeningAnimationDurationMs" format="string"/>
+
+        <!--
+            The duration (in milliseconds as a positive long) of the closing animations for ALL the
+            ExpandableFabs inside of this ExpandableFabLayout. A convenience attribute so that clients
+            don't have to set the same value for every ExpandableFab within a single
+            ExpandableFabLayout.
+
+            Set to 0L if you don't want closing animations for ANY ExpandableFabs within this
+            ExpandableFabLayout.
+
+            NOTE: This property will override whatever you set on individual ExpandableFabs. If you
+            only want to change the closing animation duration for a single ExpandableFab, leave this
+            property as null and see [ExpandableFab.closingAnimationDurationMs].
+        -->
+        <attr name="efab_layout_expandableFabClosingAnimationDurationMs" format="string"/>
+
+        <!--
+            The duration (in milliseconds as a positive long) of the opening animations for ALL the
+            FabOptions inside of this ExpandableFabLayout. A convenience attribute so that clients
+            don't have to set the same value for every FabOption within a single ExpandableFabLayout.
+
+            Set to 0L if you don't want opening animations for ANY FabOptions within this
+            ExpandableFabLayout.
+
+            NOTE: This property will override whatever you set on individual FabOptions. If you
+            only want to change the opening animation duration for a single FabOption, leave this
+            property as null and see [FabOption.openingAnimationDurationMs].
+        -->
+        <attr name="efab_layout_fabOptionOpeningAnimationDurationMs" format="string"/>
+
+        <!--
+            The duration (in milliseconds as a positive long) of the closing animations for ALL the
+            FabOptions inside of this ExpandableFabLayout. A convenience attribute so that clients
+            don't have to set the same value for every FabOption within a single ExpandableFabLayout.
+
+            Set to 0L if you don't want closing animations for ANY FabOptions within this
+            ExpandableFabLayout.
+
+            NOTE: This property will override whatever you set on individual FabOptions. If you
+            only want to change the closing animation duration for a single FabOption, leave this
+            property as null and see [FabOption.closingAnimationDurationMs].
+        -->
+        <attr name="efab_layout_fabOptionClosingAnimationDurationMs" format="string"/>
+
+        <!--
+            The duration (in milliseconds as a positive long) of the visible to hidden state animations
+            for ALL the Labels inside of this ExpandableFabLayout. A convenience attribute so that
+            clients don't have to set the same value for every Label within a single
+            ExpandableFabLayout. This property will affect Labels on ExpandableFabs AND FabOptions.
+
+            Set to 0L if you don't want visible to hidden animations for ANY Labels within this
+            ExpandableFabLayout.
+
+            NOTE: This property will override whatever you set on individual Labels. If you
+            only want to change the visible to hidden animation duration for a single Label, leave
+            this property as null and see [Label.visibleToHiddenAnimationDurationMs].
+        -->
+        <attr name="efab_layout_labelVisibleToHiddenAnimationDurationMs" format="string"/>
+
+        <!--
+            The duration (in milliseconds as a positive long) of the hidden to visible state animations
+            for ALL the Labels inside of this ExpandableFabLayout. A convenience attribute so that
+            clients don't have to set the same value for every Label within a single
+            ExpandableFabLayout. This property will affect Labels on ExpandableFabs AND FabOptions.
+
+            Set to 0L if you don't want hidden to visible animations for ANY Labels within this
+            ExpandableFabLayout.
+
+            NOTE: This property will override whatever you set on individual Labels. If you
+            only want to change the hidden to visible animation duration for a single Label, leave
+            this property as null and see [Label.hiddenToVisibleAnimationDurationMs].
+        -->
+        <attr name="efab_layout_labelHiddenToVisibleAnimationDurationMs" format="string"/>
+    </declare-styleable>
+
     <declare-styleable name="Overlay">
         <!-- The orientation this Overlay is viewable in. Default value is [Orientation.PORTRAIT]. -->
         <attr name="overlay_orientation" format="enum">
