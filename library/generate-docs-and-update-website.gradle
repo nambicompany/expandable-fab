@@ -10,6 +10,7 @@ def websiteRootDirectory = "$rootDir/docs"
  * */
 task generateJavaDocForWebsite(type: dokkaJavadoc.getClass()) {
     outputDirectory = new File("$websiteRootDirectory${File.separator}javadoc${File.separator}$docVersion")
+    suppressInheritedMembers = true
     doLast {
         new File("$websiteRootDirectory${File.separator}api_doc_versions${File.separator}${docVersion}.javadoc").createNewFile()
     }
@@ -21,6 +22,7 @@ task generateJavaDocForWebsite(type: dokkaJavadoc.getClass()) {
  * */
 task generateKDocForWebsite(type: dokkaHtml.getClass()) {
     outputDirectory = new File("$websiteRootDirectory${File.separator}kdoc${File.separator}$docVersion")
+    suppressInheritedMembers = true
     doLast {
         new File("$websiteRootDirectory${File.separator}api_doc_versions${File.separator}${docVersion}.kdoc").createNewFile()
     }

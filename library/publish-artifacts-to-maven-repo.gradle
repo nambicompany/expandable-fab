@@ -44,9 +44,11 @@ version = mavenVersion
  * */
 task generateJavaDocInBuildDir(type: dokkaJavadoc.getClass()) {
     outputDirectory = new File(javadocOutputDir)
+    suppressInheritedMembers = true
 }
 task generateKDocInBuildDir(type: dokkaHtml.getClass()) {
     outputDirectory = new File(kdocOutputDir)
+    suppressInheritedMembers = true
 }
 
 /** Generate JAR artifacts for the various documentation formats from above, and our source code. **/
