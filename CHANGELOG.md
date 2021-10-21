@@ -8,6 +8,10 @@ Note: Dates are formatted as YEAR-MONTH-DAY.
 
 #
 
+## [v1.2.1] - 2021-10-21
+### Fixed
+- Due to the library targeting SDK 30 as of v1.2.0 instead of 28, `Label` widgets were unintentionally calling `setPadding` on their GradientDrawable background (a method that was only added in SDK 29), instead of calling it on the TextView itself (a method that has been present since SDK 1). This led to crashes on devices running SDK 28 and below. The setPadding call was simply moved outside the scope of the GradientDrawable in order to fix the bug, and now the widgets run on all supported SDK versions again.
+
 ## [v1.2.0] - 2021-10-20
 ### Added
 - Clients can now set global animation durations for all children widgets of the `ExpandableFabLayout` right on the layout itself. This can be done programmatically or via XML layout attributes. So instead of having to update the animation durations on every `Overlay`, `ExpandableFab`, `FabOption`, and `Label` within an ExpandableFabLayout (which can become tedious), a developer can now set the value once for each widget type right on the parent. Note that these global duration fields will *overwrite* any duration set on individual widgets, so be mindful when using them. See the documentation of `ExpandableFabLayout` for more details.

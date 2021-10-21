@@ -271,13 +271,15 @@ class Label : AppCompatTextView {
         val backgroundDrawable = GradientDrawable().apply {
             setColor(ContextCompat.getColor(context, R.color.efab_label_background))
             cornerRadius = resources.getDimension(R.dimen.efab_ui_margin_xxs)
-            setPadding(
-                resources.getDimension(R.dimen.efab_ui_margin_xs).toInt(),
-                resources.getDimension(R.dimen.efab_ui_margin_xxs).toInt(),
-                resources.getDimension(R.dimen.efab_ui_margin_xs).toInt(),
-                resources.getDimension(R.dimen.efab_ui_margin_xxs).toInt()
-            )
         }
+
+        setPadding(
+            resources.getDimension(R.dimen.efab_ui_margin_xs).toInt(),
+            resources.getDimension(R.dimen.efab_ui_margin_xxs).toInt(),
+            resources.getDimension(R.dimen.efab_ui_margin_xs).toInt(),
+            resources.getDimension(R.dimen.efab_ui_margin_xxs).toInt()
+        )
+
         ViewCompat.setBackground(this, backgroundDrawable)
     }
 

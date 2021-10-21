@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 
 ext.versionMajor = 1
 ext.versionMinor = 2
-ext.versionPatch = 0
+ext.versionPatch = 1
 
 android {
     compileSdkVersion 30
